@@ -12,6 +12,12 @@ namespace Managers
         #region SerializedField
         
         [SerializeField] private GameObject[] menuIcons;
+        [SerializeField] private Transform gamesAndTestPanelUI;
+        [SerializeField] private Transform todayUI;
+        [SerializeField] private Transform gamesUI;
+        [SerializeField] private Transform testUI;
+        [SerializeField] private Transform settingsUI;
+        [SerializeField] private Transform notificationUI;
 
         #endregion
 
@@ -47,23 +53,39 @@ namespace Managers
             switch (type)
             {
                 case MenuTypes.TodayMenu:
-                    transform.GetChild(1).gameObject.SetActive(false);
-                    transform.GetChild(2).gameObject.SetActive(false);
-                    transform.GetChild(0).gameObject.SetActive(true);
+                    gamesUI.gameObject.SetActive(false);
+                    testUI.gameObject.SetActive(false);
+                    todayUI.gameObject.SetActive(true);
                     ChangeMenuIconColor(MenuTypes.TodayMenu);
                     break;
                 case MenuTypes.GameMenu:
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(2).gameObject.SetActive(false);
-                    transform.GetChild(1).gameObject.SetActive(true);
+                    todayUI.gameObject.SetActive(false);
+                    testUI.gameObject.SetActive(false);
+                    gamesUI.gameObject.SetActive(true);
                     ChangeMenuIconColor(MenuTypes.GameMenu);
                     break;
                 case MenuTypes.TestMenu:
-                    transform.GetChild(1).gameObject.SetActive(false);
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(2).gameObject.SetActive(true);
+                    gamesUI.gameObject.SetActive(false);
+                    todayUI.gameObject.SetActive(false);
+                    testUI.gameObject.SetActive(true);
                     ChangeMenuIconColor(MenuTypes.TestMenu);
                     break;
+
+                case MenuTypes.SettingsMenu:
+                    gamesAndTestPanelUI.gameObject.SetActive(false);
+                    settingsUI.gameObject.SetActive(true);
+                    break;
+                case MenuTypes.NotificationMenu:
+                    gamesAndTestPanelUI.gameObject.SetActive(false);
+                    notificationUI.gameObject.SetActive(true);
+                    break;
+                case MenuTypes.GamesAndTestPanel:
+                    settingsUI.gameObject.SetActive(false);
+                    notificationUI.gameObject.SetActive(false);
+                    gamesAndTestPanelUI.gameObject.SetActive(true);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
 

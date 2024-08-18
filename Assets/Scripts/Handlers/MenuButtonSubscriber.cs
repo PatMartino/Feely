@@ -10,7 +10,7 @@ namespace Handlers
     {
         #region Serialized Field
 
-        [SerializeField] private ButtonType type;
+        [SerializeField] private MenuButtonType type;
 
         #endregion
 
@@ -40,15 +40,29 @@ namespace Handlers
         {
             switch (type)
             {
-                case ButtonType.TodayButton:
+                case MenuButtonType.TodayButton:
                     _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.TodayMenu)); 
                     break;
-                case ButtonType.GameButton:
+                case MenuButtonType.GameButton:
                     _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.GameMenu)); 
                     break;
-                case ButtonType.TestButton:
+                case MenuButtonType.TestButton:
                     _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.TestMenu)); 
                     break;
+                case MenuButtonType.SettingsButton:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.SettingsMenu));
+                    break;
+                case MenuButtonType.NotificationsButton:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.NotificationMenu));
+                    break;
+                case MenuButtonType.SettingsBack:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.GamesAndTestPanel));
+                    break;
+                case MenuButtonType.NotificationBack:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.GamesAndTestPanel));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 

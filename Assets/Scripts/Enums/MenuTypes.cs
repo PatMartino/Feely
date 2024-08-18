@@ -4,7 +4,9 @@ namespace Enums
     {
         GameMenu,
         TodayMenu,
-        TestMenu
-        
+        TestMenu,
+        SettingsMenu,
+        NotificationMenu,
+        GamesAndTestPanel
     }
 }

@@ -7,5 +7,6 @@ namespace Signals
     public class UISignals : MonoSingleton<UISignals>
     {
         public UnityAction<MenuTypes> OnSwitchMenu = delegate {  };
+        public UnityAction<SettingButtonsType> OnSettingsPanelController = delegate {  };
     }
 }
