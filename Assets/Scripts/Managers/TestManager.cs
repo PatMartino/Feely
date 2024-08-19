@@ -4,17 +4,22 @@ using Extensions;
 using Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Managers
 {
     public class TestManager : MonoSingleton<TestManager>
     {
+        [SerializeField] TMP_Text progressText;
+        [SerializeField] Image fillImage;
         [SerializeField] TMP_Text testNameText;
         [SerializeField] TMP_Text questionText;
         [SerializeField] Image questionImage;
         [SerializeField] GameObject answers;
         private ITest _currentTest;
+
+        public UnityAction<int> OnAnswerSelected;
 
         protected override void Awake()
         {
@@ -55,6 +60,14 @@ namespace Managers
                 answer.GetComponentInChildren<TMP_Text>().text = answerList[i];
                 answer.GetComponent<TestAnswerButton>().answerIndex = i;
             }
+
+            DrawProgressBar();
+        }
+
+        private void DrawProgressBar()
+        {
+            progressText.text = $"Question {_currentTest.GetNextQuestionIndex()}/{_currentTest.GetQuestionsCount()}";
+            fillImage.fillAmount = (float)_currentTest.GetNextQuestionIndex() / _currentTest.GetQuestionsCount();
         }
 
         public void SelectAnswer(byte answerIndex)

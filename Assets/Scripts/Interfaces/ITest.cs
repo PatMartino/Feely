@@ -13,7 +13,11 @@ namespace Interfaces
         
         public List<string> GetAnswers();
         
-        public void GetResults();
+        public TestResult GetResults();
         public string GetTextName();
+        
+        public uint GetNextQuestionIndex();
+        
+        public int GetQuestionsCount();
     }
 }
