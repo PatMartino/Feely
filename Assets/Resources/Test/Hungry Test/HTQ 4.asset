@@ -21,7 +21,7 @@ MonoBehaviour:
     scorePoint: 2
   - answerText: Maybe
     scorePoint: 3
-  - answerText: "Yes\t"
+  - answerText: Yes
     scorePoint: 4
   - answerText: Absolutely Yes!
     scorePoint: 5
