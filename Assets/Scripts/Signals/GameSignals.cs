@@ -16,5 +16,9 @@ namespace Signals
         public UnityAction OnSetCanSelectTrue = delegate {  };
         public UnityAction OnSetCanSelectFalse = delegate {  };
         public UnityAction OnIncreaseCompletedTubes = delegate {  };
+        public Func<int> OnGetLevelID = () => 0;
+        public Func<bool> OnGetIsLevelFinished = () => false;
+        public UnityAction OnNextLevel = delegate {  };
+        public UnityAction OnRestartLevel = delegate {  };
     }
 }

@@ -8,5 +8,9 @@ namespace Signals
     {
         public UnityAction<MenuTypes> OnSwitchMenu = delegate {  };
         public UnityAction<SettingButtonsType> OnSettingsPanelController = delegate {  };
+        public UnityAction<UIStates> OnMenuUIManagement = delegate {  };
+        public UnityAction OnUpdateBallSortLevelIDText = delegate {  };
+        public UnityAction OnCompleteBallSortLevel = delegate {  };
+        public UnityAction OnStartBallSortLevel = delegate {  };
     }
 }

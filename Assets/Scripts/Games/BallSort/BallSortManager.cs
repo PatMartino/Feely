@@ -20,7 +20,7 @@ namespace Games.BallSort
         private int _levelID =1;
         private GameObject _ball;
         private TubeData _tubeData;
-        
+        private bool _isLevelFinished;
         private int _tubeAmount;
         private int _completedTubes;
 
@@ -51,6 +51,10 @@ namespace Games.BallSort
             GameSignals.Instance.OnAssignSelectBall += OnAssignSelectBall;
             GameSignals.Instance.OnGetBall += OnGetBall;
             GameSignals.Instance.OnIncreaseCompletedTubes += OnIncreaseCompletedTubes;
+            GameSignals.Instance.OnGetLevelID += OnGetLevelID;
+            GameSignals.Instance.OnGetIsLevelFinished += OnGetIsLevelFinished;
+            GameSignals.Instance.OnRestartLevel += OnRestartLevel;
+            GameSignals.Instance.OnNextLevel += OnNextLevel;
         }
 
         private void LevelLoader()
@@ -58,6 +62,7 @@ namespace Games.BallSort
             Instantiate(Resources.Load<GameObject>($"Games/BallSort/LevelPrefabs/Level{_levelID}"),levelHolder);
             _tubeData = Resources.Load<TubeData>($"Games/BallSort/TubeData/{_levelID}");
             _tubeAmount = _tubeData.TubeAmount;
+            UISignals.Instance.OnUpdateBallSortLevelIDText?.Invoke();
         }
 
         private void LevelDestroyer()
@@ -67,13 +72,23 @@ namespace Games.BallSort
 
         private void LevelComplete()
         {
-            
+            UISignals.Instance.OnCompleteBallSortLevel?.Invoke();
+            _isLevelFinished = true;
         }
 
-        private void NextLevel()
+        private void OnNextLevel()
         {
             LevelDestroyer();
             _levelID++;
+            ResetAmounts();
+            LevelLoader();
+            UISignals.Instance.OnStartBallSortLevel?.Invoke();
+            _isLevelFinished = false;
+        }
+
+        private void OnRestartLevel()
+        {
+            LevelDestroyer();
             ResetAmounts();
             LevelLoader();
         }
@@ -89,7 +104,7 @@ namespace Games.BallSort
             if (_completedTubes>=_tubeAmount)
             {
                 Debug.LogWarning("LevelComplete");
-                NextLevel();
+                LevelComplete();
             }
         }
 
@@ -119,9 +134,19 @@ namespace Games.BallSort
             _ball = obj;
         }
 
+        private int OnGetLevelID()
+        {
+            return _levelID;
+        }
+
         private GameObject OnGetBall()
         {
             return _ball;
+        }
+
+        private bool OnGetIsLevelFinished()
+        {
+            return _isLevelFinished;
         }
 
         private void UnSubscribeEvents()
@@ -132,6 +157,10 @@ namespace Games.BallSort
             GameSignals.Instance.OnAssignSelectBall -= OnAssignSelectBall;
             GameSignals.Instance.OnGetBall -= OnGetBall;
             GameSignals.Instance.OnIncreaseCompletedTubes -= OnIncreaseCompletedTubes;
+            GameSignals.Instance.OnGetLevelID -= OnGetLevelID;
+            GameSignals.Instance.OnGetIsLevelFinished -= OnGetIsLevelFinished;
+            GameSignals.Instance.OnRestartLevel -= OnRestartLevel;
+            GameSignals.Instance.OnNextLevel -= OnNextLevel;
         }
 
         #endregion

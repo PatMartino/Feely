@@ -46,7 +46,7 @@ namespace Games.BallSort
         private void SelectBall()
         {
             
-            if (ballsInTube.Count>0 && !GameSignals.Instance.OnGetIsSelect())
+            if (ballsInTube.Count>0 && !GameSignals.Instance.OnGetIsSelect() && !GameSignals.Instance.OnGetIsLevelFinished())
             {
                 Debug.Log("Select");
                 GameSignals.Instance.OnSetCanSelectFalse?.Invoke();
@@ -57,7 +57,7 @@ namespace Games.BallSort
                 ballsInTube[^1].transform.DOMove(ballPlaces[4].transform.position, cycleLength);
                 ballsInTube.RemoveAt(ballsInTube.Count-1);
             }
-            else if (GameSignals.Instance.OnGetIsSelect() && ballsInTube.Count<4)
+            else if (GameSignals.Instance.OnGetIsSelect() && ballsInTube.Count<4 && !GameSignals.Instance.OnGetIsLevelFinished())
             {
                 Debug.Log("Drop");
                 GameSignals.Instance.OnSetCanSelectFalse?.Invoke();
