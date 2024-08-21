@@ -1,10 +1,9 @@
-using System;
 using Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Data
+namespace Data.Tests
 {
     public class TestAnswerButton : MonoBehaviour, IPointerClickHandler
     {

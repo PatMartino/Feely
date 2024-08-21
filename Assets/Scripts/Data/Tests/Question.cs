@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Data
+namespace Data.Tests
 {
     public class Question : ScriptableObject
     {

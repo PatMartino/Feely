@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Data;
+using Data.Tests;
 using Extensions;
 using Interfaces;
 using TMPro;
@@ -17,6 +17,7 @@ namespace Managers
         [SerializeField] TMP_Text questionText;
         [SerializeField] Image questionImage;
         [SerializeField] GameObject answers;
+        [SerializeField] TMP_Text resultText;
         private ITest _currentTest;
 
         public UnityAction<int> OnAnswerSelected;
@@ -70,6 +71,16 @@ namespace Managers
             fillImage.fillAmount = (float)_currentTest.GetNextQuestionIndex() / _currentTest.GetQuestionsCount();
         }
 
+        private void DrawResults()
+        {
+            questionText.enabled = false;
+            questionImage.enabled = false;
+            answers.SetActive(false);
+            testNameText.text = "Results";
+            resultText.enabled = true;
+            resultText.text = _currentTest.GetResults().result;
+            DrawProgressBar();
+        }
         public void SelectAnswer(byte answerIndex)
         {
             _currentTest.SelectAnswer(answerIndex);
@@ -83,7 +94,7 @@ namespace Managers
             }
             else
             {
-                _currentTest.GetResults();
+                DrawResults();
             }
         }
     }
