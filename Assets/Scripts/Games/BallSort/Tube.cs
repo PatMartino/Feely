@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Signals;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Games.BallSort
 {
@@ -15,6 +13,12 @@ namespace Games.BallSort
         [SerializeField] private List<GameObject> ballPlaces = new List<GameObject>();
         [SerializeField] private List<GameObject> ballsInTube = new List<GameObject>();
         [SerializeField] private float cycleLength = 1f;
+
+        #endregion
+
+        #region Private Field
+
+        private bool _isComplete;
 
         #endregion
 
@@ -46,12 +50,11 @@ namespace Games.BallSort
         private void SelectBall()
         {
             
-            if (ballsInTube.Count>0 && !GameSignals.Instance.OnGetIsSelect() && !GameSignals.Instance.OnGetIsLevelFinished())
+            if (ballsInTube.Count>0 && !GameSignals.Instance.OnGetIsSelect() && !GameSignals.Instance.OnGetIsLevelFinished() && !_isComplete)
             {
                 Debug.Log("Select");
-                GameSignals.Instance.OnSetCanSelectFalse?.Invoke();
-                StartCoroutine(WaitForSelect());
-                GameSignals.Instance.OnAssignSelectBall?.Invoke(ballsInTube[^1]);
+                //StartCoroutine(WaitForSelect());
+                GameSignals.Instance.OnAssignSelectBall?.Invoke(ballsInTube[^1],ballsInTube, ballPlaces);
                 GameSignals.Instance.OnSetIsSelectTrue?.Invoke();
                 Debug.Log(GameSignals.Instance.OnGetIsSelect());
                 ballsInTube[^1].transform.DOMove(ballPlaces[4].transform.position, cycleLength);
@@ -59,31 +62,64 @@ namespace Games.BallSort
             }
             else if (GameSignals.Instance.OnGetIsSelect() && ballsInTube.Count<4 && !GameSignals.Instance.OnGetIsLevelFinished())
             {
+                
                 Debug.Log("Drop");
-                GameSignals.Instance.OnSetCanSelectFalse?.Invoke();
-                StartCoroutine(WaitForSelect());
-                ballsInTube.Add(GameSignals.Instance.OnGetBall?.Invoke());
-                GameSignals.Instance.OnSetIsSelectFalse?.Invoke();
-                GameSignals.Instance.OnGetBall?.Invoke().transform
-                    .DOMove(ballPlaces[4].transform.position, cycleLength).OnComplete(() =>{
-                       GameSignals.Instance.OnGetBall?.Invoke().transform.DOMove(ballPlaces[ballsInTube.Count-1].transform.position, cycleLength).OnComplete(
-                           () =>
-                           {
-                               if (ballsInTube.Count ==4)
-                               {
-                                   CheckComplete();
-                               }
+                //StartCoroutine(WaitForSelect2());
+                if (ballsInTube.Count >0)
+                {
+                    if (GameSignals.Instance.OnGetBall?.Invoke().GetComponent<SortBall>().OnGetBallColor() == ballsInTube[ballsInTube.Count-1].GetComponent<SortBall>().OnGetBallColor())
+                    {
+                        GameSignals.Instance.OnSetIsSelectFalse?.Invoke();
+                        ballsInTube.Add(GameSignals.Instance.OnGetBall?.Invoke());
+                        Debug.Log("Aynı Renk");
+                        GameSignals.Instance.OnGetBall?.Invoke().transform
+                            .DOMove(ballPlaces[4].transform.position, cycleLength).OnComplete(() =>{
+                                GameSignals.Instance.OnGetBall?.Invoke().transform.DOMove(ballPlaces[ballsInTube.Count-1].transform.position, cycleLength).OnComplete(
+                                    () =>
+                                    {
+                                        if (ballsInTube.Count ==4)
+                                        {
+                                            CheckComplete();
+                                        }
                                
-                           });
+                                    });
                        
-                    });
+                            });
+                    }
+                    else
+                    {
+                        Debug.Log("Farklı Renk");
+                        GameSignals.Instance.OnSetIsSelectFalse?.Invoke();
+                        GameSignals.Instance.OnGetPreviousTubeList?.Invoke().Add(GameSignals.Instance.OnGetBall?.Invoke());
+                        int num = (GameSignals.Instance.OnGetPreviousTubeList().Count - 1);
+                        GameSignals.Instance.OnGetBall?.Invoke().transform
+                            .DOMove(GameSignals.Instance.OnGetPreviousBallPlaces()[num].transform.position, cycleLength);
+                    }
+                    
+                }
+                else
+                {
+                    Debug.Log("Boş Alan");
+                    GameSignals.Instance.OnSetIsSelectFalse?.Invoke();
+                    ballsInTube.Add(GameSignals.Instance.OnGetBall?.Invoke());
+                    GameSignals.Instance.OnGetBall?.Invoke().transform
+                        .DOMove(ballPlaces[4].transform.position, cycleLength).OnComplete(() =>{
+                            GameSignals.Instance.OnGetBall?.Invoke().transform.DOMove(ballPlaces[ballsInTube.Count-1].transform.position, cycleLength).OnComplete(
+                                () =>
+                                {
+                                    if (ballsInTube.Count ==4)
+                                    {
+                                        CheckComplete();
+                                    }
+                               
+                                });
+                       
+                        });
+                }
+                
+                
+                
             }
-        }
-
-        private IEnumerator WaitForSelect()
-        {
-            yield return new WaitForSeconds(0.3f);
-            GameSignals.Instance.OnSetCanSelectTrue?.Invoke();
         }
 
         private void CheckComplete()
@@ -110,6 +146,7 @@ namespace Games.BallSort
 
         private void Complete()
         {
+            _isComplete = true;
             GetComponent<SpriteRenderer>().color = Color.green;
             GameSignals.Instance.OnIncreaseCompletedTubes?.Invoke();
         }

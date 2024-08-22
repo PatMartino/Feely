@@ -1,6 +1,6 @@
 ﻿namespace Enums
 {
-    public enum GamesAndTests
+    public enum GamesAndTestsNames
     {
         BallSort
     }

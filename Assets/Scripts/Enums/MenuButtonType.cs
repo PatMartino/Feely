@@ -8,6 +8,7 @@ namespace Enums
         SettingsButton,
         NotificationsButton,
         SettingsBack,
-        NotificationBack
+        NotificationBack,
+        BallSortGame
     }
 }

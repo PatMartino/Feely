@@ -474,7 +474,7 @@ MonoBehaviour:
   - {fileID: 3767430108837811561}
   - {fileID: 5066038385691855366}
   - {fileID: 5437532154476590641}
-  cycleLength: 0.5
+  cycleLength: 0.1
 --- !u!70 &2434571003786455989
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   - {fileID: 8606050837391209786}
   - {fileID: 5801996971541276343}
   - {fileID: 6598903613536506531}
-  cycleLength: 0.5
+  cycleLength: 0.1
 --- !u!70 &899030166845655401
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   - {fileID: 7376677287564939647}
   - {fileID: 1433732047180565504}
   - {fileID: 855762764244510248}
-  cycleLength: 0.5
+  cycleLength: 0.1
 --- !u!70 &2992644334193142826
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   - {fileID: 2908661145142066869}
   - {fileID: 2632396554674098331}
   ballsInTube: []
-  cycleLength: 0.5
+  cycleLength: 0.1
 --- !u!70 &7512855243041568202
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3343,7 +3343,7 @@ MonoBehaviour:
   - {fileID: 4272633691810837631}
   - {fileID: 5012783240171100044}
   - {fileID: 2090301851350720057}
-  cycleLength: 0.5
+  cycleLength: 0.1
 --- !u!70 &4511169053525860587
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3583,7 +3583,7 @@ MonoBehaviour:
   - {fileID: 9081623341035376382}
   - {fileID: 8628550450673044916}
   ballsInTube: []
-  cycleLength: 0.5
+  cycleLength: 0.1
 --- !u!70 &5533109237240180492
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

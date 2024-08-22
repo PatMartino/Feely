@@ -23,6 +23,9 @@ namespace Games.BallSort
         private bool _isLevelFinished;
         private int _tubeAmount;
         private int _completedTubes;
+        private bool _canDrop;
+        private List<GameObject> _tubeList;
+        private List<GameObject> _ballPlaces;
 
         #endregion
 
@@ -55,6 +58,8 @@ namespace Games.BallSort
             GameSignals.Instance.OnGetIsLevelFinished += OnGetIsLevelFinished;
             GameSignals.Instance.OnRestartLevel += OnRestartLevel;
             GameSignals.Instance.OnNextLevel += OnNextLevel;
+            GameSignals.Instance.OnGetPreviousTubeList += OnGetPreviousTubeList;
+            GameSignals.Instance.OnGetPreviousBallPlaces+= OnGetPreviousBallPlaces;
         }
 
         private void LevelLoader()
@@ -129,9 +134,21 @@ namespace Games.BallSort
             _isSelect = false;
         }
 
-        private void OnAssignSelectBall(GameObject obj)
+        private void OnAssignSelectBall(GameObject obj, List<GameObject> tubelist, List<GameObject> _ballPlace)
         {
             _ball = obj;
+            _tubeList = tubelist;
+            _ballPlaces = _ballPlace;
+        }
+
+        private List<GameObject> OnGetPreviousTubeList()
+        {
+            return _tubeList;
+        }
+
+        private List<GameObject> OnGetPreviousBallPlaces()
+        {
+            return _ballPlaces;
         }
 
         private int OnGetLevelID()
@@ -161,6 +178,8 @@ namespace Games.BallSort
             GameSignals.Instance.OnGetIsLevelFinished -= OnGetIsLevelFinished;
             GameSignals.Instance.OnRestartLevel -= OnRestartLevel;
             GameSignals.Instance.OnNextLevel -= OnNextLevel;
+            GameSignals.Instance.OnGetPreviousTubeList -= OnGetPreviousTubeList;
+            GameSignals.Instance.OnGetPreviousBallPlaces -= OnGetPreviousBallPlaces;
         }
 
         #endregion

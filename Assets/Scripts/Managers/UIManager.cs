@@ -45,6 +45,7 @@ namespace Managers
                     break;
                 case UIStates.BallSortGame:
                     UIDestroyer();
+                    Instantiate(Resources.Load<GameObject>("Games/BallSort/UI/SortPuzzle"),canvas.transform);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -53,7 +54,7 @@ namespace Managers
 
         private void UIDestroyer()
         {
-            Destroy(canvas.transform.GetChild(0));
+            Destroy(canvas.transform.GetChild(0).gameObject);
         }
         
         private void UnSubscribeEvents()

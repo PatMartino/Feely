@@ -61,6 +61,9 @@ namespace Handlers
                 case MenuButtonType.NotificationBack:
                     _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.GamesAndTestPanel));
                     break;
+                case MenuButtonType.BallSortGame:
+                    _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.BallSort));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
