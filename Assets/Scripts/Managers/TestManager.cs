@@ -19,7 +19,10 @@ namespace Managers
         [SerializeField] Image questionImage;
         [SerializeField] GameObject answers;
         [SerializeField] TMP_Text resultText;
+        [SerializeField] Image confirmButtonImage;
         private ITest _currentTest;
+
+        private bool _isAnswerSelected;
 
         public UnityAction<int> OnAnswerSelected;
 
@@ -90,11 +93,16 @@ namespace Managers
         }
         public void SelectAnswer(byte answerIndex)
         {
+            _isAnswerSelected = true;
+            confirmButtonImage.color = new Color(1,1,1,1);
             _currentTest.SelectAnswer(answerIndex);
         }
         
         public void ConfirmAnswer()
         {
+            if (!_isAnswerSelected) return;
+            confirmButtonImage.color = new Color(1,1,1,0.5f);
+            _isAnswerSelected = false;
             if (!_currentTest.ConfirmAnswer())
             {
                 DrawQuestionAndAnswers(_currentTest.GetNextQuestion(), _currentTest.GetAnswers());
