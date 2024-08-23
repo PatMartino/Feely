@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff91baa6db3c634db4367e153a0a51e, type: 3}
+  m_Name: STQ 2
+  m_EditorClassIdentifier: 
+  question: "Son iki hafta i\xE7inde ne kadar s\u0131k b\xF6yle hissettiniz: \nEndi\u015Feyi
+    kontrol edememe"
+  image: {fileID: 0}
+  answers:
+  - answerText: "Her g\xFCn"
+    scorePoint: 5
+  - answerText: "Neredeyse her g\xFCn"
+    scorePoint: 4
+  - answerText: "G\xFCnlerin yar\u0131s\u0131ndan fazla"
+    scorePoint: 3
+  - answerText: "Birka\xE7 g\xFCn"
+    scorePoint: 2
+  - answerText: "Hi\xE7 de de\u011Fil"
+    scorePoint: 1
