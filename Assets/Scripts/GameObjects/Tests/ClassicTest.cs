@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Data;
 using Data.Tests;
 using Interfaces;
+using Structs;
 using UnityEngine;
 
 namespace GameObjects.Tests
@@ -10,7 +10,8 @@ namespace GameObjects.Tests
     {
         [SerializeField] private string testName;
         [SerializeField] private List<ClassicTestQuestion> questions;
-        private TestResult _result;
+        [SerializeField] private List<ClassicTestResult> results;
+        private TestResult _finalResult;
         private int _score;
         
         private uint _currentQuestionIndex;
@@ -58,7 +59,7 @@ namespace GameObjects.Tests
         }
         public TestResult GetResults()
         {
-            return _result;
+            return GetFinalResult();
         }
         public uint GetNextQuestionIndex()
         {
@@ -67,6 +68,20 @@ namespace GameObjects.Tests
         public int GetQuestionsCount()
         {
             return questions.Count;
+        }
+        
+        private TestResult GetFinalResult()
+        {
+            if (_finalResult == null) _finalResult = ScriptableObject.CreateInstance<TestResult>();
+            foreach (ClassicTestResult result in results)
+            {
+                if (result.range.x <= _score && _score <= result.range.y)
+                {
+                    _finalResult.result = result.result.result;
+                }
+            }
+
+            return _finalResult;
         }
     }
 }

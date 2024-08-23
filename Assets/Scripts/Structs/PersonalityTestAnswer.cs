@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Structs
 {
@@ -8,7 +9,7 @@ namespace Structs
     {
         [TextArea(2,4)] public string answerText;
         public int pointEToI;
-        public int pointIToO;
+        public int pointNToS;
         public int pointTToF;
         public int pointJToP;
         public int pointAToT;

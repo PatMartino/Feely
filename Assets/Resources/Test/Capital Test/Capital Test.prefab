@@ -49,3 +49,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a691859a7353374bbe4c180a0befd67, type: 2}
   - {fileID: 11400000, guid: cd1629397f3d2e842bfc43f2a5e864b3, type: 2}
   - {fileID: 11400000, guid: eb28e3031cf9190489a0063f809cf032, type: 2}
+  results:
+  - result: {fileID: 11400000, guid: 32a9259424312d34f972c17a8058acd2, type: 2}
+    range:
+      x: 0
+      y: 0
+  - result: {fileID: 11400000, guid: 24d54892c26e72a49814937231d3e091, type: 2}
+    range:
+      x: 1
+      y: 1
+  - result: {fileID: 11400000, guid: 09a1389bd15462e4a98aa35e90fc3cca, type: 2}
+    range:
+      x: 2
+      y: 2
+  - result: {fileID: 11400000, guid: daec88e11e65d724cb23f2f1767782ed, type: 2}
+    range:
+      x: 3
+      y: 3

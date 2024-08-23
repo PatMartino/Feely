@@ -30,7 +30,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -56,3 +56,196 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aadaeb1891a56134da096304492c09ba, type: 2}
   - {fileID: 11400000, guid: 8fb9fdd5f9db64b4ca58fb3fe71317d0, type: 2}
   - {fileID: 11400000, guid: 6519c800a84cecc4899e656cb363be5a, type: 2}
+  results:
+  - result: {fileID: 11400000, guid: e2c14eb009543ba44a0416150044f2c9, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: f8cb856407a12ab4d8c7b45f4c3b16b9, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 63001291fe9330f4180cc48b02f10a5e, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: f7ba608872581a042a533cd18e825ad4, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 2bab3e84d9c4d884b8a3ad75800894c7, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 859e28d1ef8928b489be713443e44a10, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: b78e6d2b20aa14943afc827979b0ba1b, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: d115863a77feca0479a7c23b47c66147, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 24d27291fd74aef41941ced8762a0209, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 9b2a9fc5d38e270439ce8e250aacc6cf, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 8a5f48c002b1dff4a99e6a105e5f60aa, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 5b90feb14aee08145a922b10bd0b62ea, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 5198a231515d1274fb0d0b6c5015bfb3, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: e345dd1b3b8663646a7178f4eb69b5a7, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 3685d8ac1750e3c4ca64cf0742354036, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: 4778e0e000d267f41bb1b82c163e0c60, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 65
+  - result: {fileID: 11400000, guid: e7e7ebca667b879428445ac125139458, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: ffcf9c675a209564598f5e54bef8aeae, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 18a109af055514a45b406a917d71f01a, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 4872b240aead0d44fa780c45fbcb1d08, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 63c85bf0c0d2ef34aa07f73b3b2fe551, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 84cdd1897cecd97429f4b61f15c9ca02, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: dab120591c00f0547a9f1e51335c4ab1, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 0594965bbc26099458398437b4b3ffba, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 74
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: dde2505b80dc441448e6d0d45be10f48, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 19441904d82d6ab4f88fee28365be2dd, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 888dedc7615b9ed4cb922b46defd1cad, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 2e75ebd7556aac942b8a2658a4d05710, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 84
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 7e9f367dbc011294a88e905d7a5da92f, type: 2}
+    typeEOrI: 69
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 335d4a4c8765cef46ac32fb69cf71e4e, type: 2}
+    typeEOrI: 73
+    typeNOrS: 78
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 942483ba2f830354f9c2cffe6c2af5fb, type: 2}
+    typeEOrI: 69
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 84
+  - result: {fileID: 11400000, guid: 0e5fbf071bc064d408a12fc0997c2b4b, type: 2}
+    typeEOrI: 73
+    typeNOrS: 83
+    typeTOrF: 70
+    typeJOrP: 80
+    typeAOrT: 84

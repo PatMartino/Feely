@@ -51,3 +51,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bca59a73f1c4c8f4c9f2e99dceccf86b, type: 2}
   - {fileID: 11400000, guid: f359c21eb078c2b40b118034c9b985f7, type: 2}
   - {fileID: 11400000, guid: 2896923167821254082e2ffae7417303, type: 2}
+  results:
+  - result: {fileID: 11400000, guid: 68998469d367eb9429f16ad53f97d255, type: 2}
+    range:
+      x: 5
+      y: 12
+  - result: {fileID: 11400000, guid: a5777195e74d03f41ad01cbfd0a8b5ed, type: 2}
+    range:
+      x: 13
+      y: 17
+  - result: {fileID: 11400000, guid: cff1fe510207b7b4caafe7d37965ca2d, type: 2}
+    range:
+      x: 18
+      y: 25

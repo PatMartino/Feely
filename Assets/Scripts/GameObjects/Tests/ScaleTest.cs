@@ -11,7 +11,7 @@ namespace GameObjects.Tests
         [SerializeField] private string testName;
         [SerializeField] private List<ScaleTestQuestion> questions;
         [SerializeField] private List<ScaleTestResult> results;
-        [SerializeField] private TestResult finalResult;
+        private TestResult _finalResult;
         private int _score;
         
         private uint _currentQuestionIndex;
@@ -77,18 +77,18 @@ namespace GameObjects.Tests
 
         private TestResult GetFinalResult()
         {
-            if (finalResult == null) finalResult = ScriptableObject.CreateInstance<TestResult>();
+            if (_finalResult == null) _finalResult = ScriptableObject.CreateInstance<TestResult>();
             foreach (ScaleTestResult result in results)
             {
                 if (result.range.x <= _score && _score <= result.range.y)
                 {
-                    finalResult.result = result.result.result;
+                    _finalResult.result = result.result.result;
                     
-                    finalResult.result += "\n\n" + _score + " points.";
+                    _finalResult.result += "\n\n" + _score + " points.";
                 }
             }
 
-            return finalResult;
+            return _finalResult;
         }
     }
 }

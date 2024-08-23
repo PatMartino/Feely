@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
-using Data;
 using Data.Tests;
 using Interfaces;
+using Structs;
 using UnityEngine;
 
 namespace GameObjects.Tests
@@ -10,12 +11,19 @@ namespace GameObjects.Tests
     {
         [SerializeField] private string testName;
         [SerializeField] private List<PersonalityTestQuestion> questions;
-        private TestResult _result;
+        [SerializeField] private List<PersonalityTestResult> results;
+        private TestResult _finalResult;
         private int _scoreEToI;
-        private int _scoreIToO;
+        private int _scoreNToS;
         private int _scoreTToF;
         private int _scoreJToP;
         private int _scoreAToT;
+        
+        private char _typeEOrI;
+        private char _typeNOrS;
+        private char _typeTOrF;
+        private char _typeJOrP;
+        private char _typeAOrT;
         
         private uint _currentQuestionIndex;
         private byte _selectedAnswerIndex;
@@ -24,7 +32,7 @@ namespace GameObjects.Tests
         {
             _currentQuestionIndex = 0;
             _scoreEToI = 0;
-            _scoreIToO = 0;
+            _scoreNToS = 0;
             _scoreTToF = 0;
             _scoreJToP = 0;
             _scoreAToT = 0;
@@ -38,7 +46,7 @@ namespace GameObjects.Tests
         public bool ConfirmAnswer()
         {
             _scoreEToI += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].pointEToI;
-            _scoreIToO += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].pointIToO;
+            _scoreNToS += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].pointNToS;
             _scoreTToF += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].pointTToF;
             _scoreJToP += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].pointJToP;
             _scoreAToT += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].pointAToT;
@@ -74,9 +82,9 @@ namespace GameObjects.Tests
 
         public TestResult GetResults()
         {
-            return _result;
+            return GetFinalResult();
         }
-        
+
         public uint GetNextQuestionIndex()
         {
             return _currentQuestionIndex;
@@ -85,6 +93,31 @@ namespace GameObjects.Tests
         public int GetQuestionsCount()
         {
             return questions.Count;
+        }
+        
+        private TestResult GetFinalResult()
+        {
+            if (_finalResult == null) _finalResult = ScriptableObject.CreateInstance<TestResult>();
+            
+            _typeEOrI = _scoreEToI < 0 ? 'E' : 'I';
+            _typeNOrS = _scoreNToS < 0 ? 'N' : 'S';
+            _typeTOrF = _scoreTToF < 0 ? 'T' : 'F';
+            _typeJOrP = _scoreJToP < 0 ? 'J' : 'P';
+            _typeAOrT = _scoreAToT < 0 ? 'A' : 'T';
+            
+            foreach (PersonalityTestResult result in results)
+            {
+                if (Char.ToUpper(result.typeEOrI) == _typeEOrI &&
+                    Char.ToUpper(result.typeNOrS) == _typeNOrS &&
+                    Char.ToUpper(result.typeTOrF) == _typeTOrF &&
+                    Char.ToUpper(result.typeJOrP) == _typeJOrP &&
+                    Char.ToUpper(result.typeAOrT) == _typeAOrT)
+                {
+                    _finalResult.result = result.result.result;
+                }
+            }
+
+            return _finalResult;
         }
     }
 }

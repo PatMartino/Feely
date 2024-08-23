@@ -17,13 +17,13 @@ MonoBehaviour:
   answers:
   - answerText: Intuitive
     pointEToI: 0
-    pointIToO: -1
+    pointNToS: -1
     pointTToF: 0
     pointJToP: 0
     pointAToT: 0
   - answerText: Observant
     pointEToI: 0
-    pointIToO: 1
+    pointNToS: 1
     pointTToF: 0
     pointJToP: 0
     pointAToT: 0

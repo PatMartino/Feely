@@ -11,6 +11,7 @@ namespace Managers
 {
     public class TestManager : MonoSingleton<TestManager>
     {
+        [SerializeField] GameObject testMenu;
         [SerializeField] TMP_Text progressText;
         [SerializeField] Image fillImage;
         [SerializeField] TMP_Text testNameText;
@@ -35,9 +36,15 @@ namespace Managers
 
         public void StartTest()
         {
+            testMenu.SetActive(true);
             _currentTest.ResetTest();
             testNameText.text = _currentTest.GetTextName();
             DrawQuestionAndAnswers(_currentTest.GetNextQuestion(), _currentTest.GetAnswers());
+        }
+
+        public void EndTest()
+        {
+            testMenu.SetActive(false);
         }
 
         private void DrawQuestionAndAnswers(Question question, List<string> answerList)
