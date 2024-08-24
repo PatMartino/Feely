@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5785394688475193435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2565371101289237229}
+  - component: {fileID: 5848130939060972120}
+  m_Layer: 5
+  m_Name: "Kayg\u0131Testi"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2565371101289237229
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785394688475193435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5848130939060972120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785394688475193435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6a823b001844f489015552029a193a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testName: "Kayg\u0131 Testi"
+  questions:
+  - {fileID: 11400000, guid: 3c587d58ccf12c24eac5dca27a4c4083, type: 2}
+  - {fileID: 11400000, guid: 7c36abd4530d95a49b0f8129935f28d3, type: 2}
+  - {fileID: 11400000, guid: ae0dfe43ea4b11c44a86d59c5a6120e9, type: 2}
+  - {fileID: 11400000, guid: 1b548ede6f9269d4c8afebd488f0e971, type: 2}
+  - {fileID: 11400000, guid: da3568896ad619c4cbdf1f377f56911d, type: 2}
+  - {fileID: 11400000, guid: 36535665204912441a166c7e0de52aaa, type: 2}
+  - {fileID: 11400000, guid: 5a733c988d325814d96fdbcbdcd8b678, type: 2}
+  - {fileID: 11400000, guid: 9073d75b1b189e1478eca4f26b4aebe3, type: 2}
+  - {fileID: 11400000, guid: 4c5655661ce63df4f9d1bfc604a29e22, type: 2}
+  - {fileID: 11400000, guid: f59e58c2f6013974781138b69ae6ebc4, type: 2}
+  results:
+  - result: {fileID: 11400000, guid: 26daf27c4f2082f41906cb2420879661, type: 2}
+    range:
+      x: 38
+      y: 50
+  - result: {fileID: 11400000, guid: 497676933c7f196418dc3b689d614a3c, type: 2}
+    range:
+      x: 23
+      y: 37
+  - result: {fileID: 11400000, guid: 7de0840f8fb5cc742ab8e04360bb7b8b, type: 2}
+    range:
+      x: 10
+      y: 22
