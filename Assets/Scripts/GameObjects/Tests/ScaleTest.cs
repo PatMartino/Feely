@@ -1,94 +1,98 @@
 using System.Collections.Generic;
+using AbstractClasses;
 using Data.Tests;
-using Interfaces;
 using Structs;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameObjects.Tests
 {
-    public class ScaleTest : MonoBehaviour, ITest
+    public class ScaleTest : TestBase
     {
-        [SerializeField] private string testName;
-        [SerializeField] private List<ScaleTestQuestion> questions;
         [SerializeField] private List<ScaleTestResult> results;
-        private TestResult _finalResult;
-        private int _score;
         
-        private uint _currentQuestionIndex;
-        private byte _selectedAnswerIndex;
+        [SerializeField] private TMP_Text questionText;
+        [SerializeField] private Image questionImage;
+        [SerializeField] private GameObject answers;
+        [SerializeField] private TMP_Text resultTitle;
+        [SerializeField] private TMP_Text resultText;
         
-        public void ResetTest()
+        protected int Score;
+        
+        public override void ResetTest()
         {
-            _currentQuestionIndex = 0;
-            _score = 0;
+            base.ResetTest();
+            resultTitle.enabled = false;
+            resultText.enabled = false;
+            Score = 0;
+        }
+        
+        public override bool ConfirmAnswer()
+        {
+            ScaleTestQuestion currentQuestion = (ScaleTestQuestion)questions[(int)CurrentQuestionIndex];
+            Score += currentQuestion.answers[SelectedAnswerIndex].scorePoint;
+            return base.ConfirmAnswer();
         }
 
-        public void SelectAnswer(byte answerIndex)
+        protected override void DrawQuestionUI()
         {
-            _selectedAnswerIndex = answerIndex;
-        }
-        
-        public bool ConfirmAnswer()
-        {
-            _score += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].scorePoint;
-            return CheckIsLastQuestion();
-        }
-
-        public string GetTextName()
-        {
-            return testName;
-        }
-        
-        public Question GetNextQuestion()
-        {
-            return questions[(int)_currentQuestionIndex];
-        }
-
-        public List<string> GetAnswers()
-        {
-            return questions[(int)_currentQuestionIndex].answers.ConvertAll(answer => answer.answerText);
-        }
-
-        public TestResult GetResults()
-        {
-            return GetFinalResult();
-        }
-        
-        public uint GetNextQuestionIndex()
-        {
-            return _currentQuestionIndex;
-        }
-
-        public int GetQuestionsCount()
-        {
-            return questions.Count;
-        }
-        
-        private bool CheckIsLastQuestion()
-        {
-            _currentQuestionIndex++;
-            if (_currentQuestionIndex < questions.Count)
+            questionText.enabled = true;
+            answers.SetActive(true);
+            
+            questionText.text = questions[(int)CurrentQuestionIndex].question;
+            if (questions[(int)CurrentQuestionIndex].image != null)
             {
-                return false;
+                questionImage.sprite = questions[(int)CurrentQuestionIndex].image;
+                questionImage.enabled = true;
             }
-
-            return true;
+            else questionImage.enabled = false;
+            
+            ScaleTestQuestion currentQuestion = (ScaleTestQuestion)questions[(int)CurrentQuestionIndex];
+            var answerList = currentQuestion.answers.ConvertAll(answer => answer.answerText);
+            
+            foreach (Transform go in answers.transform)
+            {
+                Destroy(go.gameObject);
+            }
+            
+            for (byte i = 0; i < answerList.Count; i++)
+            {
+                var answer = Instantiate(Resources.Load<GameObject>("Test/Answer"), answers.transform);
+                answer.GetComponentInChildren<TMP_Text>().text = answerList[i];
+                answer.GetComponent<TestAnswerButton>().answerIndex = i;
+            }
         }
-
-        private TestResult GetFinalResult()
+        
+        protected override void DrawResultUI()
         {
-            if (_finalResult == null) _finalResult = ScriptableObject.CreateInstance<TestResult>();
+            questionText.enabled = false;
+            questionImage.enabled = false;
+            answers.SetActive(false);
+            
+            SetFinalResult();
+            resultTitle.text = FinalResult.resultTitle;
+            resultText.text = FinalResult.result;
+            resultTitle.enabled = true;
+            resultText.enabled = true;
+        }
+        
+
+        protected override void SetFinalResult()
+        {
+            base.SetFinalResult();
             foreach (ScaleTestResult result in results)
             {
-                if (result.range.x <= _score && _score <= result.range.y)
+                if (result.range.x <= Score && Score <= result.range.y)
                 {
-                    _finalResult.result = result.result.result;
+                    var correctResult = result.result;
                     
-                    _finalResult.result += "\n\n" + _score + " points.";
+                    FinalResult.resultTitle = correctResult.resultTitle;
+                    FinalResult.result = correctResult.result;
+                    FinalResult.result += "\n\n" + Score + " points.";
+                    break;
                 }
             }
-
-            return _finalResult;
         }
     }
 }

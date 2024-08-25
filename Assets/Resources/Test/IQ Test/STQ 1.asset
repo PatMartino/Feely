@@ -9,8 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
-  m_Name: 2
+  m_Script: {fileID: 11500000, guid: 7ff91baa6db3c634db4367e153a0a51e, type: 3}
+  m_Name: STQ 1
   m_EditorClassIdentifier: 
-  resultTitle: 
-  result: 'You got '
+  question: 2+2 =?
+  image: {fileID: 0}
+  answers:
+  - answerText: 0
+    scorePoint: 0
+  - answerText: 2
+    scorePoint: 0
+  - answerText: 4
+    scorePoint: 1
+  - answerText: 5
+    scorePoint: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
-  m_Name: 2
+  m_Name: Final Result
   m_EditorClassIdentifier: 
   resultTitle: 
-  result: 'You got '
+  result: 'Your IQ is: '

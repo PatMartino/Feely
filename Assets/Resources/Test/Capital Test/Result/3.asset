@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  result: You got 3/3
+  resultTitle: 
+  result: 'You got '

@@ -1,87 +1,97 @@
 using System.Collections.Generic;
+using AbstractClasses;
 using Data.Tests;
-using Interfaces;
 using Structs;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameObjects.Tests
 {
-    public class ClassicTest : MonoBehaviour, ITest
+    public class ClassicTest : TestBase
     {
-        [SerializeField] private string testName;
-        [SerializeField] private List<ClassicTestQuestion> questions;
         [SerializeField] private List<ClassicTestResult> results;
-        private TestResult _finalResult;
+        
+        [SerializeField] private TMP_Text questionText;
+        [SerializeField] private Image questionImage;
+        [SerializeField] private GameObject answers;
+        [SerializeField] private TMP_Text resultTitle;
+        [SerializeField] private TMP_Text resultText;
+        
         private int _score;
         
-        private uint _currentQuestionIndex;
-        private byte _selectedAnswerIndex;
-        
-        public void ResetTest()
+        public override void ResetTest()
         {
-            _currentQuestionIndex = 0;
+            base.ResetTest();
+            resultTitle.enabled = false;
+            resultText.enabled = false;
             _score = 0;
         }
-
-        public void SelectAnswer(byte answerIndex)
+        
+        public override bool ConfirmAnswer()
         {
-            _selectedAnswerIndex = answerIndex;
+            ClassicTestQuestion currentQuestion = (ClassicTestQuestion)questions[(int)CurrentQuestionIndex];
+            _score += currentQuestion.answers[SelectedAnswerIndex].isCorrectAnswer ? 1 : 0;
+            return base.ConfirmAnswer();
         }
 
-        public bool ConfirmAnswer()
+        protected override void DrawQuestionUI()
         {
-            _score += questions[(int)_currentQuestionIndex].answers[_selectedAnswerIndex].isCorrectAnswer ? 1 : 0;
+            questionText.enabled = true;
+            answers.SetActive(true);
             
-            return CheckIsLastQuestion();
-        }
-
-        private bool CheckIsLastQuestion()
-        {
-            _currentQuestionIndex++;
-            if (_currentQuestionIndex < questions.Count)
+            questionText.text = questions[(int)CurrentQuestionIndex].question;
+            if (questions[(int)CurrentQuestionIndex].image != null)
             {
-                return false;
+                questionImage.sprite = questions[(int)CurrentQuestionIndex].image;
+                questionImage.enabled = true;
             }
-
-            return true;
-        }
-        public string GetTextName()
-        {
-            return testName;
-        }
-        public Question GetNextQuestion()
-        {
-            return questions[(int)_currentQuestionIndex];
-        }
-        public List<string> GetAnswers()
-        {
-            return questions[(int)_currentQuestionIndex].answers.ConvertAll(answer => answer.answerText);
-        }
-        public TestResult GetResults()
-        {
-            return GetFinalResult();
-        }
-        public uint GetNextQuestionIndex()
-        {
-            return _currentQuestionIndex;
-        }
-        public int GetQuestionsCount()
-        {
-            return questions.Count;
+            else questionImage.enabled = false;
+            
+            ClassicTestQuestion currentQuestion = (ClassicTestQuestion)questions[(int)CurrentQuestionIndex];
+            var answerList = currentQuestion.answers.ConvertAll(answer => answer.answerText);
+            
+            foreach (Transform go in answers.transform)
+            {
+                Destroy(go.gameObject);
+            }
+            
+            for (byte i = 0; i < answerList.Count; i++)
+            {
+                var answer = Instantiate(Resources.Load<GameObject>("Test/Answer"), answers.transform);
+                answer.GetComponentInChildren<TMP_Text>().text = answerList[i];
+                answer.GetComponent<TestAnswerButton>().answerIndex = i;
+            }
         }
         
-        private TestResult GetFinalResult()
+        protected override void DrawResultUI()
         {
-            if (_finalResult == null) _finalResult = ScriptableObject.CreateInstance<TestResult>();
+            questionText.enabled = false;
+            questionImage.enabled = false;
+            answers.SetActive(false);
+            
+            SetFinalResult();
+            resultTitle.text = FinalResult.resultTitle;
+            resultText.text = FinalResult.result;
+            resultTitle.enabled = true;
+            resultText.enabled = true;
+        }
+        
+        protected override void SetFinalResult()
+        {
+            base.SetFinalResult();
             foreach (ClassicTestResult result in results)
             {
                 if (result.range.x <= _score && _score <= result.range.y)
                 {
-                    _finalResult.result = result.result.result;
+                    var correctResult = result.result;
+                    
+                    FinalResult.resultTitle = correctResult.resultTitle;
+                    FinalResult.result = correctResult.result;
+                    FinalResult.result += "\n\n" + _score + "/" + GetQuestionsCount();
+                    break;
                 }
             }
-
-            return _finalResult;
         }
     }
 }
