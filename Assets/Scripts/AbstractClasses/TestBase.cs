@@ -32,6 +32,12 @@ namespace AbstractClasses
             return CheckIsLastQuestion();
         }
 
+        public virtual void RemoveAnswer()
+        {
+            CurrentQuestionIndex--;
+            DrawNecessaryUI();
+        }
+
         public string GetTextName()
         {
             return testName;

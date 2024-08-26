@@ -18,6 +18,7 @@ namespace GameObjects.Tests
         [SerializeField] private TMP_Text resultTitle;
         [SerializeField] private TMP_Text resultText;
         
+        private List<bool> _answers = new List<bool>();
         private int _score;
         
         public override void ResetTest()
@@ -25,14 +26,26 @@ namespace GameObjects.Tests
             base.ResetTest();
             resultTitle.enabled = false;
             resultText.enabled = false;
+            _answers.Clear();
             _score = 0;
         }
         
         public override bool ConfirmAnswer()
         {
             ClassicTestQuestion currentQuestion = (ClassicTestQuestion)questions[(int)CurrentQuestionIndex];
-            _score += currentQuestion.answers[SelectedAnswerIndex].isCorrectAnswer ? 1 : 0;
+            ClassicTestAnswer selectedAnswer = currentQuestion.answers[SelectedAnswerIndex];
+            
+            _answers.Add(selectedAnswer.isCorrectAnswer);
+            _score += selectedAnswer.isCorrectAnswer ? 1 : 0;
             return base.ConfirmAnswer();
+        }
+        
+        public override void RemoveAnswer()
+        {
+            var lastPoint = _answers[(int)CurrentQuestionIndex - 1];
+            if (lastPoint) _score--;
+            _answers.RemoveAt((int)CurrentQuestionIndex - 1);
+            base.RemoveAnswer();
         }
 
         protected override void DrawQuestionUI()

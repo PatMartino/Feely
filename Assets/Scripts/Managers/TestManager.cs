@@ -14,6 +14,7 @@ namespace Managers
         [SerializeField] Image fillImage;
         [SerializeField] TMP_Text titleText;
         [SerializeField] Image confirmButtonImage;
+        [SerializeField] Image previousButtonImage;
         private TestBase _currentTest;
 
         private bool _isAnswerSelected;
@@ -57,19 +58,31 @@ namespace Managers
             _currentTest.SelectAnswer(answerIndex);
         }
         
-        public void ConfirmAnswer()
+        public void GoNextQuestion()
         {
             if (!_isAnswerSelected) return;
             confirmButtonImage.color = new Color(1,1,1,0.5f);
+            
             _isAnswerSelected = false;
-            if (!_currentTest.ConfirmAnswer())
+
+            if (_currentTest.ConfirmAnswer())
             {
-                //DrawQuestionAndAnswers(_currentTest.GetNextQuestion(), _currentTest.GetAnswers());
+                previousButtonImage.color = new Color(1,1,1,0.5f);
             }
             else
             {
-                //DrawResults();
+                previousButtonImage.color = new Color(1,1,1,1);
             }
+            DrawProgressBar();
+        }
+        
+        public void GoPreviousQuestion()
+        {
+            if (_currentTest.GetNextQuestionIndex() <= 0 ||
+                _currentTest.GetNextQuestionIndex() >= _currentTest.GetQuestionsCount()) return;
+            
+            if (_currentTest.GetNextQuestionIndex() == 1) previousButtonImage.color = new Color(1,1,1,0.5f);
+            _currentTest.RemoveAnswer();
             DrawProgressBar();
         }
     }

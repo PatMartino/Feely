@@ -18,6 +18,7 @@ namespace GameObjects.Tests
         [SerializeField] private TMP_Text resultTitle;
         [SerializeField] private TMP_Text resultText;
         
+        protected List<int> Points = new List<int>();
         protected int Score;
         
         public override void ResetTest()
@@ -25,14 +26,26 @@ namespace GameObjects.Tests
             base.ResetTest();
             resultTitle.enabled = false;
             resultText.enabled = false;
+            Points.Clear();
             Score = 0;
         }
         
         public override bool ConfirmAnswer()
         {
             ScaleTestQuestion currentQuestion = (ScaleTestQuestion)questions[(int)CurrentQuestionIndex];
-            Score += currentQuestion.answers[SelectedAnswerIndex].scorePoint;
+            ScaleTestAnswer selectedAnswer = currentQuestion.answers[SelectedAnswerIndex];
+            
+            Points.Add(selectedAnswer.scorePoint);
+            Score += selectedAnswer.scorePoint;
             return base.ConfirmAnswer();
+        }
+
+        public override void RemoveAnswer()
+        {
+            var lastPoint = Points[(int)CurrentQuestionIndex - 1];
+            Score -= lastPoint;
+            Points.RemoveAt((int)CurrentQuestionIndex - 1);
+            base.RemoveAnswer();
         }
 
         protected override void DrawQuestionUI()

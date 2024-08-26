@@ -19,6 +19,8 @@ namespace GameObjects.Tests
         [SerializeField] private TMP_Text resultTitle;
         [SerializeField] private TMP_Text resultText;
         
+        private List<PersonalityTestAnswer> _answers = new List<PersonalityTestAnswer>(); 
+        
         private int _scoreEToI;
         private int _scoreNToS;
         private int _scoreTToF;
@@ -41,20 +43,37 @@ namespace GameObjects.Tests
             _scoreTToF = 0;
             _scoreJToP = 0;
             _scoreAToT = 0;
+            _answers.Clear();
         }
 
         public override bool ConfirmAnswer()
         {
             PersonalityTestQuestion currentQuestion = (PersonalityTestQuestion)questions[(int)CurrentQuestionIndex];
-            _scoreEToI += currentQuestion.answers[SelectedAnswerIndex].pointEToI;
-            _scoreNToS += currentQuestion.answers[SelectedAnswerIndex].pointNToS;
-            _scoreTToF += currentQuestion.answers[SelectedAnswerIndex].pointTToF;
-            _scoreJToP += currentQuestion.answers[SelectedAnswerIndex].pointJToP;
-            _scoreAToT += currentQuestion.answers[SelectedAnswerIndex].pointAToT;
+            PersonalityTestAnswer selectedAnswer = currentQuestion.answers[SelectedAnswerIndex];
+
+            _answers.Add(selectedAnswer);
+            _scoreEToI += selectedAnswer.pointEToI;
+            _scoreNToS += selectedAnswer.pointNToS;
+            _scoreJToP += selectedAnswer.pointJToP;
+            _scoreTToF += selectedAnswer.pointTToF;
+            _scoreAToT += selectedAnswer.pointAToT;
             
             return base.ConfirmAnswer();
         }
 
+        public override void RemoveAnswer()
+        {
+            var lastPoint = _answers[(int)CurrentQuestionIndex - 1];
+            
+            _scoreEToI += lastPoint.pointEToI;
+            _scoreNToS += lastPoint.pointNToS;
+            _scoreJToP += lastPoint.pointJToP;
+            _scoreTToF += lastPoint.pointTToF;
+            _scoreAToT += lastPoint.pointAToT;
+            
+            _answers.RemoveAt((int)CurrentQuestionIndex - 1);
+            base.RemoveAnswer();
+        }
         protected override void DrawQuestionUI()
         {
             questionText.enabled = true;
