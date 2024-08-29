@@ -12,8 +12,10 @@ namespace Games.CardMatch
         #region Private Field
 
         private int _levelID = 1;
+        private int _section = 1;
+        private int _difficultLevel;
         private CardMatchLevelData _levelData;
-        private CardTypes[] _allCardTypes = new CardTypes[] { CardTypes.Blue , CardTypes.Green, CardTypes.Red, CardTypes.Magenta, CardTypes.Yellow, CardTypes.Cyan};
+        private CardTypes[] _allCardTypes = new CardTypes[] { CardTypes.Blue , CardTypes.Green, CardTypes.Red, CardTypes.Magenta, CardTypes.Yellow, CardTypes.Cyan, CardTypes.Black,CardTypes.Grey};
         private List<CardTypes> _levelCards = new List<CardTypes>();
         private List<CardTypes> selectedCardTypes =new List<CardTypes>();
         private bool _isSelect;
@@ -30,12 +32,12 @@ namespace Games.CardMatch
         private void OnEnable()
         {
             SubscribeEvents();
-            
         }
 
         private void Start()
         {
-            LevelLoader();
+            SetDifficultyLevel();
+            SectionLoader();
         }
 
         private void OnDisable()
@@ -62,37 +64,53 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnSetCanSelectTrue += OnSetCanSelectTrue;
             CardMatchSignals.Instance.OnSetCanSelectFalse += OnSetCanSelectFalse;
             CardMatchSignals.Instance.OnGetCanSelect += OnGetCanSelect;
+            CardMatchSignals.Instance.OnNextPlay += OnNextLevel;
+            CardMatchSignals.Instance.OnGetDifficultyLevel += OnGetDifficultyLevel;
         }
 
-        private void LevelLoader()
+        private void OnNextLevel()
+        {
+            _levelCards.Clear();
+            _levelID++;
+            _section = 1;
+            _canSelect = true;
+            _isSelect = false;
+            SetDifficultyLevel();
+            SectionDestroyer();
+            SectionLoader();
+            CardMatchSignals.Instance.OnActivenessOfNextLevelButton?.Invoke(false);
+        }
+
+        private void SectionLoader()
         {
             //Instantiate(Resources.Load<GameObject>($"Games/BallSort/LevelPrefabs/Level{_levelID}"),transform);
             Debug.Log("LevelLoader");
-            _levelData = Resources.Load<CardMatchLevelData>($"Games/CardMatch/LevelData/{_levelID}");
+            _levelData = Resources.Load<CardMatchLevelData>($"Games/CardMatch/LevelData/{_difficultLevel}");
             _matchAmount = 0;
             _maxAmount = _levelData.NumberOfCards;
-            GenerateLevelCards();
+            GenerateSectionCards();
             
             //UISignals.Instance.OnUpdateBallSortLevelIDText?.Invoke();
         }
 
-        private void LevelDestroyer()
+        private void SectionDestroyer()
         {
             CardMatchSignals.Instance.OnDestroyAllCards?.Invoke();
         }
 
-        private void NextLevel()
+        private void NextSection()
         {
             _levelCards.Clear();
-            _levelID++;
+            _difficultLevel++;
+            _section++;
             _canSelect = true;
             _isSelect = false;
-            Debug.Log(_levelID);
-            LevelDestroyer();
-            LevelLoader();
+            Debug.LogWarning("Difficulty Level: " + _difficultLevel);
+            SectionDestroyer();
+            SectionLoader();
         }
         
-        private void GenerateLevelCards()
+        private void GenerateSectionCards()
         {
             Debug.Log("GenerateLevelCards");
 
@@ -109,6 +127,21 @@ namespace Games.CardMatch
             _levelCards = _levelCards.OrderBy(x => Random.value).ToList();
             CardMatchSignals.Instance.OnInstantiateCards.Invoke();
 
+        }
+
+        private void SetDifficultyLevel()
+        {
+            var difficulty = _levelID + _section;
+            _difficultLevel = difficulty;
+            if (_difficultLevel>8)
+            {
+                _difficultLevel = 8;
+            }
+        }
+
+        private int OnGetDifficultyLevel()
+        {
+            return _difficultLevel;
         }
 
         private void OnSetIsSelectTrue()
@@ -149,20 +182,30 @@ namespace Games.CardMatch
         private void OnWrongSelection()
         {
             _selectedCard.GetComponent<CardMatchCard>().OnSetImageFalse?.Invoke();
+            _selectedCard.GetComponent<CardMatchCard>().OnSetIsSelectTrue?.Invoke();
         }
 
         private void OnIncreaseMatchAmount()
         {
             _matchAmount++;
-            CheckLevelFinished();
+            CheckSectionFinished();
         }
 
-        private void CheckLevelFinished()
+        private void CheckSectionFinished()
         {
             if (_matchAmount >= _maxAmount)
             {
-                Debug.Log("Level Finished");
-                NextLevel();
+                if (_section<=5)
+                {
+                    Debug.LogWarning("NextLevel");
+                    NextSection();
+                }
+                else
+                {
+                    Debug.LogWarning("LevelFinished");
+                    CardMatchSignals.Instance.OnActivenessOfNextLevelButton?.Invoke(true);
+                }
+                
             }
         }
 
@@ -204,6 +247,10 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnSetCanSelectTrue -= OnSetCanSelectTrue;
             CardMatchSignals.Instance.OnSetCanSelectFalse -= OnSetCanSelectFalse;
             CardMatchSignals.Instance.OnGetCanSelect -= OnGetCanSelect;
+            CardMatchSignals.Instance.OnNextPlay -= OnNextLevel;
+            
+            
+            CardMatchSignals.Instance.OnGetDifficultyLevel -= OnGetDifficultyLevel;
         }
 
         #endregion

@@ -7,7 +7,9 @@ namespace Games.CardMatch
         Green,
         Blue,
         Magenta,
-        Cyan
+        Cyan,
+        Black,
+        Grey
 
     }
 }

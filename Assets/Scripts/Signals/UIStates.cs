@@ -5,6 +5,7 @@
         MainMenu,
         BallSortInfo,
         BallSortGame,
-        BallSortLevelComplete
+        BallSortLevelComplete,
+        CardMatchGame
     }
 }

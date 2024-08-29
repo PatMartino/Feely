@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Runtime.Serialization;
 using Signals;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ namespace Games.CardMatch
 
         private CardTypes _type;
         private bool _isMatched;
+        private bool _isSelect;
 
         #endregion
 
@@ -26,6 +28,7 @@ namespace Games.CardMatch
         public Action<CardTypes> OnSetCardTypes;
         public Action OnSetImageFalse;
         public Action OnSetIsMatchTrue;
+        public Action OnSetIsSelectTrue;
 
         #endregion
 
@@ -36,6 +39,7 @@ namespace Games.CardMatch
             OnSetCardTypes += SetCardType;
             OnSetImageFalse += SetImageFalse;
             OnSetIsMatchTrue += SetIsMatchedTrue;
+            OnSetIsSelectTrue += SetIsSelectTrue;
             StartCoroutine(DisableImages());
         }
 
@@ -58,6 +62,8 @@ namespace Games.CardMatch
                 CardTypes.Yellow => Color.yellow,
                 CardTypes.Magenta => Color.magenta,
                 CardTypes.Cyan => Color.cyan,
+                CardTypes.Black => Color.black,
+                CardTypes.Grey => Color.grey,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
@@ -72,10 +78,15 @@ namespace Games.CardMatch
         {
             if (!CardMatchSignals.Instance.OnGetCanSelect()) return;
             if (_isMatched) return;
+            if (_isSelect) return;
             image.gameObject.SetActive(true);
-            if (!CardMatchSignals.Instance.OnGetISelect())
+            if (!CardMatchSignals.Instance.OnGetISelect() )
             {
+                
+                _isSelect = true;
+                
                 Debug.Log("Select1");
+                
                 CardMatchSignals.Instance.OnSetIsSelectTrue?.Invoke();
                 CardMatchSignals.Instance.OnSetSelectedCardType?.Invoke(_type);
                 CardMatchSignals.Instance.OnSelectCard?.Invoke(gameObject);
@@ -98,6 +109,11 @@ namespace Games.CardMatch
                 }
             }
 
+        }
+
+        private void SetIsSelectTrue()
+        {
+            _isSelect = false;
         }
 
         private void SetImageFalse()

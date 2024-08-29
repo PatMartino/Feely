@@ -24,5 +24,8 @@ namespace Signals
         public UnityAction OnSetCanSelectFalse = delegate {  };
         public Func<bool> OnGetCanSelect = () => false;
         public UnityAction OnDestroyAllCards = delegate {  };
+        public UnityAction OnNextPlay = delegate {  };
+        public UnityAction<bool> OnActivenessOfNextLevelButton = delegate {  };
+        public Func<int> OnGetDifficultyLevel = () => 0;
     }
 }

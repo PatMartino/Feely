@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fc88cd57d74850a7d5777c02b401a9, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  numberOfCards: 4
+  numberOfCards: 2
