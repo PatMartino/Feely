@@ -8,8 +8,15 @@ namespace Data.Tests
     public class TestAnswerButton : MonoBehaviour, IPointerClickHandler
     {
         [HideInInspector] public byte answerIndex;
-        [SerializeField] private Image selectedImage;
+        [SerializeField] private Image buttonImage;
+        [SerializeField] private Color selectedColor;
+        
+        private Color _defaultColor;
 
+        private void Start()
+        {
+            _defaultColor = buttonImage.color;
+        }
 
         private void OnEnable()
         {
@@ -30,14 +37,13 @@ namespace Data.Tests
         private void SelectAnswer()
         {
             TestManager.Instance.SelectAnswer(answerIndex);
-            selectedImage.enabled = true;
+            buttonImage.color = selectedColor;
         }
         
         private void UnselectAnswer(int index)
         {
             if (index == answerIndex) return;
-            
-            selectedImage.enabled = false;
+            buttonImage.color = _defaultColor;
         }
     }
 }

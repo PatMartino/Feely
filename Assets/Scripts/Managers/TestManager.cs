@@ -3,6 +3,7 @@ using Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Managers
@@ -13,8 +14,8 @@ namespace Managers
         [SerializeField] TMP_Text progressText;
         [SerializeField] Image fillImage;
         [SerializeField] TMP_Text titleText;
-        [SerializeField] Image confirmButtonImage;
-        [SerializeField] Image previousButtonImage;
+        [SerializeField] Button confirmButton;
+        [SerializeField] Button previousButton;
         private TestBase _currentTest;
 
         private bool _isAnswerSelected;
@@ -54,24 +55,25 @@ namespace Managers
         public void SelectAnswer(byte answerIndex)
         {
             _isAnswerSelected = true;
-            confirmButtonImage.color = new Color(1,1,1,1);
+            confirmButton.interactable = true;
+
             _currentTest.SelectAnswer(answerIndex);
         }
         
         public void GoNextQuestion()
         {
             if (!_isAnswerSelected) return;
-            confirmButtonImage.color = new Color(1,1,1,0.5f);
+            confirmButton.interactable = false;
             
             _isAnswerSelected = false;
 
             if (_currentTest.ConfirmAnswer())
             {
-                previousButtonImage.color = new Color(1,1,1,0.5f);
+                previousButton.interactable = false;
             }
             else
             {
-                previousButtonImage.color = new Color(1,1,1,1);
+                previousButton.interactable = true;
             }
             DrawProgressBar();
         }
@@ -80,8 +82,8 @@ namespace Managers
         {
             if (_currentTest.GetNextQuestionIndex() <= 0 ||
                 _currentTest.GetNextQuestionIndex() >= _currentTest.GetQuestionsCount()) return;
-            
-            if (_currentTest.GetNextQuestionIndex() == 1) previousButtonImage.color = new Color(1,1,1,0.5f);
+
+            if (_currentTest.GetNextQuestionIndex() == 1) previousButton.interactable = false;
             _currentTest.RemoveAnswer();
             DrawProgressBar();
         }
