@@ -3,7 +3,6 @@ using Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Managers
@@ -11,6 +10,8 @@ namespace Managers
     public class TestManager : MonoSingleton<TestManager>
     {
         [SerializeField] GameObject testMenu;
+        [SerializeField] GameObject testHolder;
+        [SerializeField] GameObject pauseMenu;
         [SerializeField] TMP_Text progressText;
         [SerializeField] Image fillImage;
         [SerializeField] TMP_Text titleText;
@@ -22,20 +23,16 @@ namespace Managers
 
         public UnityAction<int> OnAnswerSelected;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            _currentTest = GetComponentInChildren<TestBase>();
-        }
-
         private void Start()
         {
-            StartTest();
+            StartTest(Resources.Load<GameObject>("Test/Personality Test/PersonalityTest"));
         }
 
-        public void StartTest()
+        public void StartTest(GameObject test)
         {
+            _currentTest = Instantiate(test, testHolder.transform).GetComponent<TestBase>();
             testMenu.SetActive(true);
+            pauseMenu.SetActive(false);
             _currentTest.ResetTest();
             titleText.text = _currentTest.GetTextName();
             DrawProgressBar();
@@ -44,6 +41,23 @@ namespace Managers
         public void EndTest()
         {
             testMenu.SetActive(false);
+            pauseMenu.SetActive(false);
+            foreach (Transform go in testHolder.transform)
+            {
+                Destroy(go.gameObject);
+            }
+        }
+
+        public void PauseTest()
+        {
+            pauseMenu.SetActive(true);
+            _currentTest.PauseTest();
+        }
+
+        public void UnpauseTest()
+        {
+            pauseMenu.SetActive(false);
+            _currentTest.UnpauseTest();
         }
 
         private void DrawProgressBar()

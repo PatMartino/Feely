@@ -13,6 +13,7 @@ namespace GameObjects.Tests
         private List<float> _pointsFloat = new List<float>();
         private float _scoreFloat;
         private float _timer;
+        private bool _isPaused;
 
         public override void ResetTest()
         {
@@ -23,7 +24,7 @@ namespace GameObjects.Tests
         }
         private void Update()
         {
-            if (CurrentQuestionIndex >= questions.Count) return;
+            if (CurrentQuestionIndex >= questions.Count && !_isPaused) return;
             _timer += Time.deltaTime;
             timerText.text = $"Time: {_timer:0.00}";
         }
@@ -50,6 +51,18 @@ namespace GameObjects.Tests
             _timer = 0;
             Points.RemoveAt((int)CurrentQuestionIndex - 1);
             base.RemoveAnswer();
+        }
+
+        public override void PauseTest()
+        {
+            base.PauseTest();
+            _isPaused = true;
+        }
+
+        public override void UnpauseTest()
+        {
+            base.UnpauseTest();
+            _isPaused = false;
         }
     }
 }

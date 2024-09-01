@@ -32,6 +32,15 @@ namespace AbstractClasses
             return CheckIsLastQuestion();
         }
 
+        public virtual void PauseTest()
+        {
+            
+        }
+        public virtual void UnpauseTest()
+        {
+            
+        }
+
         public virtual void RemoveAnswer()
         {
             CurrentQuestionIndex--;

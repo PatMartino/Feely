@@ -254,11 +254,11 @@ MonoBehaviour:
     typeTOrF: 70
     typeJOrP: 80
     typeAOrT: 84
-  questionText: {fileID: 0}
-  questionImage: {fileID: 0}
-  answers: {fileID: 0}
-  resultTitle: {fileID: 0}
-  resultText: {fileID: 0}
+  questionText: {fileID: 1415544377784721425}
+  questionImage: {fileID: 2961939056695849414}
+  answers: {fileID: 3270330915705799793}
+  resultTitle: {fileID: 1942595773114891332}
+  resultText: {fileID: 3672758000457102690}
 --- !u!1 &2998240099102626747
 GameObject:
   m_ObjectHideFlags: 0
