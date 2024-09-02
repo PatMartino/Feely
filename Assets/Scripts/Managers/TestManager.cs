@@ -17,6 +17,7 @@ namespace Managers
         [SerializeField] TMP_Text titleText;
         [SerializeField] Button confirmButton;
         [SerializeField] Button previousButton;
+        [SerializeField] Button endTestButton;
         private TestBase _currentTest;
 
         private bool _isAnswerSelected;
@@ -35,6 +36,9 @@ namespace Managers
             pauseMenu.SetActive(false);
             _currentTest.ResetTest();
             titleText.text = _currentTest.GetTextName();
+            endTestButton.gameObject.SetActive(false);
+            confirmButton.gameObject.SetActive(true);
+            previousButton.gameObject.SetActive(true);
             DrawProgressBar();
         }
 
@@ -83,7 +87,9 @@ namespace Managers
 
             if (_currentTest.ConfirmAnswer())
             {
-                previousButton.interactable = false;
+                endTestButton.gameObject.SetActive(true);
+                confirmButton.gameObject.SetActive(false);
+                previousButton.gameObject.SetActive(false);
             }
             else
             {
