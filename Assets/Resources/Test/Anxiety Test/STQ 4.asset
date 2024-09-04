@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff91baa6db3c634db4367e153a0a51e, type: 3}
   m_Name: STQ 4
   m_EditorClassIdentifier: 
-  question: "Son iki hafta i\xE7inde ne kadar s\u0131k b\xF6yle hissettiniz: \nRahat
-    ortamlarda bile rahatlayamama"
+  question: Do you experience sudden feelings of panic or fear?
   image: {fileID: 0}
   answers:
-  - answerText: "Her g\xFCn"
-    scorePoint: 5
-  - answerText: "Neredeyse her g\xFCn"
+  - answerText: Always
     scorePoint: 4
-  - answerText: "G\xFCnlerin yar\u0131s\u0131ndan fazla"
+  - answerText: Often
     scorePoint: 3
-  - answerText: "Birka\xE7 g\xFCn"
+  - answerText: Sometimes
     scorePoint: 2
-  - answerText: "Hi\xE7 de de\u011Fil"
+  - answerText: Rarely
     scorePoint: 1
+  - answerText: Never
+    scorePoint: 0

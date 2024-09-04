@@ -234,9 +234,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 12659973}
     m_Modifications:
+    - target: {fileID: 84299442642997341, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 573371753516844275, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 573371753516844275, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2380
+      objectReference: {fileID: 0}
     - target: {fileID: 1553006506676120977, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
       propertyPath: m_Name
       value: TestManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825832187209640133, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6314096618454621667, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
       propertyPath: m_Pivot.x
@@ -322,10 +338,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7474058445914896011, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7474058445914896011, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144006346}
   m_SourcePrefab: {fileID: 100100000, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
 --- !u!224 &71024865 stripped
 RectTransform:
@@ -492,3 +515,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1144006343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7474058445914896011, guid: edc55f49b203a054a9fe629770d3a8de, type: 3}
+  m_PrefabInstance: {fileID: 71024864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!222 &1144006346
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144006343}
+  m_CullTransparentMesh: 1

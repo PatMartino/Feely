@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
-  m_Name: "\u015Eiddetli Kayg\u0131"
+  m_Name: Mild Anxiety
   m_EditorClassIdentifier: 
-  result: "Cevaplar\u0131n\u0131za g\xF6re ciddi anksiyete belirtileri g\xF6steriyorsunuz.
-    Belirtiler aras\u0131nda a\u015F\u0131r\u0131, s\xFCrekli endi\u015Fe ve korku,
-    belirgin huzursuzluk, a\u015F\u0131r\u0131 yorgunluk ve d\xFCzenli uyku bozukluklar\u0131
-    yer alabilir."
+  resultTitle: Mild Anxiety
+  result: You experience mild anxiety. While it's manageable, you may want to explore
+    relaxation techniques or talk to someone if it starts to interfere with your
+    routine.

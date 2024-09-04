@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 2565371101289237229}
   - component: {fileID: 5848130939060972120}
   m_Layer: 5
-  m_Name: "Kayg\u0131Testi"
+  m_Name: AnxietyTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6a823b001844f489015552029a193a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testName: "Kayg\u0131 Testi"
+  testName: Anxiety Test
   questions:
   - {fileID: 11400000, guid: 3c587d58ccf12c24eac5dca27a4c4083, type: 2}
   - {fileID: 11400000, guid: 7c36abd4530d95a49b0f8129935f28d3, type: 2}
@@ -475,19 +475,32 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9073d75b1b189e1478eca4f26b4aebe3, type: 2}
   - {fileID: 11400000, guid: 4c5655661ce63df4f9d1bfc604a29e22, type: 2}
   - {fileID: 11400000, guid: f59e58c2f6013974781138b69ae6ebc4, type: 2}
+  - {fileID: 11400000, guid: 938bb7fce1c0fa5498453796beb35140, type: 2}
+  - {fileID: 11400000, guid: 5feb5e95296390644984cf60b80e090e, type: 2}
+  - {fileID: 11400000, guid: a05f06d4916761a4e84f1dbc76301c12, type: 2}
+  - {fileID: 11400000, guid: be50abb3172a16944bf6bb2e57d39a06, type: 2}
+  - {fileID: 11400000, guid: a1973b99c42ccf243b654d5728dc87b7, type: 2}
   results:
-  - result: {fileID: 11400000, guid: 26daf27c4f2082f41906cb2420879661, type: 2}
-    range:
-      x: 38
-      y: 50
-  - result: {fileID: 11400000, guid: 497676933c7f196418dc3b689d614a3c, type: 2}
-    range:
-      x: 23
-      y: 37
   - result: {fileID: 11400000, guid: 7de0840f8fb5cc742ab8e04360bb7b8b, type: 2}
     range:
-      x: 10
-      y: 22
+      x: 0
+      y: 15
+  - result: {fileID: 11400000, guid: 497676933c7f196418dc3b689d614a3c, type: 2}
+    range:
+      x: 16
+      y: 30
+  - result: {fileID: 11400000, guid: 26daf27c4f2082f41906cb2420879661, type: 2}
+    range:
+      x: 31
+      y: 45
+  - result: {fileID: 11400000, guid: 8ce63dffe670b6b44ba7cf798a1ece24, type: 2}
+    range:
+      x: 46
+      y: 60
+  - result: {fileID: 11400000, guid: 7fb224003ed19f34098c5fbd50dcec49, type: 2}
+    range:
+      x: 61
+      y: 75
   questionText: {fileID: 9215805259416158173}
   questionImage: {fileID: 4522947495684413883}
   answers: {fileID: 7861484797461816486}

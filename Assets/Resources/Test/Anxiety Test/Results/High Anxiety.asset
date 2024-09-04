@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
-  m_Name: "Orta D\xFCzeyde Kayg\u0131"
+  m_Name: High Anxiety
   m_EditorClassIdentifier: 
-  result: "Cevaplar\u0131n\u0131za g\xF6re orta d\xFCzeyde anksiyete belirtileri
-    g\xF6steriyorsunuz. Bu, d\xFCzenli endi\u015Fe veya korku duygular\u0131n\u0131
-    huzursuzlu\u011Fu, yorgunlu\u011Fu ve uyku d\xFCzeninizdeki bozukluklar\u0131
-    i\xE7erebilir."
+  resultTitle: High Anxiety
+  result: You are experiencing high anxiety. This level of anxiety may be affecting
+    your quality of life, and it's important to seek help from a professional.

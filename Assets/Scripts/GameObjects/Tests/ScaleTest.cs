@@ -102,7 +102,6 @@ namespace GameObjects.Tests
                     
                     FinalResult.resultTitle = correctResult.resultTitle;
                     FinalResult.result = correctResult.result;
-                    FinalResult.result += "\n\n" + Score + " points.";
                     break;
                 }
             }

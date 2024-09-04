@@ -1,4 +1,6 @@
+using System.Collections;
 using AbstractClasses;
+using DG.Tweening;
 using Extensions;
 using TMPro;
 using UnityEngine;
@@ -26,7 +28,7 @@ namespace Managers
 
         private void Start()
         {
-            StartTest(Resources.Load<GameObject>("Test/Personality Test/PersonalityTest"));
+            StartTest(Resources.Load<GameObject>("Test/IQ Test/IQTest"));
         }
 
         public void StartTest(GameObject test)
@@ -40,15 +42,32 @@ namespace Managers
             confirmButton.gameObject.SetActive(true);
             previousButton.gameObject.SetActive(true);
             DrawProgressBar();
+            
+            testMenu.transform.DOMoveY(transform.position.y, 1f).SetEase(Ease.OutQuint);
         }
 
         public void EndTest()
         {
-            testMenu.SetActive(false);
-            pauseMenu.SetActive(false);
-            foreach (Transform go in testHolder.transform)
+            testMenu.transform.DOMoveY(-transform.position.y, 1f).SetEase(Ease.InQuint).OnComplete(() =>
             {
-                Destroy(go.gameObject);
+                testMenu.SetActive(false);
+                pauseMenu.SetActive(false);
+                foreach (Transform go in testHolder.transform)
+                {
+                    Destroy(go.gameObject);
+                }
+            });
+            
+            foreach (Image image in testMenu.GetComponentsInChildren<Image>())
+            {
+                var tween = image.DOFade(0, 1f).SetEase(Ease.InQuint);
+                tween.OnComplete(() => tween.Rewind());
+            }
+
+            foreach (TMP_Text text in testMenu.GetComponentsInChildren<TMP_Text>())
+            {
+                var tween = text.DOFade(0, 1f).SetEase(Ease.InQuint);
+                tween.OnComplete(() => tween.Rewind());
             }
         }
 
@@ -56,6 +75,7 @@ namespace Managers
         {
             pauseMenu.SetActive(true);
             _currentTest.PauseTest();
+            pauseMenu.GetComponentInChildren<Image>().DOFade(1, 0.5f).SetEase(Ease.Linear).From(0);
         }
 
         public void UnpauseTest()

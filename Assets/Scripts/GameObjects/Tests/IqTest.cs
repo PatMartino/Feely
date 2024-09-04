@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using Data.Tests;
-using Structs;
 using TMPro;
 using UnityEngine;
 
@@ -9,16 +6,12 @@ namespace GameObjects.Tests
     public class IqTest : ScaleTest
     {
         [SerializeField] private TMP_Text timerText;
-
-        private List<float> _pointsFloat = new List<float>();
-        private float _scoreFloat;
+        
         private float _timer;
         private bool _isPaused;
 
         public override void ResetTest()
         {
-            _pointsFloat.Clear();
-            _scoreFloat = 0;
             _timer = 0;
             base.ResetTest();
         }
@@ -26,31 +19,11 @@ namespace GameObjects.Tests
         {
             if (CurrentQuestionIndex >= questions.Count && !_isPaused) return;
             _timer += Time.deltaTime;
-            timerText.text = $"Time: {_timer:0.00}";
-        }
-
-        public override bool ConfirmAnswer()
-        {
-            ScaleTestQuestion currentQuestion = (ScaleTestQuestion)questions[(int)CurrentQuestionIndex];
-            ScaleTestAnswer selectedAnswer = currentQuestion.answers[SelectedAnswerIndex];
-            var lastPoint = selectedAnswer.scorePoint * 10 / (_timer + 10);
-            _pointsFloat.Add(lastPoint);
-            _scoreFloat += lastPoint;
             
-            Score = (int)_scoreFloat;
-            _timer = 0;
-            return base.ConfirmAnswer();
-        }
-        
-        public override void RemoveAnswer()
-        {
-            var lastPoint = _pointsFloat[(int)CurrentQuestionIndex - 1];
-            _scoreFloat -= lastPoint;
+            int minutes = Mathf.FloorToInt(_timer / 60); // Dakikayı bulmak için saniyeyi 60'a böl
+            int seconds = Mathf.FloorToInt(_timer % 60); // Geriye kalan saniyeleri bulmak için 60'a göre mod al
             
-            Score = (int)_scoreFloat;
-            _timer = 0;
-            Points.RemoveAt((int)CurrentQuestionIndex - 1);
-            base.RemoveAnswer();
+            timerText.text = $"Time: {minutes}:{seconds:D2}";
         }
 
         public override void PauseTest()
@@ -63,6 +36,15 @@ namespace GameObjects.Tests
         {
             base.UnpauseTest();
             _isPaused = false;
+        }
+        
+        protected override void SetFinalResult()
+        {
+            base.SetFinalResult();
+            var endTime = _timer / 60;
+            var scoreFloat = Score/((endTime * endTime /400) + (endTime / 40) + 0.5f);
+            Score = (int)scoreFloat;
+            FinalResult.result += Score;
         }
     }
 }
