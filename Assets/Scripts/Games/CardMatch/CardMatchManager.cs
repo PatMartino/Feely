@@ -145,8 +145,11 @@ namespace Games.CardMatch
         {
             return _levelID;
         }
-        
-        private int OnGetSect
+
+        private int OnGetSectionID()
+        {
+            return _section;
+        }
 
         private int OnGetDifficultyLevel()
         {
