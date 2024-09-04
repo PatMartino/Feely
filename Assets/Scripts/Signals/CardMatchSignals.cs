@@ -27,5 +27,7 @@ namespace Signals
         public UnityAction OnNextPlay = delegate {  };
         public UnityAction<bool> OnActivenessOfNextLevelButton = delegate {  };
         public Func<int> OnGetDifficultyLevel = () => 0;
+        public Func<int> OnGetLevelID = () => 0;
+        public UnityAction OnUpdateLevelText = delegate {  };
     }
 }

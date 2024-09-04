@@ -66,6 +66,7 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnGetCanSelect += OnGetCanSelect;
             CardMatchSignals.Instance.OnNextPlay += OnNextLevel;
             CardMatchSignals.Instance.OnGetDifficultyLevel += OnGetDifficultyLevel;
+            CardMatchSignals.Instance.OnGetLevelID += OnGetLevelID;
         }
 
         private void OnNextLevel()
@@ -83,6 +84,7 @@ namespace Games.CardMatch
 
         private void SectionLoader()
         {
+            CardMatchSignals.Instance.OnUpdateLevelText?.Invoke();
             //Instantiate(Resources.Load<GameObject>($"Games/BallSort/LevelPrefabs/Level{_levelID}"),transform);
             Debug.Log("LevelLoader");
             _levelData = Resources.Load<CardMatchLevelData>($"Games/CardMatch/LevelData/{_difficultLevel}");
@@ -138,6 +140,13 @@ namespace Games.CardMatch
                 _difficultLevel = 8;
             }
         }
+
+        private int OnGetLevelID()
+        {
+            return _levelID;
+        }
+        
+        private int OnGetSect
 
         private int OnGetDifficultyLevel()
         {
@@ -251,6 +260,7 @@ namespace Games.CardMatch
             
             
             CardMatchSignals.Instance.OnGetDifficultyLevel -= OnGetDifficultyLevel;
+            CardMatchSignals.Instance.OnGetLevelID -= OnGetLevelID;
         }
 
         #endregion

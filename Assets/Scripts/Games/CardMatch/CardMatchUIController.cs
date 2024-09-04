@@ -1,4 +1,5 @@
 using Signals;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace Games.CardMatch
 
         [SerializeField] private Transform gridParent;
         [SerializeField] private GameObject nextLevelButton;
+        [SerializeField] private TextMeshProUGUI levelText;
 
         #endregion
 
@@ -45,6 +47,7 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnInstantiateCards += OnInstantiateCards;
             CardMatchSignals.Instance.OnDestroyAllCards += OnDestroyAllCard;
             CardMatchSignals.Instance.OnActivenessOfNextLevelButton += OnActivenessOfNextLevelButton;
+            CardMatchSignals.Instance.OnUpdateLevelText += OnUpdateLevelText;
         }
 
         private void OnInstantiateCards()
@@ -85,6 +88,11 @@ namespace Games.CardMatch
             Debug.LogWarning("Constraint Count: " + _grid.constraintCount);
         }
 
+        private void OnUpdateLevelText()
+        {
+            levelText.text = "Level " + CardMatchSignals.Instance.OnGetLevelID?.Invoke();
+        }
+
         private void OnDestroyAllCard()
         {
             foreach (Transform child in transform.GetChild(0))
@@ -103,6 +111,7 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnInstantiateCards -= OnInstantiateCards;
             CardMatchSignals.Instance.OnDestroyAllCards -= OnDestroyAllCard;
             CardMatchSignals.Instance.OnActivenessOfNextLevelButton -= OnActivenessOfNextLevelButton;
+            CardMatchSignals.Instance.OnUpdateLevelText -= OnUpdateLevelText;
         }
 
         #endregion
