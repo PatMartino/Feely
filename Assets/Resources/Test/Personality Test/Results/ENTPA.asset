@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ENTPA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ENTP-A'
+  resultTitle: "ENTP \u2013 The Debater"
+  result: Quick-witted, innovative, and argumentative, ENTPs love engaging in intellectual
+    debates and exploring different perspectives. They enjoy brainstorming and finding
+    new, unconventional solutions to problems. They thrive on change and enjoy intellectual
+    challenges.

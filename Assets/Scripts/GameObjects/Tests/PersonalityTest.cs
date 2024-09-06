@@ -18,6 +18,12 @@ namespace GameObjects.Tests
         [SerializeField] private GameObject answers;
         [SerializeField] private TMP_Text resultTitle;
         [SerializeField] private TMP_Text resultText;
+        [SerializeField] private GameObject resultPanel;
+        
+        [SerializeField] private PersonalityTestTrait traitEToI;
+        [SerializeField] private PersonalityTestTrait traitNToS;
+        [SerializeField] private PersonalityTestTrait traitTToF;
+        [SerializeField] private PersonalityTestTrait traitJToP;
         
         private List<PersonalityTestAnswer> _answers = new List<PersonalityTestAnswer>(); 
         
@@ -36,8 +42,7 @@ namespace GameObjects.Tests
         public override void ResetTest()
         {
             base.ResetTest();
-            resultTitle.enabled = false;
-            resultText.enabled = false;
+            resultPanel.SetActive(false);
             _scoreEToI = 0;
             _scoreNToS = 0;
             _scoreTToF = 0;
@@ -112,8 +117,12 @@ namespace GameObjects.Tests
             SetFinalResult();
             resultTitle.text = FinalResult.resultTitle;
             resultText.text = FinalResult.result;
-            resultTitle.enabled = true;
-            resultText.enabled = true;
+            resultPanel.SetActive(true);
+
+            traitEToI.SetTraitUp(_scoreEToI);
+            traitNToS.SetTraitUp(_scoreNToS);
+            traitTToF.SetTraitUp(_scoreTToF);
+            traitJToP.SetTraitUp(_scoreJToP);
         }
         
         protected override void SetFinalResult()

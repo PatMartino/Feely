@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ISFJT
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ISFJ-T'
+  resultTitle: "ISFJ \u2013 The Protector"
+  result: Warm, caring, and dependable, ISFJs are focused on helping others. They
+    are deeply committed to their duties and attentive to others' needs. While reserved,
+    they form strong bonds with the people they care about, showing great empathy
+    and support in times of need.

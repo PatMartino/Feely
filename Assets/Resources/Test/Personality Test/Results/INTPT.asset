@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: INTPT
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: INTP-T'
+  resultTitle: "INTP \u2013 The Thinker"
+  result: Analytical, intellectual, and curious, INTPs are thinkers who love exploring
+    abstract concepts and solving complex problems. They enjoy deep, theoretical
+    discussions and are often driven by a desire to understand the underlying principles
+    of how things work.

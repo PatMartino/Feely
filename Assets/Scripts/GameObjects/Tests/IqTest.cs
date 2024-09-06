@@ -41,8 +41,9 @@ namespace GameObjects.Tests
         protected override void SetFinalResult()
         {
             base.SetFinalResult();
-            var endTime = _timer / 60;
-            var scoreFloat = Score/((endTime * endTime /400) + (endTime / 40) + 0.5f);
+            var expectedEndTimeInMin = 1;
+            var endTime = _timer / 60 /expectedEndTimeInMin;
+            var scoreFloat = Score/((endTime * endTime /4) + (endTime / 4) + 0.5f);
             Score = (int)scoreFloat;
             FinalResult.result += Score;
         }

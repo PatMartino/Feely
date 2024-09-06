@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ISFPA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ISFP-A'
+  resultTitle: "ISFP \u2013 The Adventurer"
+  result: Creative, sensitive, and spontaneous, ISFPs enjoy living in the moment
+    and embracing new experiences. They are attuned to their surroundings and appreciate
+    beauty in the world. They prefer to go with the flow and are driven by their
+    values and personal connections.

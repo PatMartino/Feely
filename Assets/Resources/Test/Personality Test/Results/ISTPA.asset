@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ISTPA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ISTP-A'
+  resultTitle: "ISTP \u2013 The Virtuoso"
+  result: Practical, hands-on, and curious, ISTPs are natural troubleshooters. They
+    enjoy understanding how things work and solving problems in a pragmatic way.
+    They are flexible and adaptable, excelling in situations that require quick,
+    practical thinking and action.

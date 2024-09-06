@@ -12,18 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6a36742aeb4f3a922a02348c648337, type: 3}
   m_Name: PTQ 3
   m_EditorClassIdentifier: 
-  question: Are you Thinking or Feeling ?
+  question: I feel drained after social interactions.
   image: {fileID: 0}
   answers:
-  - answerText: Thinking
-    pointEToI: 0
-    pointIToO: 0
-    pointTToF: -1
+  - answerText: I totally agree
+    pointEToI: 2
+    pointNToS: 0
+    pointTToF: 0
     pointJToP: 0
     pointAToT: 0
-  - answerText: Feeling
+  - answerText: I agree
+    pointEToI: 1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I am neutral
     pointEToI: 0
-    pointIToO: 0
-    pointTToF: 1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I disagree
+    pointEToI: -1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I totally disagree
+    pointEToI: -2
+    pointNToS: 0
+    pointTToF: 0
     pointJToP: 0
     pointAToT: 0

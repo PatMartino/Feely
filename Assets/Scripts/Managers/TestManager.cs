@@ -1,4 +1,3 @@
-using System.Collections;
 using AbstractClasses;
 using DG.Tweening;
 using Extensions;
@@ -28,7 +27,7 @@ namespace Managers
 
         private void Start()
         {
-            StartTest(Resources.Load<GameObject>("Test/IQ Test/IQTest"));
+            StartTest(Resources.Load<GameObject>("Test/Personality Test/PersonalityTest"));
         }
 
         public void StartTest(GameObject test)
@@ -87,7 +86,8 @@ namespace Managers
         private void DrawProgressBar()
         {
             progressText.text = $"Question {_currentTest.GetNextQuestionIndex()}/{_currentTest.GetQuestionsCount()}";
-            fillImage.fillAmount = (float)_currentTest.GetNextQuestionIndex() / _currentTest.GetQuestionsCount();
+            var ratio = (float)_currentTest.GetNextQuestionIndex() / _currentTest.GetQuestionsCount();
+            fillImage.DOFillAmount(ratio, 0.5f).SetEase(Ease.OutCirc);
         }
         
         public void SelectAnswer(byte answerIndex)
@@ -110,6 +110,7 @@ namespace Managers
                 endTestButton.gameObject.SetActive(true);
                 confirmButton.gameObject.SetActive(false);
                 previousButton.gameObject.SetActive(false);
+                titleText.text += " Result";
             }
             else
             {

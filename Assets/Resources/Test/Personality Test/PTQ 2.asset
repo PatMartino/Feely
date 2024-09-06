@@ -12,18 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6a36742aeb4f3a922a02348c648337, type: 3}
   m_Name: PTQ 2
   m_EditorClassIdentifier: 
-  question: Are you Intuitive or Observant ?
+  question: I prefer spending time alone or with a few close friends.
   image: {fileID: 0}
   answers:
-  - answerText: Intuitive
-    pointEToI: 0
-    pointNToS: -1
+  - answerText: I totally agree
+    pointEToI: 2
+    pointNToS: 0
     pointTToF: 0
     pointJToP: 0
     pointAToT: 0
-  - answerText: Observant
+  - answerText: I agree
+    pointEToI: 1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I am neutral
     pointEToI: 0
-    pointNToS: 1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I disagree
+    pointEToI: -1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I totally disagree
+    pointEToI: -2
+    pointNToS: 0
     pointTToF: 0
     pointJToP: 0
     pointAToT: 0

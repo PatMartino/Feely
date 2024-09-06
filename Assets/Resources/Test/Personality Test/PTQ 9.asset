@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6a36742aeb4f3a922a02348c648337, type: 3}
+  m_Name: PTQ 9
+  m_EditorClassIdentifier: 
+  question: I prefer hands-on learning and practical skills.
+  image: {fileID: 0}
+  answers:
+  - answerText: I totally agree
+    pointEToI: 0
+    pointNToS: 2
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I agree
+    pointEToI: 0
+    pointNToS: 1
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I am neutral
+    pointEToI: 0
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I disagree
+    pointEToI: 0
+    pointNToS: -1
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I totally disagree
+    pointEToI: 0
+    pointNToS: -2
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ESFPA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ESFP-A'
+  resultTitle: "ESFP \u2013 The Entertainer"
+  result: Outgoing, playful, and spontaneous, ESFPs love being in the spotlight and
+    entertaining others. They live for the present moment and enjoy new experiences,
+    thriving in social situations. ESFPs are warm and caring, often bringing positivity
+    and excitement to their relationships.

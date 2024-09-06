@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ESFJA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ESFJ-A'
+  resultTitle: "ESFJ \u2013 The Consul"
+  result: Warm, sociable, and supportive, ESFJs are highly attuned to the needs of
+    others and enjoy building harmonious relationships. They are often seen as the
+    caretakers of the group, fostering a sense of community and ensuring that everyone
+    feels included and valued.

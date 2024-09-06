@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: INFJA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: INFJ-A'
+  resultTitle: "INFJ \u2013 The Advocate"
+  result: Idealistic and insightful, INFJs are deeply compassionate and seek to make
+    a positive difference in the world. They are visionaries who value meaning and
+    purpose in life, often being attuned to others' emotions and striving to help
+    others reach their potential.

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ESTJT
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ESTJ-T'
+  resultTitle: "ESTJ \u2013 The Executive"
+  result: Organized, assertive, and pragmatic, ESTJs are natural leaders who value
+    tradition, order, and efficiency. They enjoy setting goals and ensuring that
+    things run smoothly, often taking charge in group situations. ESTJs are driven
+    by facts and logic, preferring a structured environment.

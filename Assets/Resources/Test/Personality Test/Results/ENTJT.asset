@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ENTJT
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ENTJ-T'
+  resultTitle: "ENTJ \u2013 The Commander"
+  result: Assertive, strategic, and decisive, ENTJs are born leaders who are focused
+    on achieving their goals. They are excellent at organizing and leading teams,
+    often developing long-term plans to bring their vision to life. ENTJs are driven
+    by results and enjoy overcoming challenges.

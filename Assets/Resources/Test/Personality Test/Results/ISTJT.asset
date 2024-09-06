@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ISTJT
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ISTJ-T'
+  resultTitle: "ISTJ \u2013 The Inspector"
+  result: Responsible, organized, and reliable, ISTJs value tradition and structure.
+    They are detail-oriented and practical, focusing on facts and logic in their
+    decision-making. They prefer clear guidelines and stability, excelling in tasks
+    that require precision and consistency.

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: ENFJA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: ENFJ-A'
+  resultTitle: "ENFJ \u2013 The Protagonist"
+  result: Charismatic, compassionate, and inspiring, ENFJs are natural leaders who
+    care deeply about others and are driven to help them reach their full potential.
+    They are empathetic and skilled at understanding emotions, making them effective
+    at guiding and encouraging others.

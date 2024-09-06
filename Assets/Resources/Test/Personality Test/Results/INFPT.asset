@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: INFPT
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: INFP-T'
+  resultTitle: "INFP \u2013 The Mediator"
+  result: Idealistic, empathetic, and introspective, INFPs are deeply driven by their
+    values. They seek harmony and meaning in life, often reflecting on their inner
+    emotions and striving to understand others. INFPs are creative and enjoy expressing
+    themselves through art, writing, or other forms of personal expression.

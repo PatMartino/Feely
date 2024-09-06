@@ -12,18 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6a36742aeb4f3a922a02348c648337, type: 3}
   m_Name: PTQ 5
   m_EditorClassIdentifier: 
-  question: Are you Assertive or Turbulent ?
+  question: I enjoy working in groups or on team projects.
   image: {fileID: 0}
   answers:
-  - answerText: Assertive
-    pointEToI: 0
-    pointIToO: 0
+  - answerText: I totally agree
+    pointEToI: -2
+    pointNToS: 0
     pointTToF: 0
     pointJToP: 0
-    pointAToT: -1
-  - answerText: Turbulent
-    pointEToI: 0
-    pointIToO: 0
+    pointAToT: 0
+  - answerText: I agree
+    pointEToI: -1
+    pointNToS: 0
     pointTToF: 0
     pointJToP: 0
-    pointAToT: 1
+    pointAToT: 0
+  - answerText: I am neutral
+    pointEToI: 0
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I disagree
+    pointEToI: 1
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0
+  - answerText: I totally disagree
+    pointEToI: 2
+    pointNToS: 0
+    pointTToF: 0
+    pointJToP: 0
+    pointAToT: 0

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,10 +14,10 @@ namespace Data.Tests
         
         private Color _defaultColor;
 
-        private void Start()
-        {
-            _defaultColor = buttonImage.color;
-        }
+         private void Start()
+         {
+             _defaultColor = buttonImage.color;
+         }
 
         private void OnEnable()
         {
@@ -37,13 +38,13 @@ namespace Data.Tests
         private void SelectAnswer()
         {
             TestManager.Instance.SelectAnswer(answerIndex);
-            buttonImage.color = selectedColor;
+            buttonImage.DOColor(selectedColor, 0.3f).SetEase(Ease.OutQuint);
         }
         
         private void UnselectAnswer(int index)
         {
             if (index == answerIndex) return;
-            buttonImage.color = _defaultColor;
+            buttonImage.DOColor(_defaultColor, 0.3f).SetEase(Ease.OutQuint);
         }
     }
 }

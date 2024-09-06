@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
   m_Name: INTJA
   m_EditorClassIdentifier: 
-  result: 'Your personality type is: INTJ-A'
+  resultTitle: "INTJ \u2013 The Architect"
+  result: Strategic, logical, and forward-thinking, INTJs are highly independent
+    and driven by their own vision of the future. They are innovative problem-solvers,
+    preferring to plan and work toward long-term goals. They are confident in their
+    analytical skills and enjoy mastering complex systems.
