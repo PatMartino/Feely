@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Signals
 {
-    public class GameSignals : MonoSingleton<GameSignals>
+    public class BallSortSignals : MonoSingleton<BallSortSignals>
     {
         public Func<bool> OnGetIsSelect = () => false;
         public UnityAction OnSetIsSelectTrue = delegate {  };
@@ -20,6 +20,10 @@ namespace Signals
         public UnityAction OnRestartLevel = delegate {  };
         public Func<List<GameObject>> OnGetPreviousTubeList = () => null;
         public Func<List<GameObject>> OnGetPreviousBallPlaces = () => null;
-        
+        public Func<int> OnGetLevelType = () => 0;
+        public UnityAction OnGenerateLevel = delegate {  };
+        public UnityAction OnAssignBallsToTubes = delegate {  };
+        public UnityAction OnClearLevel = delegate {  };
+
     }
 }

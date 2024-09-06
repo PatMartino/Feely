@@ -40,10 +40,10 @@ namespace Games.BallSort
             switch (type)
             {
                 case GameButtonTypes.NextLevelButton:
-                    _button.onClick.AddListener(() =>GameSignals.Instance.OnNextLevel?.Invoke()); 
+                    _button.onClick.AddListener(() =>BallSortSignals.Instance.OnNextLevel?.Invoke()); 
                     break;
                 case GameButtonTypes.RestartButton:
-                    _button.onClick.AddListener(() =>GameSignals.Instance.OnRestartLevel?.Invoke()); 
+                    _button.onClick.AddListener(() =>BallSortSignals.Instance.OnRestartLevel?.Invoke()); 
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

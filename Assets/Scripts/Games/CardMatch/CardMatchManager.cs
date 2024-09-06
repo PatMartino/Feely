@@ -13,6 +13,7 @@ namespace Games.CardMatch
 
         private int _levelID = 1;
         private int _section = 1;
+        private float _timeDuration = 120f;
         private int _difficultLevel;
         private CardMatchLevelData _levelData;
         private CardTypes[] _allCardTypes = new CardTypes[] { CardTypes.Blue , CardTypes.Green, CardTypes.Red, CardTypes.Magenta, CardTypes.Yellow, CardTypes.Cyan, CardTypes.Black,CardTypes.Grey};
@@ -67,6 +68,8 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnNextPlay += OnNextLevel;
             CardMatchSignals.Instance.OnGetDifficultyLevel += OnGetDifficultyLevel;
             CardMatchSignals.Instance.OnGetLevelID += OnGetLevelID;
+            CardMatchSignals.Instance.OnGetSectionID += OnGetSectionID;
+            CardMatchSignals.Instance.OnRestartLevel += OnRestartLevel;
         }
 
         private void OnNextLevel()
@@ -90,9 +93,22 @@ namespace Games.CardMatch
             _levelData = Resources.Load<CardMatchLevelData>($"Games/CardMatch/LevelData/{_difficultLevel}");
             _matchAmount = 0;
             _maxAmount = _levelData.NumberOfCards;
+            CardMatchSignals.Instance.OnUpdateStageText?.Invoke();
             GenerateSectionCards();
             
             //UISignals.Instance.OnUpdateBallSortLevelIDText?.Invoke();
+        }
+
+        private void OnRestartLevel()
+        {
+            _levelCards.Clear();
+            _section = 1;
+            _canSelect = true;
+            _isSelect = false;
+            SetDifficultyLevel();
+            SectionDestroyer();
+            SectionLoader();
+            CardMatchSignals.Instance.OnActivenessOfNextLevelButton?.Invoke(false);
         }
 
         private void SectionDestroyer()
@@ -107,6 +123,7 @@ namespace Games.CardMatch
             _section++;
             _canSelect = true;
             _isSelect = false;
+            CardMatchSignals.Instance.OnUpdateStageText?.Invoke();
             Debug.LogWarning("Difficulty Level: " + _difficultLevel);
             SectionDestroyer();
             SectionLoader();
@@ -135,10 +152,14 @@ namespace Games.CardMatch
         {
             var difficulty = _levelID + _section;
             _difficultLevel = difficulty;
+            var timer = 120f - ((_levelID - 1) * 5);
+            _timeDuration = timer;
             if (_difficultLevel>8)
             {
+                _timeDuration = 80f;
                 _difficultLevel = 8;
             }
+            CoreGameSignals.Instance.OnStartTimer?.Invoke(_timeDuration);
         }
 
         private int OnGetLevelID()
@@ -207,7 +228,7 @@ namespace Games.CardMatch
         {
             if (_matchAmount >= _maxAmount)
             {
-                if (_section<=5)
+                if (_section<=4)
                 {
                     Debug.LogWarning("NextLevel");
                     NextSection();
@@ -215,6 +236,7 @@ namespace Games.CardMatch
                 else
                 {
                     Debug.LogWarning("LevelFinished");
+                    CoreGameSignals.Instance.OnStopTimer?.Invoke();
                     CardMatchSignals.Instance.OnActivenessOfNextLevelButton?.Invoke(true);
                 }
                 
@@ -264,6 +286,7 @@ namespace Games.CardMatch
             
             CardMatchSignals.Instance.OnGetDifficultyLevel -= OnGetDifficultyLevel;
             CardMatchSignals.Instance.OnGetLevelID -= OnGetLevelID;
+            CardMatchSignals.Instance.OnGetSectionID -= OnGetSectionID;
         }
 
         #endregion

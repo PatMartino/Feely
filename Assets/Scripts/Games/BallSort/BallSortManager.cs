@@ -4,6 +4,7 @@ using Signals;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Games.BallSort
 {
@@ -18,6 +19,7 @@ namespace Games.BallSort
 
         private bool _isSelect;
         private int _levelID =1;
+        private int _levelType;
         private GameObject _ball;
         private TubeData _tubeData;
         private bool _isLevelFinished;
@@ -48,25 +50,29 @@ namespace Games.BallSort
 
         private void SubscribeEvents()
         {
-            GameSignals.Instance.OnGetIsSelect += OnGetIsSelect;
-            GameSignals.Instance.OnSetIsSelectTrue += OnSetIsSelectTrue;
-            GameSignals.Instance.OnSetIsSelectFalse += OnSetIsSelectFalse;
-            GameSignals.Instance.OnAssignSelectBall += OnAssignSelectBall;
-            GameSignals.Instance.OnGetBall += OnGetBall;
-            GameSignals.Instance.OnIncreaseCompletedTubes += OnIncreaseCompletedTubes;
-            GameSignals.Instance.OnGetLevelID += OnGetLevelID;
-            GameSignals.Instance.OnGetIsLevelFinished += OnGetIsLevelFinished;
-            GameSignals.Instance.OnRestartLevel += OnRestartLevel;
-            GameSignals.Instance.OnNextLevel += OnNextLevel;
-            GameSignals.Instance.OnGetPreviousTubeList += OnGetPreviousTubeList;
-            GameSignals.Instance.OnGetPreviousBallPlaces+= OnGetPreviousBallPlaces;
+            BallSortSignals.Instance.OnGetIsSelect += OnGetIsSelect;
+            BallSortSignals.Instance.OnSetIsSelectTrue += OnSetIsSelectTrue;
+            BallSortSignals.Instance.OnSetIsSelectFalse += OnSetIsSelectFalse;
+            BallSortSignals.Instance.OnAssignSelectBall += OnAssignSelectBall;
+            BallSortSignals.Instance.OnGetBall += OnGetBall;
+            BallSortSignals.Instance.OnIncreaseCompletedTubes += OnIncreaseCompletedTubes;
+            BallSortSignals.Instance.OnGetLevelID += OnGetLevelID;
+            BallSortSignals.Instance.OnGetIsLevelFinished += OnGetIsLevelFinished;
+            BallSortSignals.Instance.OnRestartLevel += OnRestartLevel;
+            BallSortSignals.Instance.OnNextLevel += OnNextLevel;
+            BallSortSignals.Instance.OnGetPreviousTubeList += OnGetPreviousTubeList;
+            BallSortSignals.Instance.OnGetPreviousBallPlaces+= OnGetPreviousBallPlaces;
+            BallSortSignals.Instance.OnGetLevelType += OnGetLevelType;
         }
 
         private void LevelLoader()
         {
-            Instantiate(Resources.Load<GameObject>($"Games/BallSort/LevelPrefabs/Level{_levelID}"),levelHolder);
+            RandomLevelGenerator();
+            Instantiate(Resources.Load<GameObject>($"Games/BallSort/LevelPrefabs/{_levelType}"),levelHolder);
             _tubeData = Resources.Load<TubeData>($"Games/BallSort/TubeData/{_levelID}");
-            _tubeAmount = _tubeData.TubeAmount;
+            //_tubeAmount = _tubeData.TubeAmount;
+            _tubeAmount = _levelType - 2;
+            BallSortSignals.Instance.OnGenerateLevel?.Invoke();
             UISignals.Instance.OnUpdateBallSortLevelIDText?.Invoke();
         }
 
@@ -93,9 +99,17 @@ namespace Games.BallSort
 
         private void OnRestartLevel()
         {
-            LevelDestroyer();
+            //LevelDestroyer();
             ResetAmounts();
-            LevelLoader();
+            BallSortSignals.Instance.OnClearLevel?.Invoke();
+            BallSortSignals.Instance.OnAssignBallsToTubes?.Invoke();
+            //LevelLoader();
+        }
+
+        private void RandomLevelGenerator()
+        {
+            var level = Random.Range(5, 9);
+            _levelType = level;
         }
 
         private void OnIncreaseCompletedTubes()
@@ -116,7 +130,6 @@ namespace Games.BallSort
         private void ResetAmounts()
         {
             _completedTubes = 0;
-            _tubeAmount = 0;
         }
 
         private bool OnGetIsSelect()
@@ -151,6 +164,11 @@ namespace Games.BallSort
             return _ballPlaces;
         }
 
+        private int OnGetLevelType()
+        {
+            return _levelType;
+        }
+
         private int OnGetLevelID()
         {
             return _levelID;
@@ -168,18 +186,20 @@ namespace Games.BallSort
 
         private void UnSubscribeEvents()
         {
-            GameSignals.Instance.OnGetIsSelect -= OnGetIsSelect;
-            GameSignals.Instance.OnSetIsSelectTrue -= OnSetIsSelectTrue;
-            GameSignals.Instance.OnSetIsSelectFalse -= OnSetIsSelectFalse;
-            GameSignals.Instance.OnAssignSelectBall -= OnAssignSelectBall;
-            GameSignals.Instance.OnGetBall -= OnGetBall;
-            GameSignals.Instance.OnIncreaseCompletedTubes -= OnIncreaseCompletedTubes;
-            GameSignals.Instance.OnGetLevelID -= OnGetLevelID;
-            GameSignals.Instance.OnGetIsLevelFinished -= OnGetIsLevelFinished;
-            GameSignals.Instance.OnRestartLevel -= OnRestartLevel;
-            GameSignals.Instance.OnNextLevel -= OnNextLevel;
-            GameSignals.Instance.OnGetPreviousTubeList -= OnGetPreviousTubeList;
-            GameSignals.Instance.OnGetPreviousBallPlaces -= OnGetPreviousBallPlaces;
+            BallSortSignals.Instance.OnGetIsSelect -= OnGetIsSelect;
+            BallSortSignals.Instance.OnSetIsSelectTrue -= OnSetIsSelectTrue;
+            BallSortSignals.Instance.OnSetIsSelectFalse -= OnSetIsSelectFalse;
+            BallSortSignals.Instance.OnAssignSelectBall -= OnAssignSelectBall;
+            BallSortSignals.Instance.OnGetBall -= OnGetBall;
+            BallSortSignals.Instance.OnIncreaseCompletedTubes -= OnIncreaseCompletedTubes;
+            BallSortSignals.Instance.OnGetLevelID -= OnGetLevelID;
+            BallSortSignals.Instance.OnGetIsLevelFinished -= OnGetIsLevelFinished;
+            BallSortSignals.Instance.OnRestartLevel -= OnRestartLevel;
+            BallSortSignals.Instance.OnNextLevel -= OnNextLevel;
+            BallSortSignals.Instance.OnGetPreviousTubeList -= OnGetPreviousTubeList;
+            BallSortSignals.Instance.OnGetPreviousBallPlaces -= OnGetPreviousBallPlaces;
+            
+            BallSortSignals.Instance.OnGetLevelType -= OnGetLevelType;
         }
 
         #endregion

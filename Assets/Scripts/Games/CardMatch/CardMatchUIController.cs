@@ -12,6 +12,8 @@ namespace Games.CardMatch
         [SerializeField] private Transform gridParent;
         [SerializeField] private GameObject nextLevelButton;
         [SerializeField] private TextMeshProUGUI levelText;
+        [SerializeField] private TextMeshProUGUI stageText;
+        [SerializeField] private TextMeshProUGUI timeText;
 
         #endregion
 
@@ -48,6 +50,8 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnDestroyAllCards += OnDestroyAllCard;
             CardMatchSignals.Instance.OnActivenessOfNextLevelButton += OnActivenessOfNextLevelButton;
             CardMatchSignals.Instance.OnUpdateLevelText += OnUpdateLevelText;
+            CardMatchSignals.Instance.OnUpdateStageText += OnUpdateStageText;
+            CardMatchSignals.Instance.OnUpdateTime += OnUpdateTime;
         }
 
         private void OnInstantiateCards()
@@ -68,11 +72,11 @@ namespace Games.CardMatch
             {
                 _grid.constraintCount = 2;
             }
-            else if(CardMatchSignals.Instance.OnGetDifficultyLevel() >= 4 && CardMatchSignals.Instance.OnGetDifficultyLevel() <6)
+            else if(CardMatchSignals.Instance.OnGetDifficultyLevel() >= 4 && CardMatchSignals.Instance.OnGetDifficultyLevel() <5)
             {
                 _grid.constraintCount = 3;
             }
-            else if(CardMatchSignals.Instance.OnGetDifficultyLevel() >= 6 && CardMatchSignals.Instance.OnGetDifficultyLevel() <9)
+            else if(CardMatchSignals.Instance.OnGetDifficultyLevel() >= 5 && CardMatchSignals.Instance.OnGetDifficultyLevel() <9)
             {
                 _grid.constraintCount = 4;
             }
@@ -91,6 +95,18 @@ namespace Games.CardMatch
         private void OnUpdateLevelText()
         {
             levelText.text = "Level " + CardMatchSignals.Instance.OnGetLevelID?.Invoke();
+        }
+
+        private void OnUpdateStageText()
+        {
+            stageText.text = "Stage " + CardMatchSignals.Instance.OnGetSectionID?.Invoke();
+        }
+
+        private void OnUpdateTime()
+        {
+            int minutes = Mathf.FloorToInt((int)CoreGameSignals.Instance.OnGetRemainingTime?.Invoke() / 60); // Dakikayı hesaplar
+            int seconds = Mathf.FloorToInt((int)CoreGameSignals.Instance.OnGetRemainingTime?.Invoke() % 60); // Saniyeyi hesaplar
+            timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds); // Dakika:saniye formatında yazdırır
         }
 
         private void OnDestroyAllCard()
@@ -112,6 +128,8 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnDestroyAllCards -= OnDestroyAllCard;
             CardMatchSignals.Instance.OnActivenessOfNextLevelButton -= OnActivenessOfNextLevelButton;
             CardMatchSignals.Instance.OnUpdateLevelText -= OnUpdateLevelText;
+            CardMatchSignals.Instance.OnUpdateStageText -= OnUpdateStageText;
+            CardMatchSignals.Instance.OnUpdateTime -= OnUpdateTime;
         }
 
         #endregion

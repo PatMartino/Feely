@@ -6,6 +6,8 @@ namespace Games.BallSort
         Blue,
         Green,
         Yellow,
-        Magenta
+        Magenta,
+        Black,
+        Cyan
     }
 }

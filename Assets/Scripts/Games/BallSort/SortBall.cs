@@ -11,18 +11,9 @@ namespace Games.BallSort
 
         #endregion
 
-        #region OnEnable
-
-        private void OnEnable()
-        {
-            Init();
-        }
-
-        #endregion
-
         #region Functions
 
-        private void Init()
+        public void Init()
         {
             GetComponent<SpriteRenderer>().color = ballColor switch
             {
@@ -31,6 +22,8 @@ namespace Games.BallSort
                 BallColors.Green => Color.green,
                 BallColors.Yellow => Color.yellow,
                 BallColors.Magenta => Color.magenta,
+                BallColors.Black => Color.black,
+                BallColors.Cyan => Color.cyan,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
@@ -38,6 +31,11 @@ namespace Games.BallSort
         public BallColors OnGetBallColor()
         {
             return ballColor;
+        }
+
+        public void OnSetBallColor(BallColors color)
+        {
+            ballColor = color;
         }
 
         #endregion

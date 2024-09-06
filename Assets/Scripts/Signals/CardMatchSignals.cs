@@ -29,5 +29,9 @@ namespace Signals
         public Func<int> OnGetDifficultyLevel = () => 0;
         public Func<int> OnGetLevelID = () => 0;
         public UnityAction OnUpdateLevelText = delegate {  };
+        public UnityAction OnUpdateStageText = delegate {  };
+        public Func<int> OnGetSectionID = () => 0;
+        public UnityAction OnUpdateTime = delegate {  };
+        public UnityAction OnRestartLevel = delegate {  };
     }
 }

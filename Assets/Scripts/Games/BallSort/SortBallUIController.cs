@@ -40,7 +40,7 @@ namespace Games.BallSort
 
         private void OnUpdateLevelText()
         {
-            levelText.text = "Level " + GameSignals.Instance.OnGetLevelID();
+            levelText.text = "Level " + BallSortSignals.Instance.OnGetLevelID();
         }
 
         private void OnCompleteLevel()
