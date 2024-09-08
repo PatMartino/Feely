@@ -111,7 +111,7 @@ namespace Games.CardMatch
 
         private void OnDestroyAllCard()
         {
-            foreach (Transform child in transform.GetChild(0))
+            foreach (Transform child in transform.GetChild(1))
             {
                 Destroy(child.gameObject);
             }
