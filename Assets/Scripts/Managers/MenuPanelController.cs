@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Enums;
 using Signals;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ namespace Managers
         [SerializeField] private Transform testUI;
         [SerializeField] private Transform settingsUI;
         [SerializeField] private Transform notificationUI;
+        [SerializeField] private GameObject headerText;
 
         #endregion
 
@@ -46,6 +48,8 @@ namespace Managers
         private void SubscribeEvents()
         {
             UISignals.Instance.OnSwitchMenu += OnSwitchMenu;
+            UISignals.Instance.OnChangeMenuIconColor += OnChangeMenuIconColor;
+            UISignals.Instance.OnChangeHeaderText += OnChangeHeaderText;
         }
 
         private void OnSwitchMenu(MenuTypes type)
@@ -56,19 +60,19 @@ namespace Managers
                     gamesUI.gameObject.SetActive(false);
                     testUI.gameObject.SetActive(false);
                     todayUI.gameObject.SetActive(true);
-                    ChangeMenuIconColor(MenuTypes.TodayMenu);
+                    OnChangeMenuIconColor(MenuTypes.TodayMenu);
                     break;
                 case MenuTypes.GameMenu:
                     todayUI.gameObject.SetActive(false);
                     testUI.gameObject.SetActive(false);
                     gamesUI.gameObject.SetActive(true);
-                    ChangeMenuIconColor(MenuTypes.GameMenu);
+                    OnChangeMenuIconColor(MenuTypes.GameMenu);
                     break;
                 case MenuTypes.TestMenu:
                     gamesUI.gameObject.SetActive(false);
                     todayUI.gameObject.SetActive(false);
                     testUI.gameObject.SetActive(true);
-                    ChangeMenuIconColor(MenuTypes.TestMenu);
+                    OnChangeMenuIconColor(MenuTypes.TestMenu);
                     break;
 
                 case MenuTypes.SettingsMenu:
@@ -89,7 +93,7 @@ namespace Managers
             }
         }
 
-        private void ChangeMenuIconColor(MenuTypes type)
+        private void OnChangeMenuIconColor(MenuTypes type)
         {
             switch (type)
             {
@@ -110,10 +114,31 @@ namespace Managers
                     break;
             }
         }
+
+        private void OnChangeHeaderText(MenuTypes type)
+        {
+            switch (type)
+            {
+                case MenuTypes.GameMenu:
+                    headerText.GetComponent<TextMeshProUGUI>().text = "Games";
+                    break;
+                case MenuTypes.TodayMenu:
+                    headerText.GetComponent<TextMeshProUGUI>().text = "Home";
+                    break;
+                case MenuTypes.TestMenu:
+                    headerText.GetComponent<TextMeshProUGUI>().text = "Tests";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+            
+        }
         
         private void UnSubscribeEvents()
         {
             UISignals.Instance.OnSwitchMenu -= OnSwitchMenu;
+            UISignals.Instance.OnChangeMenuIconColor -= OnChangeMenuIconColor;
+            UISignals.Instance.OnChangeHeaderText -= OnChangeHeaderText;
         }
 
         #endregion

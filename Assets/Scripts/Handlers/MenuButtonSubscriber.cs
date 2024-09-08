@@ -41,13 +41,13 @@ namespace Handlers
             switch (type)
             {
                 case MenuButtonType.TodayButton:
-                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.TodayMenu)); 
+                    _button.onClick.AddListener(() => UISignals.Instance.OnHome?.Invoke()); 
                     break;
                 case MenuButtonType.GameButton:
-                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.GameMenu)); 
+                    _button.onClick.AddListener(() => UISignals.Instance.OnGame?.Invoke()); 
                     break;
                 case MenuButtonType.TestButton:
-                    _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.TestMenu)); 
+                    _button.onClick.AddListener(() => UISignals.Instance.OnTest?.Invoke()); 
                     break;
                 case MenuButtonType.SettingsButton:
                     _button.onClick.AddListener(() => UISignals.Instance.OnSwitchMenu?.Invoke(MenuTypes.SettingsMenu));

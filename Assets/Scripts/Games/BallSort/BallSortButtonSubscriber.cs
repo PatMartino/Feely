@@ -45,6 +45,10 @@ namespace Games.BallSort
                 case GameButtonTypes.RestartButton:
                     _button.onClick.AddListener(() =>BallSortSignals.Instance.OnRestartLevel?.Invoke()); 
                     break;
+                case GameButtonTypes.QuitGame:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenu));
+                    _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnQuitGame?.Invoke());
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

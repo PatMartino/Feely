@@ -12,5 +12,10 @@ namespace Signals
         public UnityAction OnUpdateBallSortLevelIDText = delegate {  };
         public UnityAction OnCompleteBallSortLevel = delegate {  };
         public UnityAction OnStartBallSortLevel = delegate {  };
+        public UnityAction OnHome = delegate {  };
+        public UnityAction OnGame = delegate {  };
+        public UnityAction OnTest = delegate {  };
+        public UnityAction<MenuTypes> OnChangeHeaderText = delegate {  };
+        public UnityAction<MenuTypes> OnChangeMenuIconColor = delegate {  };
     }
 }

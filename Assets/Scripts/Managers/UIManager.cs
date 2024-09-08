@@ -39,6 +39,7 @@ namespace Managers
             {
                 case UIStates.MainMenu:
                     UIDestroyer();
+                    Instantiate(Resources.Load<GameObject>("UI/MainMenu New"),canvas.transform);
                     break;
                 case UIStates.BallSortInfo:
                     UIDestroyer();

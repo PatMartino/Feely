@@ -3,6 +3,7 @@
     public enum GameButtonTypes
     {
         NextLevelButton,
-        RestartButton
+        RestartButton,
+        QuitGame
     }
 }

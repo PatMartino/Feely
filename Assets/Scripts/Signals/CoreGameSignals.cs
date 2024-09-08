@@ -11,5 +11,6 @@ namespace Signals
         public Func<float> OnGetRemainingTime = () => 0;
         public UnityAction<float> OnStartTimer = delegate {  };
         public UnityAction OnStopTimer = delegate {  };
+        public UnityAction OnQuitGame = delegate {  };
     }
 }

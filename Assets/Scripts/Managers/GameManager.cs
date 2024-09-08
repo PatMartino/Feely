@@ -32,6 +32,7 @@ namespace Managers
         private void SubscribeEvents()
         {
             CoreGameSignals.Instance.OnGameManagement += OnGameManagement;
+            CoreGameSignals.Instance.OnQuitGame += OnQuitGame;
         }
 
         private void OnGameManagement(GamesAndTestsNames type)
@@ -51,9 +52,15 @@ namespace Managers
             }
         }
 
+        private void OnQuitGame()
+        {
+            Destroy(gameHolder.GetChild(0).gameObject);
+        }
+
         private void UnSubscribeEvents()
         {
             CoreGameSignals.Instance.OnGameManagement -= OnGameManagement;
+            CoreGameSignals.Instance.OnQuitGame -= OnQuitGame;
         }
 
         #endregion
