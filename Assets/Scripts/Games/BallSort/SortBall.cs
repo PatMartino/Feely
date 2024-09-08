@@ -15,15 +15,15 @@ namespace Games.BallSort
 
         public void Init()
         {
-            GetComponent<SpriteRenderer>().color = ballColor switch
+            GetComponentInChildren<SpriteRenderer>().color = ballColor switch
             {
-                BallColors.Red => Color.red,
-                BallColors.Blue => Color.blue,
-                BallColors.Green => Color.green,
-                BallColors.Yellow => Color.yellow,
-                BallColors.Magenta => Color.magenta,
-                BallColors.Black => Color.black,
-                BallColors.Cyan => Color.cyan,
+                BallColors.Cyan => new Color(0.3f, 0.8f, 0.6f),
+                BallColors.Pink => new Color(0.75f, 0.3f, 0.4f),
+                BallColors.Yellow => new Color(0.9f, 0.65f, 0.3f),
+                BallColors.Blue => new Color(0.4f, 0.5f, 0.8f),
+                BallColors.Green => new Color(0.6f, 0.6f, 0.3f),
+                BallColors.Purple => new Color(0.6f, 0.3f, 0.8f),
+                BallColors.Orange => new Color(0.7f, 0.4f, 0.2f),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

@@ -25,7 +25,7 @@ namespace Managers
 
         #region Private Field
 
-        private readonly Color _greenColor = new Color(0.567f, 1, 0.476f);
+        private readonly Color _greenColor = new Color(0.32f, 0.71f, 0.6f);
 
         #endregion
 

@@ -154,7 +154,7 @@ namespace Games.BallSort
         private void Complete()
         {
             _isComplete = true;
-            GetComponent<SpriteRenderer>().color = Color.green;
+            GetComponentInChildren<SpriteRenderer>().color = new Color(0.85f, 0.93f, 0.57f, 1);
             BallSortSignals.Instance.OnIncreaseCompletedTubes?.Invoke();
         }
 
@@ -166,7 +166,7 @@ namespace Games.BallSort
         public void OnClearBallsInTube()
         {
             ballsInTube.Clear();
-            GetComponent<SpriteRenderer>().color = Color.white;
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
             _isComplete = false;
         }
 

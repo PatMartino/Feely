@@ -20,7 +20,7 @@ namespace Games.BallSort
 
         #region Private Field
 
-        private List<BallColors> _ballColors = new List<BallColors>() { BallColors.Black, BallColors.Red, BallColors.Blue, BallColors.Green, BallColors.Yellow, BallColors.Magenta, BallColors.Cyan };
+        private List<BallColors> _ballColors = new List<BallColors>() { BallColors.Cyan, BallColors.Pink, BallColors.Yellow, BallColors.Blue, BallColors.Green, BallColors.Purple, BallColors.Orange };
         private List<BallColors> _selectedColors = new List<BallColors>();
         private List<BallColors> _levelBalls = new List<BallColors>();
 
@@ -73,7 +73,7 @@ namespace Games.BallSort
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    var ball = Object.Instantiate(Resources.Load<GameObject>("Games/BallSort/Ball/Ball"),ballHolder);
+                    var ball = Object.Instantiate(Resources.Load<GameObject>("Games/BallSort/Objects/Ball"),ballHolder);
                     ball.GetComponent<SortBall>().OnSetBallColor(_levelBalls[ballnum]);
                     ball.GetComponent<SortBall>().Init();
                     tubes[i].GetComponent<Tube>().OnAssignBalls.Invoke(ball);

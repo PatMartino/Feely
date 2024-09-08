@@ -2,12 +2,12 @@ namespace Games.BallSort
 {
     public enum BallColors
     {
-        Red,
+        Cyan,
+        Pink,
+        Yellow,
         Blue,
         Green,
-        Yellow,
-        Magenta,
-        Black,
-        Cyan
+        Purple,
+        Orange
     }
 }
