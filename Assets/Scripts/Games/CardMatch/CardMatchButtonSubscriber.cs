@@ -45,6 +45,14 @@ namespace Games.CardMatch
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenu));
                     _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnQuitGame?.Invoke());
                     break;
+                case GameButtonTypes.PauseGame:
+                    _button.onClick.AddListener(() => CardMatchSignals.Instance.OnOpenPauseMenu.Invoke());
+                    _button.onClick.AddListener(() => CoreGameSignals.Instance.OnStopTimer.Invoke());
+                    break;
+                case GameButtonTypes.ReturnGame:
+                    _button.onClick.AddListener(() => CardMatchSignals.Instance.OnClosePauseMenu.Invoke());
+                    _button.onClick.AddListener(() => CoreGameSignals.Instance.OnContinuousTimer.Invoke());
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

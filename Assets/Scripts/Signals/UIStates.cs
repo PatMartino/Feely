@@ -3,9 +3,10 @@
     public enum UIStates
     {
         MainMenu,
-        BallSortInfo,
         BallSortGame,
+        BallSortCoverPage,
         BallSortLevelComplete,
-        CardMatchGame
+        CardMatchGame,
+        CardMatchCoverPage
     }
 }

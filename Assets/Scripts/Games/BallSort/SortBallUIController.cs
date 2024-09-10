@@ -12,6 +12,7 @@ namespace Games.BallSort
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private GameObject nextLevelButton;
         [SerializeField] private GameObject restartButton;
+        [SerializeField] private GameObject pauseMenu;
 
         #endregion
 
@@ -36,6 +37,8 @@ namespace Games.BallSort
             UISignals.Instance.OnUpdateBallSortLevelIDText += OnUpdateLevelText;
             UISignals.Instance.OnCompleteBallSortLevel += OnCompleteLevel;
             UISignals.Instance.OnStartBallSortLevel += OnStartLevel;
+            BallSortSignals.Instance.OnOpenPauseMenu += OnOpenPauseMenu;
+            BallSortSignals.Instance.OnClosePauseMenu += OnClosePauseMenu;
         }
 
         private void OnUpdateLevelText()
@@ -54,12 +57,24 @@ namespace Games.BallSort
             nextLevelButton.SetActive(false);
             restartButton.SetActive(true);
         }
+
+        private void OnOpenPauseMenu()
+        {
+            pauseMenu.SetActive(true);
+        }
+
+        private void OnClosePauseMenu()
+        {
+            pauseMenu.SetActive(false);
+        }
         
         private void UnSubscribeEvents()
         {
             UISignals.Instance.OnUpdateBallSortLevelIDText -= OnUpdateLevelText;
             UISignals.Instance.OnCompleteBallSortLevel -= OnCompleteLevel;
             UISignals.Instance.OnStartBallSortLevel -= OnStartLevel;
+            BallSortSignals.Instance.OnOpenPauseMenu -= OnOpenPauseMenu;
+            BallSortSignals.Instance.OnClosePauseMenu -= OnClosePauseMenu;
         }
 
         #endregion

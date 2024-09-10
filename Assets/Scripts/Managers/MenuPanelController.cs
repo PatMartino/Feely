@@ -56,25 +56,6 @@ namespace Managers
         {
             switch (type)
             {
-                case MenuTypes.TodayMenu:
-                    gamesUI.gameObject.SetActive(false);
-                    testUI.gameObject.SetActive(false);
-                    todayUI.gameObject.SetActive(true);
-                    OnChangeMenuIconColor(MenuTypes.TodayMenu);
-                    break;
-                case MenuTypes.GameMenu:
-                    todayUI.gameObject.SetActive(false);
-                    testUI.gameObject.SetActive(false);
-                    gamesUI.gameObject.SetActive(true);
-                    OnChangeMenuIconColor(MenuTypes.GameMenu);
-                    break;
-                case MenuTypes.TestMenu:
-                    gamesUI.gameObject.SetActive(false);
-                    todayUI.gameObject.SetActive(false);
-                    testUI.gameObject.SetActive(true);
-                    OnChangeMenuIconColor(MenuTypes.TestMenu);
-                    break;
-
                 case MenuTypes.SettingsMenu:
                     gamesAndTestPanelUI.gameObject.SetActive(false);
                     settingsUI.gameObject.SetActive(true);

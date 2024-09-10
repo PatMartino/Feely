@@ -63,6 +63,8 @@ namespace Games.BallSort
             BallSortSignals.Instance.OnGetPreviousTubeList += OnGetPreviousTubeList;
             BallSortSignals.Instance.OnGetPreviousBallPlaces+= OnGetPreviousBallPlaces;
             BallSortSignals.Instance.OnGetLevelType += OnGetLevelType;
+            BallSortSignals.Instance.OnActivateGame += OnActivateGame;
+            BallSortSignals.Instance.OnDeActivateGame += OnDeActivateGame;
         }
 
         private void LevelLoader()
@@ -125,6 +127,16 @@ namespace Games.BallSort
                 Debug.LogWarning("LevelComplete");
                 LevelComplete();
             }
+        }
+
+        private void OnActivateGame()
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        private void OnDeActivateGame()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
         private void ResetAmounts()
@@ -200,6 +212,8 @@ namespace Games.BallSort
             BallSortSignals.Instance.OnGetPreviousBallPlaces -= OnGetPreviousBallPlaces;
             
             BallSortSignals.Instance.OnGetLevelType -= OnGetLevelType;
+            BallSortSignals.Instance.OnActivateGame -= OnActivateGame;
+            BallSortSignals.Instance.OnDeActivateGame -= OnDeActivateGame;
         }
 
         #endregion

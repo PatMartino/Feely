@@ -14,6 +14,7 @@ namespace Games.CardMatch
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI stageText;
         [SerializeField] private TextMeshProUGUI timeText;
+        [SerializeField] private GameObject pauseMenu;
 
         #endregion
 
@@ -52,6 +53,8 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnUpdateLevelText += OnUpdateLevelText;
             CardMatchSignals.Instance.OnUpdateStageText += OnUpdateStageText;
             CardMatchSignals.Instance.OnUpdateTime += OnUpdateTime;
+            CardMatchSignals.Instance.OnOpenPauseMenu += OnOpenPauseMenu;
+            CardMatchSignals.Instance.OnClosePauseMenu += OnClosePauseMenu;
         }
 
         private void OnInstantiateCards()
@@ -121,6 +124,16 @@ namespace Games.CardMatch
         {
             nextLevelButton.SetActive(status);
         }
+
+        private void OnOpenPauseMenu()
+        {
+            pauseMenu.SetActive(true);
+        }
+
+        private void OnClosePauseMenu()
+        {
+            pauseMenu.SetActive(false);
+        }
         
         private void UnSubscribeEvents()
         {
@@ -130,6 +143,8 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnUpdateLevelText -= OnUpdateLevelText;
             CardMatchSignals.Instance.OnUpdateStageText -= OnUpdateStageText;
             CardMatchSignals.Instance.OnUpdateTime -= OnUpdateTime;
+            CardMatchSignals.Instance.OnOpenPauseMenu -= OnOpenPauseMenu;
+            CardMatchSignals.Instance.OnClosePauseMenu -= OnClosePauseMenu;
         }
 
         #endregion

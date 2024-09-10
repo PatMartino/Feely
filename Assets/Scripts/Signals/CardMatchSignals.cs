@@ -33,5 +33,7 @@ namespace Signals
         public Func<int> OnGetSectionID = () => 0;
         public UnityAction OnUpdateTime = delegate {  };
         public UnityAction OnRestartLevel = delegate {  };
+        public UnityAction OnOpenPauseMenu = delegate {  };
+        public UnityAction OnClosePauseMenu = delegate {  };
     }
 }

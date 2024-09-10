@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb4d8f6a6d34cb2bfa65895da7e63cf, type: 3}
+  m_Name: BallSort
+  m_EditorClassIdentifier: 
+  gameName: Ball Sort
+  gameImage: {fileID: 21300000, guid: e9d7a608605ae9446ab967e211ccbe84, type: 3}
+  category: Free Games
+  firstSkill: {fileID: 11400000, guid: 746ed26dee8fbd1409ef46f216279440, type: 2}
+  secondSkill: {fileID: 11400000, guid: 3b67760338fff3949a8e423e4538fc8e, type: 2}
+  thirdSkill: {fileID: 11400000, guid: 2dfff542449ae5b43aa27909b9f890d1, type: 2}

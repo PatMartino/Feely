@@ -67,6 +67,12 @@ namespace Handlers
                 case MenuButtonType.CardMatchGame:
                     _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.CardMatch));
                     break;
+                case MenuButtonType.BallSortCoverPage:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.BallSortCoverPage));
+                    break;
+                case MenuButtonType.CardMatchCoverPage:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.CardMatchCoverPage));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

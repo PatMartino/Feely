@@ -10,6 +10,8 @@ namespace Enums
         SettingsBack,
         NotificationBack,
         BallSortGame,
-        CardMatchGame
+        CardMatchGame,
+        BallSortCoverPage,
+        CardMatchCoverPage
     }
 }

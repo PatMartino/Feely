@@ -95,6 +95,8 @@ namespace Games.BallSort
             }
         }
         
+        
+        
         private void UnSubscribeEvents()
         {
             BallSortSignals.Instance.OnGenerateLevel -= OnGenerateLevel;

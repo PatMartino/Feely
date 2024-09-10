@@ -49,6 +49,14 @@ namespace Games.BallSort
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenu));
                     _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnQuitGame?.Invoke());
                     break;
+                case GameButtonTypes.PauseGame:
+                    _button.onClick.AddListener(() => BallSortSignals.Instance.OnOpenPauseMenu?.Invoke());
+                    _button.onClick.AddListener(() => BallSortSignals.Instance.OnDeActivateGame?.Invoke());
+                    break;
+                case GameButtonTypes.ReturnGame:
+                    _button.onClick.AddListener(() => BallSortSignals.Instance.OnClosePauseMenu?.Invoke());
+                    _button.onClick.AddListener(() => BallSortSignals.Instance.OnActivateGame?.Invoke());
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -41,9 +41,6 @@ namespace Managers
                     UIDestroyer();
                     Instantiate(Resources.Load<GameObject>("UI/MainMenu New"),canvas.transform);
                     break;
-                case UIStates.BallSortInfo:
-                    UIDestroyer();
-                    break;
                 case UIStates.BallSortGame:
                     UIDestroyer();
                     Instantiate(Resources.Load<GameObject>("Games/BallSort/UI/SortPuzzle"),canvas.transform);
@@ -51,6 +48,14 @@ namespace Managers
                 case UIStates.CardMatchGame:
                     UIDestroyer();
                     Instantiate(Resources.Load<GameObject>("Games/CardMatch/UI/CardMatch"),canvas.transform);
+                    break;
+                case UIStates.BallSortCoverPage:
+                    Instantiate(Resources.Load<GameObject>("UI/CoverPages/BallSortCoverPage"),canvas.transform);
+                    UIDestroyer();
+                    break;
+                case UIStates.CardMatchCoverPage:
+                    Instantiate(Resources.Load<GameObject>("UI/CoverPages/CardMatchCoverPage"),canvas.transform);
+                    UIDestroyer();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);

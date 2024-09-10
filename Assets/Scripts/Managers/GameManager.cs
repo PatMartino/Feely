@@ -54,6 +54,7 @@ namespace Managers
 
         private void OnQuitGame()
         {
+            if (gameHolder.childCount == 0) return;
             Destroy(gameHolder.GetChild(0).gameObject);
         }
 

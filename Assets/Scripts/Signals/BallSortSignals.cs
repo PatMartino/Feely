@@ -24,6 +24,10 @@ namespace Signals
         public UnityAction OnGenerateLevel = delegate {  };
         public UnityAction OnAssignBallsToTubes = delegate {  };
         public UnityAction OnClearLevel = delegate {  };
+        public UnityAction OnOpenPauseMenu = delegate {  };
+        public UnityAction OnClosePauseMenu = delegate {  };
+        public UnityAction OnActivateGame = delegate {  };
+        public UnityAction OnDeActivateGame = delegate {  };
 
     }
 }

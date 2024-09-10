@@ -55,6 +55,7 @@ namespace GameObjects
             CoreGameSignals.Instance.OnGetRemainingTime += OnGetRemainingTime;
             CoreGameSignals.Instance.OnStartTimer += OnStartTimer;
             CoreGameSignals.Instance.OnStopTimer += OnStopTimer;
+            CoreGameSignals.Instance.OnContinuousTimer += OnContinuousTimer;
         }
 
         // Timer'ı başlatır
@@ -70,6 +71,11 @@ namespace GameObjects
         {
             _isRunning = false; 
         }
+        
+        private void OnContinuousTimer()
+        {
+            _isRunning = true; 
+        }
 
         private float OnGetRemainingTime()
         {
@@ -81,6 +87,7 @@ namespace GameObjects
             CoreGameSignals.Instance.OnGetRemainingTime -= OnGetRemainingTime;
             CoreGameSignals.Instance.OnStartTimer -= OnStartTimer;
             CoreGameSignals.Instance.OnStopTimer -= OnStopTimer;
+            CoreGameSignals.Instance.OnContinuousTimer -= OnContinuousTimer;
         }
 
         #endregion

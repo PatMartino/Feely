@@ -12,5 +12,6 @@ namespace Signals
         public UnityAction<float> OnStartTimer = delegate {  };
         public UnityAction OnStopTimer = delegate {  };
         public UnityAction OnQuitGame = delegate {  };
+        public UnityAction OnContinuousTimer = delegate {  };
     }
 }

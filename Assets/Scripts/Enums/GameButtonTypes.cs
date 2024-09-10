@@ -4,6 +4,8 @@
     {
         NextLevelButton,
         RestartButton,
-        QuitGame
+        QuitGame,
+        PauseGame,
+        ReturnGame
     }
 }
