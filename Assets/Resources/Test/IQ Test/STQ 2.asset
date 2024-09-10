@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ff91baa6db3c634db4367e153a0a51e, type: 3}
-  m_Name: STQ 1
+  m_Name: STQ 2
   m_EditorClassIdentifier: 
-  question: 9, 27, 63, __, 135
+  question: 14, 35, 70, __, 140
   image: {fileID: 0}
   answers:
-  - answerText: 87
+  - answerText: 89
     scorePoint: 0
-  - answerText: 94
+  - answerText: 95
     scorePoint: 0
-  - answerText: 99
+  - answerText: 100
+    scorePoint: 0
+  - answerText: 105
     scorePoint: 5
-  - answerText: 103
-    scorePoint: 0

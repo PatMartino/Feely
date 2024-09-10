@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
+  m_Name: High IQ
+  m_EditorClassIdentifier: 
+  resultTitle: 'Your IQ is: '
+  result: Individuals in this range demonstrate above-average cognitive abilities,
+    excelling in analytical thinking, problem-solving, and understanding complex
+    concepts. They often thrive in intellectual and academic pursuits, grasping new
+    ideas more quickly and with greater depth. Many in this range are creative, innovative,
+    and capable of high achievement in specialized fields, such as science, mathematics,
+    or the arts. Their intelligence allows them to excel in environments that require
+    strategic thinking and abstract reasoning.

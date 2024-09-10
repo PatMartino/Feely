@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
+  m_Name: Mid IQ
+  m_EditorClassIdentifier: 
+  resultTitle: 'Your IQ is: '
+  result: An IQ in this range is considered average, encompassing the majority of
+    the population. People in this range are typically capable of learning new information,
+    solving problems, and understanding abstract concepts at a level consistent with
+    societal expectations. They can perform well in most educational settings and
+    adapt to a variety of job roles. They may excel in areas where they have a particular
+    interest or passion but are generally well-equipped to handle day-to-day challenges.

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
+  m_Name: Low IQ
+  m_EditorClassIdentifier: 
+  resultTitle: 'Your IQ is: '
+  result: People with an IQ in this range may find learning and problem-solving more
+    challenging than average. They may struggle with abstract concepts and complex
+    tasks but often excel in practical, hands-on activities. With proper support
+    and a structured environment, they can learn new skills and function well in
+    everyday life. Many individuals in this range are capable of performing routine
+    tasks and holding jobs that require manual skills or repetitive tasks.

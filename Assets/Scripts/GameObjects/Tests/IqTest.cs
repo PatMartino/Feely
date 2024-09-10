@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameObjects.Tests
 {
     public class IqTest : ScaleTest
     {
         [SerializeField] private TMP_Text timerText;
+        [SerializeField] private int minIqScore;
+        [FormerlySerializedAs("expectedEndTimeInMin")] [SerializeField] private int estimatedEndTimeInMin;
         
         private float _timer;
         private bool _isPaused;
@@ -40,12 +43,11 @@ namespace GameObjects.Tests
         
         protected override void SetFinalResult()
         {
-            base.SetFinalResult();
-            var expectedEndTimeInMin = 1;
-            var endTime = _timer / 60 /expectedEndTimeInMin;
+            var endTime = _timer / 60 /estimatedEndTimeInMin;
             var scoreFloat = Score/((endTime * endTime /4) + (endTime / 4) + 0.5f);
-            Score = (int)scoreFloat;
-            FinalResult.result += Score;
+            Score = (int)scoreFloat + minIqScore;
+            base.SetFinalResult();
+            FinalResult.resultTitle += Score;
         }
     }
 }

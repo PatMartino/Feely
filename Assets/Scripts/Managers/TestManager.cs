@@ -27,7 +27,7 @@ namespace Managers
 
         private void Start()
         {
-            StartTest(Resources.Load<GameObject>("Test/Personality Test/PersonalityTest"));
+            StartTest(Resources.Load<GameObject>("Test/IQ Test/IQTest"));
         }
 
         public void StartTest(GameObject test)

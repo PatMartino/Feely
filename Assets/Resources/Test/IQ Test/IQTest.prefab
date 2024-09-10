@@ -58,14 +58,27 @@ MonoBehaviour:
   testName: IQ Test
   questions:
   - {fileID: 11400000, guid: 557d5cd5c9e98244699b9f446217fc0b, type: 2}
-  - {fileID: 11400000, guid: 557d5cd5c9e98244699b9f446217fc0b, type: 2}
-  - {fileID: 11400000, guid: 557d5cd5c9e98244699b9f446217fc0b, type: 2}
-  - {fileID: 11400000, guid: 557d5cd5c9e98244699b9f446217fc0b, type: 2}
-  - {fileID: 11400000, guid: 557d5cd5c9e98244699b9f446217fc0b, type: 2}
+  - {fileID: 11400000, guid: 3cbe8e61f737d9344a704a6d598af081, type: 2}
+  - {fileID: 11400000, guid: 6d5d9492e15abf64aabc8a51e302afdc, type: 2}
+  - {fileID: 11400000, guid: 94086a725136a2347a85078fc839d234, type: 2}
+  - {fileID: 11400000, guid: 417b77dbe6edbc843a43735431e3edc6, type: 2}
+  - {fileID: 11400000, guid: 2b109e6fc9e54ae4691ac87f2d5b649e, type: 2}
+  - {fileID: 11400000, guid: df602b90674b3344aa490ff2c2c0b575, type: 2}
+  - {fileID: 11400000, guid: c23d43042d4d1974d94b79c1b574bae0, type: 2}
+  - {fileID: 11400000, guid: 381285e588eebf14799518c5ebc49353, type: 2}
+  - {fileID: 11400000, guid: 58a1e993777273549a82c93fc2a87f65, type: 2}
   results:
   - result: {fileID: 11400000, guid: 63c2192502dd52049acdcc93c2f1b68a, type: 2}
     range:
       x: 0
+      y: 85
+  - result: {fileID: 11400000, guid: 6999ec92ccf58ce4eb110f96657fd879, type: 2}
+    range:
+      x: 86
+      y: 114
+  - result: {fileID: 11400000, guid: 2c750099c9d693c468367eef37b9efc4, type: 2}
+    range:
+      x: 115
       y: 200
   questionText: {fileID: 3951970796496025684}
   questionImage: {fileID: 1700935249533330018}
@@ -73,6 +86,8 @@ MonoBehaviour:
   resultTitle: {fileID: 6426163991021044327}
   resultText: {fileID: 189281306559296376}
   timerText: {fileID: 3141368736414594917}
+  minIqScore: 60
+  estimatedEndTimeInMin: 3
 --- !u!1 &2792242558545766309
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,8 +182,8 @@ RectTransform:
   m_Father: {fileID: 3098603257599160919}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9}
+  m_AnchorMin: {x: 0, y: 0.1}
+  m_AnchorMax: {x: 1, y: 0.8}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -652,10 +667,10 @@ RectTransform:
   m_Father: {fileID: 3098603257599160919}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.9}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4.5}
-  m_SizeDelta: {x: -120, y: -9}
+  m_AnchorMin: {x: 0, y: 0.8}
+  m_AnchorMax: {x: 1, y: 0.9}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3998889888644126298
 CanvasRenderer:
@@ -712,7 +727,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.7
+  m_fontSize: 58.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
