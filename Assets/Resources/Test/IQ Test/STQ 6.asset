@@ -16,7 +16,7 @@ MonoBehaviour:
   image: {fileID: 0}
   answers:
   - answerText: 5
-    scorePoint: 5
+    scorePoint: 6
   - answerText: 6
     scorePoint: 0
   - answerText: 8

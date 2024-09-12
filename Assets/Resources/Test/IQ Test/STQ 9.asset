@@ -15,11 +15,11 @@ MonoBehaviour:
   question: 1, 2, 5, 14, 41, __
   image: {fileID: 0}
   answers:
-  - answerText: 65
-    scorePoint: 0
-  - answerText: 78
-    scorePoint: 0
   - answerText: 81
-    scorePoint: 5
-  - answerText: 107
     scorePoint: 0
+  - answerText: 105
+    scorePoint: 0
+  - answerText: 111
+    scorePoint: 0
+  - answerText: 122
+    scorePoint: 6

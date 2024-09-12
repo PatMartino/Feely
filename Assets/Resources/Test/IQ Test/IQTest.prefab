@@ -57,9 +57,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testName: IQ Test
   questions:
-  - {fileID: 11400000, guid: 557d5cd5c9e98244699b9f446217fc0b, type: 2}
-  - {fileID: 11400000, guid: 3cbe8e61f737d9344a704a6d598af081, type: 2}
-  - {fileID: 11400000, guid: 6d5d9492e15abf64aabc8a51e302afdc, type: 2}
+  - {fileID: 11400000, guid: 97726694b50618e48b833f64948d6be7, type: 2}
+  - {fileID: 11400000, guid: d7202ce055e77344ebd2f87493c14830, type: 2}
+  - {fileID: 11400000, guid: 876f230bc95176b429076216b20825e3, type: 2}
   - {fileID: 11400000, guid: 94086a725136a2347a85078fc839d234, type: 2}
   - {fileID: 11400000, guid: 417b77dbe6edbc843a43735431e3edc6, type: 2}
   - {fileID: 11400000, guid: 2b109e6fc9e54ae4691ac87f2d5b649e, type: 2}
@@ -87,7 +87,7 @@ MonoBehaviour:
   resultText: {fileID: 189281306559296376}
   timerText: {fileID: 3141368736414594917}
   minIqScore: 60
-  estimatedEndTimeInMin: 3
+  estimatedEndTimeInMin: 5
 --- !u!1 &2792242558545766309
 GameObject:
   m_ObjectHideFlags: 0
