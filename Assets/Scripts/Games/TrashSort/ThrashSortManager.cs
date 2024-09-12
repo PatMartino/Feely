@@ -1,4 +1,5 @@
 using System;
+using Enums;
 using Signals;
 using UnityEngine;
 
@@ -40,22 +41,35 @@ namespace Games.TrashSort
             TrashSortSignals.Instance.OnPauseGame += OnPauseGame;
             TrashSortSignals.Instance.OnContinueGame += OnContinueGame;
             TrashSortSignals.Instance.OnGetGameState += OnGetGameState;
+            TrashSortSignals.Instance.OnNextLevel += OnNextLevel;
+            TrashSortSignals.Instance.OnPlayAgain += OnPlayAgain;
         }
 
         private void Play()
         {
-            TrashSortSignals.Instance.OnTrashGeneration?.Invoke();
-            TrashSortSignals.Instance.OnTrashGeneration?.Invoke();
-            TrashSortSignals.Instance.OnTrashGeneration?.Invoke();
-            TrashSortSignals.Instance.OnTrashGeneration?.Invoke();
-            TrashSortSignals.Instance.OnTrashGeneration?.Invoke();
             TrashSortSignals.Instance.OnAssignBins?.Invoke();
+            TrashSortSignals.Instance.OnStartLevel?.Invoke();
             TrashSortSignals.Instance.OnUpdateScore?.Invoke();
+            TrashSortSignals.Instance.OnStartTimer?.Invoke(40);
         }
 
         private void OnNextLevel()
         {
+            TrashSortSignals.Instance.OnAssignBins?.Invoke();
             _levelID++;
+            TrashSortSignals.Instance.OnStartLevel?.Invoke();
+            TrashSortSignals.Instance.OnStartTimer?.Invoke(40);
+            TrashSortSignals.Instance.OnResetScore?.Invoke();
+            TrashSortSignals.Instance.OnGameUI?.Invoke();
+        }
+
+        private void OnPlayAgain()
+        {
+            TrashSortSignals.Instance.OnAssignBins?.Invoke();
+            TrashSortSignals.Instance.OnStartLevel?.Invoke();
+            TrashSortSignals.Instance.OnStartTimer?.Invoke(40);
+            TrashSortSignals.Instance.OnResetScore?.Invoke();
+            TrashSortSignals.Instance.OnGameUI?.Invoke();
         }
 
         private int OnGetLevelID()
@@ -77,13 +91,15 @@ namespace Games.TrashSort
         {
             return _state;
         }
-        
+
         private void UnSubscribeEvents()
         {
             TrashSortSignals.Instance.OnGetLevelID -= OnGetLevelID;
             TrashSortSignals.Instance.OnPauseGame -= OnPauseGame;
             TrashSortSignals.Instance.OnContinueGame -= OnContinueGame;
             TrashSortSignals.Instance.OnGetGameState -= OnGetGameState;
+            TrashSortSignals.Instance.OnNextLevel -= OnNextLevel;
+            TrashSortSignals.Instance.OnPlayAgain -= OnPlayAgain;
         }
 
         #endregion

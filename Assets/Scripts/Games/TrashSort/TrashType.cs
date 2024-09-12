@@ -5,6 +5,7 @@
         Plastic,
         Paper,
         Organic,
-        Glass
+        Glass,
+        NoTrash
     }
 }

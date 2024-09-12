@@ -3,6 +3,9 @@
     public enum ButtonType
     {
         Left,
-        Right
+        Right,
+        NextLevel,
+        PlayAgain,
+        MainMenu
     }
 }

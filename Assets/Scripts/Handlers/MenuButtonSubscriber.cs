@@ -32,6 +32,11 @@ namespace Handlers
             SubscribeEvents();
         }
 
+        private void OnDisable()
+        {
+            UnSubscribeEvents();
+        }
+
         #endregion
 
         #region Functions
@@ -76,6 +81,11 @@ namespace Handlers
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void UnSubscribeEvents()
+        {
+            _button.onClick.RemoveAllListeners();
         }
 
         #endregion
