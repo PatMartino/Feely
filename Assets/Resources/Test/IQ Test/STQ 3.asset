@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff91baa6db3c634db4367e153a0a51e, type: 3}
   m_Name: STQ 3
   m_EditorClassIdentifier: 
-  question: 1, 2, 10, 37, 101, __
+  question: 1, 3, 12, 52, 265, __
   image: {fileID: 0}
   answers:
-  - answerText: 178
+  - answerText: 1188
     scorePoint: 0
-  - answerText: 206
-    scorePoint: 6
-  - answerText: 226
-    scorePoint: 6
-  - answerText: 402
+  - answerText: 1390
     scorePoint: 0
+  - answerText: 1489
+    scorePoint: 0
+  - answerText: 1596
+    scorePoint: 6
