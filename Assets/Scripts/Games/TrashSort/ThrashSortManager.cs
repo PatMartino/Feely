@@ -55,21 +55,26 @@ namespace Games.TrashSort
 
         private void OnNextLevel()
         {
+            if (_state != TrashSortGameStates.Pause) return;
             TrashSortSignals.Instance.OnAssignBins?.Invoke();
             _levelID++;
             TrashSortSignals.Instance.OnStartLevel?.Invoke();
             TrashSortSignals.Instance.OnStartTimer?.Invoke(40);
             TrashSortSignals.Instance.OnResetScore?.Invoke();
             TrashSortSignals.Instance.OnGameUI?.Invoke();
+            _state = TrashSortGameStates.Play;
+
         }
 
         private void OnPlayAgain()
         {
+            if (_state != TrashSortGameStates.Pause) return;
             TrashSortSignals.Instance.OnAssignBins?.Invoke();
             TrashSortSignals.Instance.OnStartLevel?.Invoke();
             TrashSortSignals.Instance.OnStartTimer?.Invoke(40);
             TrashSortSignals.Instance.OnResetScore?.Invoke();
             TrashSortSignals.Instance.OnGameUI?.Invoke();
+            _state = TrashSortGameStates.Play;
         }
 
         private int OnGetLevelID()

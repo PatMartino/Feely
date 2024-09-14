@@ -50,8 +50,11 @@ namespace Games.TrashSort
                     _button.onClick.AddListener(() => TrashSortSignals.Instance.OnPlayAgain?.Invoke());
                     break;
                 case ButtonType.MainMenu:
-                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenu));
-                    _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnQuitGame?.Invoke());
+                    if (TrashSortSignals.Instance.OnGetGameState() == TrashSortGameStates.Pause)
+                    {
+                        _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MainMenu));
+                        _button.onClick.AddListener(() =>CoreGameSignals.Instance.OnQuitGame?.Invoke());
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

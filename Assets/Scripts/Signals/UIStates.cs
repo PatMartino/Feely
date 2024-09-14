@@ -7,6 +7,10 @@
         BallSortCoverPage,
         BallSortLevelComplete,
         CardMatchGame,
-        CardMatchCoverPage
+        CardMatchCoverPage,
+        Test,
+        TestToMainMenu,
+        TrashSortGame,
+        TrashSortCoverPage
     }
 }

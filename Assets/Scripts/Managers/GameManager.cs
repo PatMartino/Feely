@@ -47,6 +47,10 @@ namespace Managers
                     UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.CardMatchGame);
                     Instantiate(Resources.Load<GameObject>("Games/CardMatch/GameManagerObject/CardMatch"),gameHolder);
                     break;
+                case GamesAndTestsNames.TrashSort:
+                    UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.TrashSortGame);
+                    Instantiate(Resources.Load<GameObject>("Games/TrashSort/GameManager/TrashSort"),gameHolder);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

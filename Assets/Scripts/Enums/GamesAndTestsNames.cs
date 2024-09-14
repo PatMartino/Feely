@@ -3,6 +3,7 @@
     public enum GamesAndTestsNames
     {
         BallSort,
-        CardMatch
+        CardMatch,
+        TrashSort
     }
 }

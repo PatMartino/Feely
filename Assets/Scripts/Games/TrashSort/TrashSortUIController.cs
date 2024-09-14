@@ -58,6 +58,7 @@ namespace Games.TrashSort
             TrashSortSignals.Instance.OnGameUI += OnGameUI;
             TrashSortSignals.Instance.OnEndGameUI += OnEndGameUI;
             TrashSortSignals.Instance.OnActivateBins += OnActivateBins;
+            TrashSortSignals.Instance.OnEndGameUI += OnResetBinsTransforms;
         }
 
         private void OnSwapBinsUI()
@@ -95,6 +96,12 @@ namespace Games.TrashSort
             organicBin.SetActive(true);
             glassBin.SetActive(true);
         }
+
+        private void OnResetBinsTransforms()
+        {
+            plasticBin.transform.position = bin1Transform.position;
+            paperBin.transform.position = bin2Transform.position;
+        }
         
         private void UnSubscribeEvents()
         {
@@ -104,6 +111,8 @@ namespace Games.TrashSort
             TrashSortSignals.Instance.OnGameUI -= OnGameUI;
             TrashSortSignals.Instance.OnEndGameUI -= OnEndGameUI;
             TrashSortSignals.Instance.OnActivateBins -= OnActivateBins;
+            
+            TrashSortSignals.Instance.OnEndGameUI -= OnResetBinsTransforms;
         }
 
         #endregion

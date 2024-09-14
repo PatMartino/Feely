@@ -1,5 +1,6 @@
 using System;
 using Enums;
+using Managers;
 using Signals;
 using UnityEngine;
 using UnityEngine.UI;
@@ -77,6 +78,24 @@ namespace Handlers
                     break;
                 case MenuButtonType.CardMatchCoverPage:
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.CardMatchCoverPage));
+                    break;
+                case MenuButtonType.IqTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/IQ Test/IQTest")));
+                    break;
+                case MenuButtonType.AnxietyTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Anxiety Test/AnxietyTest")));
+                    break;
+                case MenuButtonType.PersonalityTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Personality Test/PersonalityTest")));
+                    break;
+                case MenuButtonType.TrashSortGame:
+                    _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.TrashSort));
+                    break;
+                case MenuButtonType.TrashSortCoverPage:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.TrashSortCoverPage));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

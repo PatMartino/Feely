@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Signals;
 using UnityEngine;
 
@@ -57,6 +58,21 @@ namespace Managers
                     Instantiate(Resources.Load<GameObject>("UI/CoverPages/CardMatchCoverPage"),canvas.transform);
                     UIDestroyer();
                     break;
+                case UIStates.Test:
+                    StartCoroutine(WaitForDeActivate());
+                    Instantiate(Resources.Load<GameObject>("Test/TestManagerFolder/TestManager"),canvas.transform);
+                    break;
+                case UIStates.TestToMainMenu:
+                    canvas.transform.GetChild(0).gameObject.SetActive(true);
+                    break;
+                case UIStates.TrashSortGame:
+                    UIDestroyer();
+                    Instantiate(Resources.Load<GameObject>("Games/TrashSort/UI/TrashSort"),canvas.transform);
+                    break;
+                case UIStates.TrashSortCoverPage:
+                    Instantiate(Resources.Load<GameObject>("UI/CoverPages/TrashSortCoverPage"),canvas.transform);
+                    UIDestroyer();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
@@ -66,7 +82,13 @@ namespace Managers
         {
             Destroy(canvas.transform.GetChild(0).gameObject);
         }
-        
+
+        private IEnumerator WaitForDeActivate()
+        {
+            yield return new WaitForSeconds(1);
+            canvas.transform.GetChild(0).gameObject.SetActive(false);
+        }
+
         private void UnSubscribeEvents()
         {
             UISignals.Instance.OnMenuUIManagement -= OnMenuUIManagement;

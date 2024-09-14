@@ -1,6 +1,7 @@
 using AbstractClasses;
 using DG.Tweening;
 using Extensions;
+using Signals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,11 +26,6 @@ namespace Managers
 
         public UnityAction<int> OnAnswerSelected;
 
-        private void Start()
-        {
-            StartTest(Resources.Load<GameObject>("Test/IQ Test/IQTest"));
-        }
-
         public void StartTest(GameObject test)
         {
             _currentTest = Instantiate(test, testHolder.transform).GetComponent<TestBase>();
@@ -47,7 +43,8 @@ namespace Managers
 
         public void EndTest()
         {
-            testMenu.transform.DOMoveY(-transform.position.y, 1f).SetEase(Ease.InQuint).OnComplete(() =>
+            UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.TestToMainMenu);
+            testMenu.transform.DOMoveY(-2380, 1f).SetEase(Ease.InQuint).OnComplete(() =>
             {
                 testMenu.SetActive(false);
                 pauseMenu.SetActive(false);
@@ -55,6 +52,7 @@ namespace Managers
                 {
                     Destroy(go.gameObject);
                 }
+                
             });
             
             foreach (Image image in testMenu.GetComponentsInChildren<Image>())

@@ -83,8 +83,10 @@ namespace Games.TrashSort
             {
                 TrashSortSignals.Instance.OnActivateBins?.Invoke();
             }
-
-            OnTrashGeneration();
+            var trash = Object.Instantiate(Resources.Load<GameObject>("Games/TrashSort/TrashObject/Trash"),trashHolder);
+            trash.GetComponent<TrashObject>().OnSetType?.Invoke(TrashType.Plastic);
+            trashes.Add(trash);
+            trash.transform.position = trashTransforms[trashes.Count-1].position;
             OnTrashGeneration();
             OnTrashGeneration();
             OnTrashGeneration();
@@ -262,6 +264,7 @@ namespace Games.TrashSort
 
         private void OnAssignBins()
         {
+            _trashCount = 0;
             trashes.Clear();
             _leftSideBin.Clear();
             _rightSideBin.Clear();
@@ -286,6 +289,14 @@ namespace Games.TrashSort
             _levelStatus = TrashSortSignals.Instance.OnGetScore() >= _necessaryScore ? LevelStatus.Complete : LevelStatus.Failed;
             DestroyAllTrash();
             TrashSortSignals.Instance.OnEndGameUI?.Invoke();
+            TrashSortSignals.Instance.OnContinueGame?.Invoke();
+            StartCoroutine(Wait());
+        }
+
+        private IEnumerator Wait()
+        {
+            yield return new WaitForSeconds(1.5f);
+            TrashSortSignals.Instance.OnPauseGame?.Invoke();
         }
 
         private void CheckItemIsNotTrash()

@@ -12,6 +12,11 @@ namespace Enums
         BallSortGame,
         CardMatchGame,
         BallSortCoverPage,
-        CardMatchCoverPage
+        CardMatchCoverPage,
+        IqTest,
+        AnxietyTest,
+        PersonalityTest,
+        TrashSortGame,
+        TrashSortCoverPage
     }
 }

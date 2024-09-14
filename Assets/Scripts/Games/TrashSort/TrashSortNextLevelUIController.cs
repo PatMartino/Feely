@@ -62,7 +62,7 @@ namespace Games.TrashSort
             }
             scoreText.text = TrashSortSignals.Instance.OnGetScore().ToString();
             difficultyLevelText.text = TrashSortSignals.Instance.OnGetLevelID().ToString();
-            difficultyText.text = "Collect more than 1750 points in 60 seconds to level up";
+            difficultyText.text = "Collect more than 1000 points in 40 seconds to level up";
             accurateAmountText.text = TrashSortSignals.Instance.OnGetAccurateAmount().ToString();
             wrongAmountText.text = TrashSortSignals.Instance.OnGetWrongAmount().ToString();
             accuracyAmountText.text = TrashSortSignals.Instance.OnGetAccuracy().ToString();
