@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2120024459949413185, guid: 67fbf59eb7694e3498e8d278befa1ff4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2572289115135196455, guid: 67fbf59eb7694e3498e8d278befa1ff4, type: 3}
       propertyPath: m_Name
       value: MainMenu New
@@ -792,6 +796,14 @@ PrefabInstance:
     - target: {fileID: 3854522471592599209, guid: 67fbf59eb7694e3498e8d278befa1ff4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618203358579430728, guid: 67fbf59eb7694e3498e8d278befa1ff4, type: 3}
+      propertyPath: tweenTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618203358579430728, guid: 67fbf59eb7694e3498e8d278befa1ff4, type: 3}
+      propertyPath: tweenType
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4901519012920511341, guid: 67fbf59eb7694e3498e8d278befa1ff4, type: 3}
       propertyPath: m_AnchorMax.y
