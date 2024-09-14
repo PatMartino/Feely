@@ -72,7 +72,7 @@ namespace Managers
         {
             pauseMenu.SetActive(true);
             _currentTest.PauseTest();
-            pauseMenu.GetComponentInChildren<Image>().DOFade(1, 0.5f).SetEase(Ease.Linear).From(0);
+            pauseMenu.GetComponentInChildren<Image>().DOFade(1, 0.2f).From(0);
         }
 
         public void UnpauseTest()
