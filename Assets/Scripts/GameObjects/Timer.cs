@@ -26,7 +26,6 @@ namespace GameObjects
             if (_isRunning)
             {
                 _remainingTime -= Time.deltaTime;
-                Debug.Log(_remainingTime);
                 CardMatchSignals.Instance.OnUpdateTime?.Invoke();// Kalan süreyi güncelle
 
                 if (_remainingTime <= 0f)

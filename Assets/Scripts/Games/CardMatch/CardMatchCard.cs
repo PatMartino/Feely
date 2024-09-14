@@ -46,6 +46,7 @@ namespace Games.CardMatch
             OnSetImageFalse += SetImageFalse;
             OnSetIsMatchTrue += SetIsMatchedTrue;
             OnSetIsSelectTrue += SetIsSelectTrue;
+            image = transform.GetChild(0).gameObject.GetComponent<Image>();
             StartCoroutine(DisableImages());
         }
 
@@ -60,7 +61,8 @@ namespace Games.CardMatch
 
         private void Init()
         {
-            _sprite = _type switch
+            Debug.LogWarning("Images");
+                image.sprite = _type switch
             {
                 CardTypes.Red => Resources.Load<Sprite>("Games/CardMatch/Images/Image1"),
                 CardTypes.Blue => Resources.Load<Sprite>("Games/CardMatch/Images/Image2"),
