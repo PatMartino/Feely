@@ -9,7 +9,11 @@ namespace Games.CardMatch
         Magenta,
         Cyan,
         Black,
-        Grey
+        Grey,
+        Orange,
+        White,
+        Purple,
+        Bum
 
     }
 }

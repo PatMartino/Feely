@@ -16,7 +16,7 @@ namespace Games.CardMatch
         private float _timeDuration = 120f;
         private int _difficultLevel;
         private CardMatchLevelData _levelData;
-        private CardTypes[] _allCardTypes = new CardTypes[] { CardTypes.Blue , CardTypes.Green, CardTypes.Red, CardTypes.Magenta, CardTypes.Yellow, CardTypes.Cyan, CardTypes.Black,CardTypes.Grey};
+        private CardTypes[] _allCardTypes = new CardTypes[] { CardTypes.Blue , CardTypes.Green, CardTypes.Red, CardTypes.Magenta, CardTypes.Yellow, CardTypes.Cyan, CardTypes.Black,CardTypes.Grey, CardTypes.Bum,CardTypes.Orange,CardTypes.White,CardTypes.Purple};
         private List<CardTypes> _levelCards = new List<CardTypes>();
         private List<CardTypes> selectedCardTypes =new List<CardTypes>();
         private bool _isSelect;

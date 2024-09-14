@@ -20,6 +20,7 @@ namespace Games.CardMatch
         private CardTypes _type;
         private bool _isMatched;
         private bool _isSelect;
+        private Sprite _sprite;
 
         #endregion
 
@@ -33,6 +34,11 @@ namespace Games.CardMatch
         #endregion
 
         #region OnEnable
+
+        private void Awake()
+        {
+            _sprite = GetComponent<Image>().sprite;
+        }
 
         private void OnEnable()
         {
@@ -54,16 +60,20 @@ namespace Games.CardMatch
 
         private void Init()
         {
-            image.color = _type switch
+            _sprite = _type switch
             {
-                CardTypes.Red => Color.red,
-                CardTypes.Blue => Color.blue,
-                CardTypes.Green => Color.green,
-                CardTypes.Yellow => Color.yellow,
-                CardTypes.Magenta => Color.magenta,
-                CardTypes.Cyan => Color.cyan,
-                CardTypes.Black => Color.black,
-                CardTypes.Grey => Color.grey,
+                CardTypes.Red => Resources.Load<Sprite>("Games/CardMatch/Images/Image1"),
+                CardTypes.Blue => Resources.Load<Sprite>("Games/CardMatch/Images/Image2"),
+                CardTypes.Green => Resources.Load<Sprite>("Games/CardMatch/Images/Image3"),
+                CardTypes.Yellow => Resources.Load<Sprite>("Games/CardMatch/Images/Image4"),
+                CardTypes.Magenta => Resources.Load<Sprite>("Games/CardMatch/Images/Image5"),
+                CardTypes.Cyan => Resources.Load<Sprite>("Games/CardMatch/Images/Image6"),
+                CardTypes.Black => Resources.Load<Sprite>("Games/CardMatch/Images/Image7"),
+                CardTypes.Grey => Resources.Load<Sprite>("Games/CardMatch/Images/Image8"),
+                CardTypes.Orange => Resources.Load<Sprite>("Games/CardMatch/Images/Image9"),
+                CardTypes.White => Resources.Load<Sprite>("Games/CardMatch/Images/Image10"),
+                CardTypes.Purple => Resources.Load<Sprite>("Games/CardMatch/Images/Image11"),
+                CardTypes.Bum => Resources.Load<Sprite>("Games/CardMatch/Images/Image12"),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
