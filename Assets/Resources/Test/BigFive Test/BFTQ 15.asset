@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ae8ad5beac4e2e959d2a1f45d1cfd6, type: 3}
+  m_Name: BFTQ 15
+  m_EditorClassIdentifier: 
+  question: I am generally outgoing and talkative.
+  image: {fileID: 0}
+  answers:
+  - answerText: Totally Agree
+    pointOpenness: 0
+    pointConscientiousness: 0
+    pointExtraversion: 4
+    pointAgreeableness: 0
+    pointNeuroticism: 0
+  - answerText: Agree
+    pointOpenness: 0
+    pointConscientiousness: 0
+    pointExtraversion: 3
+    pointAgreeableness: 0
+    pointNeuroticism: 0
+  - answerText: Neutral
+    pointOpenness: 0
+    pointConscientiousness: 0
+    pointExtraversion: 2
+    pointAgreeableness: 0
+    pointNeuroticism: 0
+  - answerText: Disagree
+    pointOpenness: 0
+    pointConscientiousness: 0
+    pointExtraversion: 1
+    pointAgreeableness: 0
+    pointNeuroticism: 0
+  - answerText: Totally Disagree
+    pointOpenness: 0
+    pointConscientiousness: 0
+    pointExtraversion: 0
+    pointAgreeableness: 0
+    pointNeuroticism: 0

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using AbstractClasses;
 using Data.Tests;
@@ -9,9 +8,9 @@ using UnityEngine.UI;
 
 namespace GameObjects.Tests
 {
-    public class PersonalityTest : TestBase
+    public class BigFiveTest : TestBase
     {
-        [SerializeField] private List<PersonalityTestResult> results;
+        [SerializeField] private List<BigFiveTestResult> results;
         
         [SerializeField] private TMP_Text questionText;
         [SerializeField] private Image questionImage;
@@ -19,49 +18,39 @@ namespace GameObjects.Tests
         [SerializeField] private TMP_Text resultTitle;
         [SerializeField] private TMP_Text resultText;
         [SerializeField] private GameObject resultPanel;
+        [SerializeField] private BigFiveTestTrait traitPentagon;
         
-        [SerializeField] private PersonalityTestTrait traitEToI;
-        [SerializeField] private PersonalityTestTrait traitNToS;
-        [SerializeField] private PersonalityTestTrait traitTToF;
-        [SerializeField] private PersonalityTestTrait traitJToP;
+        private List<BigFiveTestAnswer> _answers = new List<BigFiveTestAnswer>(); 
         
-        private List<PersonalityTestAnswer> _answers = new List<PersonalityTestAnswer>(); 
+        private int _scoreOpenness;
+        private int _scoreConscientiousness;
+        private int _scoreExtraversion;
+        private int _scoreAgreeableness;
+        private int _scoreNeuroticism;
         
-        private int _scoreEToI;
-        private int _scoreNToS;
-        private int _scoreTToF;
-        private int _scoreJToP;
-        private int _scoreAToT;
-        
-        private char _typeEOrI;
-        private char _typeNOrS;
-        private char _typeTOrF;
-        private char _typeJOrP;
-        private char _typeAOrT;
         
         public override void ResetTest()
         {
             base.ResetTest();
-            resultPanel.SetActive(false);
-            _scoreEToI = 0;
-            _scoreNToS = 0;
-            _scoreTToF = 0;
-            _scoreJToP = 0;
-            _scoreAToT = 0;
+            _scoreOpenness = 0;
+            _scoreConscientiousness = 0;
+            _scoreExtraversion = 0;
+            _scoreAgreeableness = 0;
+            _scoreNeuroticism = 0;
             _answers.Clear();
         }
 
         public override bool ConfirmAnswer()
         {
-            PersonalityTestQuestion currentQuestion = (PersonalityTestQuestion)questions[(int)CurrentQuestionIndex];
-            PersonalityTestAnswer selectedAnswer = currentQuestion.answers[SelectedAnswerIndex];
+            BigFiveTestQuestion currentQuestion = (BigFiveTestQuestion)questions[(int)CurrentQuestionIndex];
+            BigFiveTestAnswer selectedAnswer = currentQuestion.answers[SelectedAnswerIndex];
 
             _answers.Add(selectedAnswer);
-            _scoreEToI += selectedAnswer.pointEToI;
-            _scoreNToS += selectedAnswer.pointNToS;
-            _scoreJToP += selectedAnswer.pointJToP;
-            _scoreTToF += selectedAnswer.pointTToF;
-            _scoreAToT += selectedAnswer.pointAToT;
+            _scoreOpenness += selectedAnswer.pointOpenness;
+            _scoreConscientiousness += selectedAnswer.pointConscientiousness;
+            _scoreExtraversion += selectedAnswer.pointExtraversion;
+            _scoreAgreeableness += selectedAnswer.pointAgreeableness;
+            _scoreNeuroticism += selectedAnswer.pointNeuroticism;
             
             return base.ConfirmAnswer();
         }
@@ -70,11 +59,11 @@ namespace GameObjects.Tests
         {
             var lastPoint = _answers[(int)CurrentQuestionIndex - 1];
             
-            _scoreEToI -= lastPoint.pointEToI;
-            _scoreNToS -= lastPoint.pointNToS;
-            _scoreJToP -= lastPoint.pointJToP;
-            _scoreTToF -= lastPoint.pointTToF;
-            _scoreAToT -= lastPoint.pointAToT;
+            _scoreOpenness -= lastPoint.pointOpenness;
+            _scoreConscientiousness -= lastPoint.pointConscientiousness;
+            _scoreExtraversion -= lastPoint.pointExtraversion;
+            _scoreAgreeableness -= lastPoint.pointAgreeableness;
+            _scoreNeuroticism -= lastPoint.pointNeuroticism;
             
             _answers.RemoveAt((int)CurrentQuestionIndex - 1);
             base.RemoveAnswer();
@@ -118,30 +107,27 @@ namespace GameObjects.Tests
             resultTitle.text = FinalResult.resultTitle;
             resultText.text = FinalResult.result;
             resultPanel.SetActive(true);
-
-            traitEToI.SetTraitUp(_scoreEToI);
-            traitNToS.SetTraitUp(_scoreNToS);
-            traitTToF.SetTraitUp(_scoreTToF);
-            traitJToP.SetTraitUp(_scoreJToP);
+            
+            traitPentagon.SetTraitIndicator(_scoreOpenness, _scoreConscientiousness, _scoreExtraversion, _scoreAgreeableness, _scoreNeuroticism);
         }
         
         protected override void SetFinalResult()
         {
             if (FinalResult == null) FinalResult = ScriptableObject.CreateInstance<TestResult>();
+
+            var maxScore = Mathf.Max(_scoreOpenness, _scoreConscientiousness, _scoreExtraversion, _scoreAgreeableness, _scoreNeuroticism);
+
+            string finalResultString = "";
             
-            _typeEOrI = _scoreEToI < 0 ? 'E' : 'I';
-            _typeNOrS = _scoreNToS < 0 ? 'N' : 'S';
-            _typeTOrF = _scoreTToF < 0 ? 'T' : 'F';
-            _typeJOrP = _scoreJToP < 0 ? 'J' : 'P';
-            _typeAOrT = _scoreAToT < 0 ? 'A' : 'T';
+            if (maxScore == _scoreOpenness) finalResultString = "Openness";
+            else if (maxScore == _scoreConscientiousness) finalResultString = "Conscientiousness";
+            else if (maxScore == _scoreExtraversion) finalResultString = "Extraversion";
+            else if (maxScore == _scoreAgreeableness) finalResultString = "Agreeableness";
+            else if (maxScore == _scoreNeuroticism) finalResultString = "Neuroticism";
             
-            foreach (PersonalityTestResult result in results)
+            foreach (BigFiveTestResult result in results)
             {
-                if (Char.ToUpper(result.typeEOrI) == _typeEOrI &&
-                    Char.ToUpper(result.typeNOrS) == _typeNOrS &&
-                    Char.ToUpper(result.typeTOrF) == _typeTOrF &&
-                    Char.ToUpper(result.typeJOrP) == _typeJOrP &&
-                    Char.ToUpper(result.typeAOrT) == _typeAOrT)
+                if (result.personalityType == finalResultString)
                 {
                     var correctResult = result.result;
                     

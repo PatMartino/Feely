@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
+  m_Name: Somewhat Social
+  m_EditorClassIdentifier: 
+  resultTitle: Somewhat Social
+  result: A somewhat social person typically feels comfortable in small social groups
+    and communicates with others carefully. You may often prefer to be alone, but
+    when the right opportunities arise, you're open to social interactions. Participation
+    in social events depends on your personal comfort level.
