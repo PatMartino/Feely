@@ -91,6 +91,14 @@ namespace Handlers
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
                     _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Personality Test/PersonalityTest")));
                     break;
+                case MenuButtonType.SociabilityTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Sociability (Ryakhovsky) Test/SociabilityTest")));
+                    break;
+                case MenuButtonType.BigFiveTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/BigFive Test/BigFiveTest")));
+                    break;
                 case MenuButtonType.TrashSortGame:
                     _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.TrashSort));
                     break;

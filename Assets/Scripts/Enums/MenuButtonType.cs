@@ -17,6 +17,8 @@ namespace Enums
         AnxietyTest,
         PersonalityTest,
         TrashSortGame,
-        TrashSortCoverPage
+        TrashSortCoverPage,
+        SociabilityTest,
+        BigFiveTest
     }
 }

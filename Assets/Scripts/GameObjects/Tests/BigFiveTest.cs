@@ -81,7 +81,7 @@ namespace GameObjects.Tests
             }
             else questionImage.enabled = false;
             
-            PersonalityTestQuestion currentQuestion = (PersonalityTestQuestion)questions[(int)CurrentQuestionIndex];
+            BigFiveTestQuestion currentQuestion = (BigFiveTestQuestion)questions[(int)CurrentQuestionIndex];
             var answerList = currentQuestion.answers.ConvertAll(answer => answer.answerText);
             
             foreach (Transform go in answers.transform)
