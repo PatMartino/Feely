@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4cc8e80f795ae4185c39efa38b5894, type: 3}
+  m_Name: High Aggression
+  m_EditorClassIdentifier: 
+  resultTitle: High Aggression
+  result: You tend to experience strong feelings of anger and aggression, especially
+    in challenging or frustrating situations. You may find it difficult to control
+    your temper and can sometimes react impulsively. Conflicts may escalate quickly
+    for you, and you might struggle with managing your emotions during stressful
+    encounters.
