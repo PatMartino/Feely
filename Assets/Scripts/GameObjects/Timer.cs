@@ -34,6 +34,7 @@ namespace GameObjects
                     _remainingTime = 0f; // Kalan süreyi sıfırla
                     
                     CardMatchSignals.Instance.OnRestartLevel?.Invoke();
+                    MathFundamentalSignals.Instance.OnLevelFailed?.Invoke();
                     // Timer tamamlandığında olayı tetikle
                     
                 }

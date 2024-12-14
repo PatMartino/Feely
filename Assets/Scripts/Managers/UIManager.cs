@@ -73,6 +73,12 @@ namespace Managers
                     Instantiate(Resources.Load<GameObject>("UI/CoverPages/TrashSortCoverPage"),canvas.transform);
                     UIDestroyer();
                     break;
+                case UIStates.MathFundamentalGame:
+                    Instantiate(Resources.Load<GameObject>("Games/MathFundamental/UI/MathFundamentalUI"),canvas.transform);
+                    break;
+                case UIStates.MathFundamentalCoverPage:
+                    Instantiate(Resources.Load<GameObject>("UI/CoverPages/MathFundamentalCoverPage"),canvas.transform);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }

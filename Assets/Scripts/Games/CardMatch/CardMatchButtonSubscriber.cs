@@ -53,6 +53,7 @@ namespace Games.CardMatch
                     _button.onClick.AddListener(() => CardMatchSignals.Instance.OnClosePauseMenu.Invoke());
                     _button.onClick.AddListener(() => CoreGameSignals.Instance.OnContinuousTimer.Invoke());
                     break;
+                case GameButtonTypes.RestartButton:
                 default:
                     throw new ArgumentOutOfRangeException();
             }

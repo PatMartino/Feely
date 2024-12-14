@@ -105,6 +105,12 @@ namespace Handlers
                 case MenuButtonType.TrashSortCoverPage:
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.TrashSortCoverPage));
                     break;
+                case MenuButtonType.MathFundamentalGame:
+                    _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.MathFundamental));
+                    break;
+                case MenuButtonType.MathFundamentalCoverPage:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MathFundamentalCoverPage));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -4,6 +4,7 @@
     {
         BallSort,
         CardMatch,
-        TrashSort
+        TrashSort,
+        MathFundamental
     }
 }
