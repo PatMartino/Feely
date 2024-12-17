@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff91baa6db3c634db4367e153a0a51e, type: 3}
+  m_Name: OPTQ 8
+  m_EditorClassIdentifier: 
+  question: When you have a good life and good health, do you believe that?
+  image: {fileID: 0}
+  answers:
+  - answerText: Everybody can achieve success.
+    scorePoint: 3
+  - answerText: Success depends on connections, rather than skills.
+    scorePoint: 2
+  - answerText: There is no quick success.
+    scorePoint: 1
+  - answerText: Success depends on luck.
+    scorePoint: 0
