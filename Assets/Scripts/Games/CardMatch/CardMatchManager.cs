@@ -11,7 +11,7 @@ namespace Games.CardMatch
     {
         #region Private Field
 
-        private int _levelID = 1;
+        private int _levelID;
         private int _section = 1;
         private float _timeDuration = 120f;
         private int _difficultLevel;
@@ -33,6 +33,7 @@ namespace Games.CardMatch
         private void OnEnable()
         {
             SubscribeEvents();
+            LoadLevel();
         }
 
         private void Start()
@@ -72,10 +73,16 @@ namespace Games.CardMatch
             CardMatchSignals.Instance.OnRestartLevel += OnRestartLevel;
         }
 
+        private void LoadLevel()
+        {
+            _levelID = ES3.KeyExists("CardMatchLevelID") ? ES3.Load<int>("CardMatchLevelID") : 1;
+        }
+
         private void OnNextLevel()
         {
             _levelCards.Clear();
             _levelID++;
+            ES3.Save("CardMatchLevelID",_levelID);
             _section = 1;
             _canSelect = true;
             _isSelect = false;

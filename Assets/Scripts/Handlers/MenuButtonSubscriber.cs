@@ -111,6 +111,18 @@ namespace Handlers
                 case MenuButtonType.MathFundamentalCoverPage:
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.MathFundamentalCoverPage));
                     break;
+                case MenuButtonType.AggressionTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Aggression (Assinger) Test/AggressionTest")));
+                    break;
+                case MenuButtonType.CapitalTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Capital Test/Capital Test")));
+                    break;
+                case MenuButtonType.EmotionalTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Emotional Stability (Neuroticism) Test/EmotionalStabilityTest")));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

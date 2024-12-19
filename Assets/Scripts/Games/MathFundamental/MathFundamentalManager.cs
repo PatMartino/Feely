@@ -33,6 +33,7 @@ namespace Games.MathFundamental
         private void OnEnable()
         {
             SubscribeEvents();
+            LoadLevel();
         }
 
         private void Start()
@@ -220,6 +221,7 @@ namespace Games.MathFundamental
             {
                 _section = 0;
                 _levelID++;
+                ES3.Save("MathFundamentalLevelID", _levelID);
                 _levelStatus = LevelStatus.Complete;
                 CoreGameSignals.Instance.OnStopTimer?.Invoke();
                 MathFundamentalSignals.Instance.OnNextLevelUI?.Invoke();
@@ -228,6 +230,11 @@ namespace Games.MathFundamental
             {
                 QuestionGenerator();
             }
+        }
+        
+        private void LoadLevel()
+        {
+            _levelID = ES3.KeyExists("MathFundamentalLevelID") ? ES3.Load<int>("MathFundamentalLevelID") : 1;
         }
 
         private void OnNextLevel()

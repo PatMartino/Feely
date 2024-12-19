@@ -21,6 +21,10 @@ namespace Enums
         SociabilityTest,
         BigFiveTest,
         MathFundamentalGame,
-        MathFundamentalCoverPage
+        MathFundamentalCoverPage,
+        AggressionTest,
+        CapitalTest,
+        EmotionalTest,
+        
     }
 }

@@ -18,7 +18,7 @@ namespace Games.BallSort
         #region Private Field
 
         private bool _isSelect;
-        private int _levelID =1;
+        private int _levelID;
         private int _levelType;
         private GameObject _ball;
         private TubeData _tubeData;
@@ -36,6 +36,7 @@ namespace Games.BallSort
         private void OnEnable()
         {
             SubscribeEvents();
+            LoadLevel();
             LevelLoader();
         }
 
@@ -67,6 +68,11 @@ namespace Games.BallSort
             BallSortSignals.Instance.OnDeActivateGame += OnDeActivateGame;
         }
 
+        private void LoadLevel()
+        {
+            _levelID = ES3.KeyExists("BallSortLevelID") ? ES3.Load<int>("BallSortLevelID") : 1;
+        }
+
         private void LevelLoader()
         {
             RandomLevelGenerator();
@@ -93,6 +99,7 @@ namespace Games.BallSort
         {
             LevelDestroyer();
             _levelID++;
+            ES3.Save("BallSortLevelID", _levelID);
             ResetAmounts();
             LevelLoader();
             UISignals.Instance.OnStartBallSortLevel?.Invoke();
