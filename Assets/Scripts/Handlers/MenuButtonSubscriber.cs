@@ -123,6 +123,14 @@ namespace Handlers
                     _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
                     _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Emotional Stability (Neuroticism) Test/EmotionalStabilityTest")));
                     break;
+                case MenuButtonType.OptimistTest:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Optimist-Pessimist Test/OptimistPessimistTest")));
+                    break;
+                case MenuButtonType.SocialIntelligence:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.Test));
+                    _button.onClick.AddListener(() => TestManager.Instance.StartTest(Resources.Load<GameObject>("Test/Social Intelligence Test/SocialIntelligenceTest")));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

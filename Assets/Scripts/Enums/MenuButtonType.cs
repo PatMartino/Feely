@@ -25,6 +25,7 @@ namespace Enums
         AggressionTest,
         CapitalTest,
         EmotionalTest,
-        
+        OptimistTest,
+        SocialIntelligence
     }
 }
