@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1498576278927380710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5776773024382359547}
+  - component: {fileID: 6026146651050249151}
+  m_Layer: 0
+  m_Name: GhostMemoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5776773024382359547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498576278927380710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6026146651050249151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498576278927380710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf49f1eb3b7db74384890960e864061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelPrefabs:
+  - {fileID: 885774577665073271, guid: 74b156710a93afa4f84414f14988d02c, type: 3}
+  - {fileID: 885774577665073271, guid: 746018b4c29a1234cb7e3c0f9e781f43, type: 3}
+  - {fileID: 885774577665073271, guid: 380931099a620074faf3115ffe6a5722, type: 3}
+  - {fileID: 885774577665073271, guid: e91cc1a6102cccc4c972d38ceda08d25, type: 3}
+  - {fileID: 885774577665073271, guid: 24cd23172a4af6c41bf476cb8242aab2, type: 3}
+  - {fileID: 885774577665073271, guid: 6bf72ed2f70630549a04cf7a7dad38c0, type: 3}
+  - {fileID: 885774577665073271, guid: 7a96911afff9bfb4292a46d9844cbe41, type: 3}
+  - {fileID: 885774577665073271, guid: 2b23ce7427a5a7148bbf07531aa1af45, type: 3}
+  - {fileID: 885774577665073271, guid: 63e7a455d1612c04a8480fa18c5fe150, type: 3}
+  - {fileID: 885774577665073271, guid: bbc86ddde5e9d424b93d3d51e02fd2a3, type: 3}
+  difficultyPercentage: 10
+  difficultyIncreaseAfterChapter: 20
+  maxLevelsInChapter: 5
+  hidePicturesDelay: 2
