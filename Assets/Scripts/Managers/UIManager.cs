@@ -79,6 +79,12 @@ namespace Managers
                 case UIStates.MathFundamentalCoverPage:
                     Instantiate(Resources.Load<GameObject>("UI/CoverPages/MathFundamentalCoverPage"),canvas.transform);
                     break;
+                case UIStates.CalculationResultGame:
+                    Instantiate(Resources.Load<GameObject>("Games/CalculationResult/UI/CalculationResultUI"),canvas.transform);
+                    break;
+                case UIStates.CalculationResultCoverPage:
+                    Instantiate(Resources.Load<GameObject>("UI/CoverPages/CalculationResultCoverPage"),canvas.transform);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }

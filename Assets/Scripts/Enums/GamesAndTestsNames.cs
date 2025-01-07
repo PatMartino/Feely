@@ -5,6 +5,7 @@
         BallSort,
         CardMatch,
         TrashSort,
-        MathFundamental
+        MathFundamental,
+        CalculationResult
     }
 }

@@ -12,6 +12,9 @@
         TrashSortGame,
         TrashSortCoverPage,
         MathFundamentalGame,
-        MathFundamentalCoverPage
+        MathFundamentalCoverPage,
+        CalculationResultGame,
+        CalculationResultCoverPage
+        
     }
 }

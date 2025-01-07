@@ -26,6 +26,8 @@ namespace Enums
         CapitalTest,
         EmotionalTest,
         OptimistTest,
-        SocialIntelligence
+        SocialIntelligence,
+        CalculationResultCoverPage,
+        CalculationResultGame
     }
 }
