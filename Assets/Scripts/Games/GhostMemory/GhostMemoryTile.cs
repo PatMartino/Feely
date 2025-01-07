@@ -23,7 +23,7 @@ namespace Games.GhostMemory
 
         private void Start()
         {
-            StartCoroutine(SetSelectableAfterDelay(GhostMemoryManager.Instance.hidePicturesDelay));
+            StartCoroutine(SetSelectableAfterDelay(GhostMemorySignals.Instance.OnGetHidePicturesDelay()));
         }
 
         IEnumerator SetSelectableAfterDelay(float delay)
@@ -34,7 +34,7 @@ namespace Games.GhostMemory
         IEnumerator ShowPictureAndHide()
         {
             pictureSpriteRenderer.enabled = true;
-            yield return new WaitForSeconds(GhostMemoryManager.Instance.hidePicturesDelay);
+            yield return new WaitForSeconds(GhostMemorySignals.Instance.OnGetHidePicturesDelay());
             pictureSpriteRenderer.enabled = false;
         }
 
@@ -49,7 +49,7 @@ namespace Games.GhostMemory
         {
             isSelectable = false;
             pictureSpriteRenderer.enabled = true;
-            GhostMemoryManager.Instance.OnTileSelected?.Invoke(this);
+            GhostMemorySignals.Instance.OnTileSelected?.Invoke(this);
         }
     }
 }

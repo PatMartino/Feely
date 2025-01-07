@@ -89,7 +89,7 @@ namespace Managers
                     break;
                 case UIStates.GhostMemoryGame:
                     UIDestroyer();
-                    Instantiate(Resources.Load<GameObject>("Games/GhostMemory/UI/GhostMemory"),canvas.transform);
+                    Instantiate(Resources.Load<GameObject>("Games/GhostMemory/UI/GhostMemoryUI"),canvas.transform);
                     break;
                 case UIStates.GhostMemoryCoverPage:
                     UIDestroyer();

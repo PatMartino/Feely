@@ -1,4 +1,5 @@
 using System;
+using Games.GhostMemory;
 using Signals;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ namespace GameObjects
                     _remainingTime = 0f; // Kalan süreyi sıfırla
                     
                     CardMatchSignals.Instance.OnRestartLevel?.Invoke();
+                    GhostMemorySignals.Instance.OnFailLevel?.Invoke();
                     MathFundamentalSignals.Instance.OnLevelFailed?.Invoke();
                     // Timer tamamlandığında olayı tetikle
                     

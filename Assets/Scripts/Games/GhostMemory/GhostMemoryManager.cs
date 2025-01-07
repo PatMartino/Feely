@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using Extensions;
+using Signals;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Games.GhostMemory
 {
-    public class GhostMemoryManager : MonoSingleton<GhostMemoryManager>
+    public class GhostMemoryManager : MonoBehaviour
     {
         [SerializeField] private List<GameObject> levelPrefabs;
         [SerializeField] private int difficultyPercentage;
@@ -16,13 +18,13 @@ namespace Games.GhostMemory
         [SerializeField] private int maxLevelsInChapter;
         public float hidePicturesDelay;
 
-        public UnityAction<GhostMemoryTile> OnTileSelected;
-
         private List<GhostMemoryTile> tileList = new List<GhostMemoryTile>();
         private List<GhostMemoryTile> markedTiles = new List<GhostMemoryTile>();
         
         private int _currentLevelIndex;
+        private int _currentChapterIndex = 1;
         private int _currentDifficulty;
+        private LevelStatus _levelStatus;
 
         #region EventSubscription
 
@@ -33,13 +35,46 @@ namespace Games.GhostMemory
 
         private void SubscribeEvents()
         {
-            OnTileSelected += OnTileSelect;
+            GhostMemorySignals.Instance.OnTileSelected += OnTileSelect;
+            GhostMemorySignals.Instance.OnGetLevelStatus += GetLevelStatus;
+            GhostMemorySignals.Instance.OnGetDifficulty += GetDifficulty;
+            GhostMemorySignals.Instance.OnGetChapterIndex += GetChapterIndex;
+            GhostMemorySignals.Instance.OnNextLevel += PassChapter;
+            GhostMemorySignals.Instance.OnRestartLevel += ResetGame;
+            GhostMemorySignals.Instance.OnFailLevel += FailLevel;
+            GhostMemorySignals.Instance.OnGetHidePicturesDelay += GetHidePicturesDelay;
         }
 
+        private LevelStatus GetLevelStatus()
+        {
+            return _levelStatus;
+        }
+        
+        private int GetDifficulty()
+        {
+            return _currentDifficulty;
+        }
+        
+        private int GetChapterIndex()
+        {
+            return _currentChapterIndex;
+        }
+
+        private float GetHidePicturesDelay()
+        {
+            return hidePicturesDelay;
+        }
 
         private void UnsubscribeEvents()
         {
-            OnTileSelected -= OnTileSelect;
+            GhostMemorySignals.Instance.OnTileSelected -= OnTileSelect;
+            GhostMemorySignals.Instance.OnGetLevelStatus -= GetLevelStatus;
+            GhostMemorySignals.Instance.OnGetDifficulty -= GetDifficulty;
+            GhostMemorySignals.Instance.OnGetChapterIndex -= GetChapterIndex;
+            GhostMemorySignals.Instance.OnNextLevel -= PassChapter;
+            GhostMemorySignals.Instance.OnRestartLevel -= ResetGame;
+            GhostMemorySignals.Instance.OnFailLevel -= FailLevel;
+            GhostMemorySignals.Instance.OnGetHidePicturesDelay -= GetHidePicturesDelay;
         }
 
         private void OnDisable()
@@ -47,7 +82,7 @@ namespace Games.GhostMemory
             UnsubscribeEvents();
         }
         #endregion
-        
+
         private void Start()
         {
             ResetGame();
@@ -80,9 +115,9 @@ namespace Games.GhostMemory
         private void ResetGame()
         {
             _currentLevelIndex = 0;
-            _currentDifficulty = difficultyPercentage;
-
+            CoreGameSignals.Instance.OnStartTimer?.Invoke(60);
             SetupLevel();
+            GhostMemorySignals.Instance.OnGameUI?.Invoke();
         }
 
         private void OnTileSelect(GhostMemoryTile tile)
@@ -92,7 +127,12 @@ namespace Games.GhostMemory
                 markedTiles.Remove(tile);
                 if (markedTiles.Count == 0) PassLevel();
             }
-            else FailLevel();
+            else
+            {
+                SetTilesUnselectable();
+                CoreGameSignals.Instance.OnStopTimer?.Invoke();
+                StartCoroutine(DelayedAction(1f, FailLevel));
+            }
         }
 
         private IEnumerator DelayedAction(float seconds, Action action)
@@ -105,19 +145,45 @@ namespace Games.GhostMemory
             SetTilesUnselectable();
             if (_currentLevelIndex >= maxLevelsInChapter)
             {
-                _currentDifficulty += difficultyIncreaseAfterChapter;
-                _currentDifficulty = Mathf.Clamp(_currentDifficulty, 0, 100);
-                _currentLevelIndex = 0;
+                StartCoroutine(DelayedAction(1f, EndChapter));
             }
-            else _currentLevelIndex++;
-            
-            StartCoroutine(DelayedAction(1f, SetupLevel));
+            else
+            {
+                _currentLevelIndex++;
+                StartCoroutine(DelayedAction(1f, SetupLevel));
+            }
         }
 
+        private void EndChapter()
+        {
+            _levelStatus = LevelStatus.Complete;
+            CoreGameSignals.Instance.OnStopTimer?.Invoke();
+            GhostMemorySignals.Instance.OnNextLevelUI?.Invoke();
+                
+            foreach (Transform obj in transform)
+            {
+                Destroy(obj.gameObject);
+            }
+        }
+
+        private void PassChapter()
+        {
+            _currentDifficulty += difficultyIncreaseAfterChapter;
+            _currentDifficulty = Mathf.Clamp(_currentDifficulty, 0, 100);
+            _currentLevelIndex = 0;
+            _currentChapterIndex++;
+            ResetGame();
+        }
+        
         private void FailLevel()
         {
-            SetTilesUnselectable();
-            StartCoroutine(DelayedAction(1f, ResetGame));
+            foreach (Transform obj in transform)
+            {
+                Destroy(obj.gameObject);
+            }
+
+            _levelStatus = LevelStatus.Failed;
+            GhostMemorySignals.Instance.OnNextLevelUI?.Invoke();
         }
 
         private void SetTilesUnselectable()
