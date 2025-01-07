@@ -137,6 +137,12 @@ namespace Handlers
                 case MenuButtonType.CalculationResultGame:
                     _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.CalculationResult));
                     break;
+                case MenuButtonType.GhostMemoryCoverPage:
+                    _button.onClick.AddListener(() => UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.GhostMemoryCoverPage));
+                    break;
+                case MenuButtonType.GhostMemoryGame:
+                    _button.onClick.AddListener(() => CoreGameSignals.Instance.OnGameManagement?.Invoke(GamesAndTestsNames.GhostMemory));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

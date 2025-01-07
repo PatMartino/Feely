@@ -14,7 +14,9 @@
         MathFundamentalGame,
         MathFundamentalCoverPage,
         CalculationResultGame,
-        CalculationResultCoverPage
+        CalculationResultCoverPage,
+        GhostMemoryGame,
+        GhostMemoryCoverPage
         
     }
 }

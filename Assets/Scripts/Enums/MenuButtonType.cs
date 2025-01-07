@@ -28,6 +28,8 @@ namespace Enums
         OptimistTest,
         SocialIntelligence,
         CalculationResultCoverPage,
-        CalculationResultGame
+        CalculationResultGame,
+        GhostMemoryCoverPage,
+        GhostMemoryGame
     }
 }

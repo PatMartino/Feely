@@ -59,6 +59,10 @@ namespace Managers
                     UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.CalculationResultGame);
                     Instantiate(Resources.Load<GameObject>("Games/CalculationResult/GameManager/CalculationResultManager"),gameHolder);
                     break;
+                case GamesAndTestsNames.GhostMemory:
+                    UISignals.Instance.OnMenuUIManagement?.Invoke(UIStates.GhostMemoryGame);
+                    Instantiate(Resources.Load<GameObject>("Games/GhostMemory/GameManagerObject/GhostMemoryManager"),gameHolder);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

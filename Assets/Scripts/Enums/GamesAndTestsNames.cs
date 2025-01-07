@@ -6,6 +6,7 @@
         CardMatch,
         TrashSort,
         MathFundamental,
-        CalculationResult
+        CalculationResult,
+        GhostMemory
     }
 }

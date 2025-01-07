@@ -74,9 +74,11 @@ namespace Managers
                     UIDestroyer();
                     break;
                 case UIStates.MathFundamentalGame:
+                    UIDestroyer();
                     Instantiate(Resources.Load<GameObject>("Games/MathFundamental/UI/MathFundamentalUI"),canvas.transform);
                     break;
                 case UIStates.MathFundamentalCoverPage:
+                    UIDestroyer();
                     Instantiate(Resources.Load<GameObject>("UI/CoverPages/MathFundamentalCoverPage"),canvas.transform);
                     break;
                 case UIStates.CalculationResultGame:
@@ -84,6 +86,14 @@ namespace Managers
                     break;
                 case UIStates.CalculationResultCoverPage:
                     Instantiate(Resources.Load<GameObject>("UI/CoverPages/CalculationResultCoverPage"),canvas.transform);
+                    break;
+                case UIStates.GhostMemoryGame:
+                    UIDestroyer();
+                    Instantiate(Resources.Load<GameObject>("Games/GhostMemory/UI/GhostMemory"),canvas.transform);
+                    break;
+                case UIStates.GhostMemoryCoverPage:
+                    UIDestroyer();
+                    Instantiate(Resources.Load<GameObject>("UI/CoverPages/GhostMemoryCoverPage"),canvas.transform);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
